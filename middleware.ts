@@ -6,9 +6,8 @@ export default authMiddleware({
     },
     beforeAuth(req, evt) {
         console.log('Before auth');
-
     },
-    publicRoutes: ["/"]
+    publicRoutes: ["/", '/verify']
 });
 
 export const config = {
