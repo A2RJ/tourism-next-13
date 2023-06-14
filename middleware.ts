@@ -1,15 +1,22 @@
-import { authMiddleware } from "@clerk/nextjs";
+import { authMiddleware, redirectToSignIn } from "@clerk/nextjs";
 
 export default authMiddleware({
-    afterAuth(auth, req, evt) {
-        console.log("After auth");
+    async afterAuth(auth, req, evt) {
+        console.log(auth.userId);
+
+        // if (!auth.userId && !auth.isPublicRoute) {
+        //     return redirectToSignIn({ returnBackUrl: req.url });
+        // }
     },
     beforeAuth(req, evt) {
-        console.log('Before auth');
     },
     publicRoutes: ["/", '/verify']
 });
 
 export const config = {
-    matcher: ["/((?!.*\\..*|_next).*)", "/", "/(api|trpc)(.*)"],
+    matcher: [
+        "/((?!.*\\..*|_next).*)",
+        "/",
+        "/(api|trpc)(.*)",
+    ],
 };
