@@ -4,11 +4,14 @@ const nextConfig = {
     appDir: true,
     serverActions: true,
   },
-  env: {
-    CLERK_SECRET_KEY: "my-value",
-    JWT_SECRET_KEY: "ga-secret",
-  },
+  // env: {
+  //   CLERK_SECRET_KEY: "my-value",
+  //   JWT_SECRET_KEY: "ga-secret",
+  // },
   pageExtensions: ["tsx", "ts"],
+  images: {
+    domains: ["avatars.githubusercontent.com", "images.unsplash.com"],
+  },
 };
 
 module.exports = nextConfig
