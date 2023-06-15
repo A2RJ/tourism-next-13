@@ -1,4 +1,4 @@
-import { Envs } from "@/config/config";
+import { Envs } from "@/app/config/config";
 import { SignJWT, jwtVerify } from "jose";
 
 export const signJWT = async (
@@ -6,7 +6,7 @@ export const signJWT = async (
     options: { exp: string }
 ) => {
     try {
-        const secret = new TextEncoder().encode('gasecretkok');
+        const secret = new TextEncoder().encode(Envs.JWT_SECRET_KEY);
         const alg = "HS256";
         return new SignJWT(payload)
             .setProtectedHeader({ alg })
@@ -18,13 +18,13 @@ export const signJWT = async (
         throw error;
     }
 };
-
+""
 export const verifyJWT = async <T>(token: string): Promise<T> => {
     try {
         return (
             await jwtVerify(
                 token,
-                new TextEncoder().encode('gasecretkok')
+                new TextEncoder().encode(Envs.JWT_SECRET_KEY)
             )
         ).payload as T;
     } catch (error) {

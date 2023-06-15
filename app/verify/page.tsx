@@ -1,15 +1,16 @@
 'use client'
-import axios from "@/lib/axios";
 import { useRouter } from "next/navigation";
-import { signJWT, verifyJWT } from "@/lib/jwt";
 import { SignUpButton, useUser } from "@clerk/nextjs";
+import Link from "next/link";
+import axiosAPI from "@/lib/axiosAPI";
+import { signJWT } from "@/lib/jwt";
 
 export default function Home() {
     const router = useRouter()
     const { user } = useUser();
 
     const goToDashboard = async () => {
-        try {
+        try { 
             const token = await signJWT({
                 sub: JSON.stringify({
                     fullName: user?.fullName,
@@ -17,16 +18,11 @@ export default function Home() {
                     phoneNumber: user?.primaryPhoneNumber,
                 })
             }, { exp: '2h' })
-            const { data } = await axios.post('/', { token })
-            // const session = {
-            //     token: data.access_token,
-            //     role: data.role
-            // }
+            const { data } = await axiosAPI.post('/', { token })
             await user?.update({
                 unsafeMetadata: data
             });
             router.push('/dashboard')
-            // redirect('/dashboard')
         } catch (error) {
             throw error
         }
@@ -34,6 +30,7 @@ export default function Home() {
 
     return user
         ? <>
+            <Link href={'/'}>Back to home</Link> <br />
             <button onClick={goToDashboard}>Click me to update your name</button>
             <p>user.firstName: {user?.firstName}</p>
             <p>user.lastName: {user?.lastName}</p>

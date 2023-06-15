@@ -1,12 +1,12 @@
 import { authMiddleware, redirectToSignIn } from "@clerk/nextjs";
+import { NextRequest } from "next/server";
+import { Envs } from "./app/config/config";
+
+async function middleware(request: NextRequest) { }
 
 export default authMiddleware({
-    async afterAuth(auth, req, evt) {
-        console.log(auth.userId);
-
-        // if (!auth.userId && !auth.isPublicRoute) {
-        //     return redirectToSignIn({ returnBackUrl: req.url });
-        // }
+    afterAuth(auth, req, evt) {
+        return middleware(req)
     },
     beforeAuth(req, evt) {
     },
