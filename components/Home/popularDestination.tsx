@@ -9,6 +9,7 @@ export default function PopularDestinatipon() {
             <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
                 {ListPariwisata.slice(10, 20).map((pariwisata) => (
                     <div key={pariwisata.name} className="min-h-[300px] w-full border rounded-xl p-1">
+                        {/* harga dibawah dan rating kanan atas */}
                         <Image
                             alt="Image"
                             src={`${pariwisata.cover}`}
