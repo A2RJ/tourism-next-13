@@ -1,4 +1,4 @@
-import { Envs } from "@/app/config/config";
+import { Envs } from "@/config/config";
 import { SignJWT, jwtVerify } from "jose";
 
 export const signJWT = async (

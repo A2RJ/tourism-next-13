@@ -1,22 +1,12 @@
-import { authMiddleware, redirectToSignIn } from "@clerk/nextjs";
-import { NextRequest } from "next/server";
-import { Envs } from "./app/config/config";
+import { NextResponse } from 'next/server'
+import type { NextRequest } from 'next/server'
 
-async function middleware(request: NextRequest) { }
+// This function can be marked `async` if using `await` inside
+export function middleware(request: NextRequest) {
+    // return NextResponse.redirect(new URL('/home', request.url))
+}
 
-export default authMiddleware({
-    afterAuth(auth, req, evt) {
-        return middleware(req)
-    },
-    beforeAuth(req, evt) {
-    },
-    publicRoutes: ["/", '/verify']
-});
-
+// See "Matching Paths" below to learn more
 export const config = {
-    matcher: [
-        "/((?!.*\\..*|_next).*)",
-        "/",
-        "/(api|trpc)(.*)",
-    ],
-};
+    matcher: '/:path*',
+}

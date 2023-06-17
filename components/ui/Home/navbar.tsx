@@ -1,4 +1,5 @@
-import { Button } from "../ui/button";
+import Link from "next/link";
+import { Button } from "../button";
 
 export default function Navbar() {
     return (
@@ -11,8 +12,8 @@ export default function Navbar() {
                     <h4 className="font-extrabold text-2xl">Travelin</h4>
                 </div>
                 <div className="my-auto grid grid-cols-4 gap-3">
-                    <a href="#">Home</a>
-                    <a href="#">Browse</a>
+                    <Link href='/'>Home</Link>
+                    <Link href='/public/browse'>Browse</Link>
                     <a href="#">Wish list</a>
                     <a href="#">About us</a>
                 </div>
