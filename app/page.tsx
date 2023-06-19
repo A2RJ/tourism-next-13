@@ -1,13 +1,27 @@
-import LandingPage from "@/components/ui/Home/LandingPage";
-import Navbar from "@/components/ui/Home/navbar";
+import {
+  LoginButton,
+  LogoutButton,
+  ProfileButton,
+  RegisterButton,
+} from "@/components/auth/auth";
+import { authOptions } from "@/lib/auth";
+import { getServerSession } from "next-auth";
 
-export default function Home() {
-    return (
-        <>
-            <Navbar />
+export default async function Home() {
+  const session = await getServerSession(authOptions);
+  return (
+    <>
+      {/* <Navbar />
             <div className="mx-auto container">
                 <LandingPage />
-            </div>
-        </>
-    )
+            </div>   */}
+      <LoginButton />
+      <RegisterButton />
+      <LogoutButton />
+      <ProfileButton />
+
+      <h1>Server Session</h1>
+      <p>{JSON.stringify(session)}</p>
+    </>
+  );
 }

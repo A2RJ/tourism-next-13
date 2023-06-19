@@ -2,17 +2,17 @@ import { Envs } from "@/config/config";
 import { SignJWT, jwtVerify } from "jose";
 
 export const signJWT = async (
-    payload: { sub: string },
-    options: { exp: string }
+    sub: string,
+    exp: string
 ) => {
     try {
         const secret = new TextEncoder().encode(Envs.JWT_SECRET_KEY);
         const alg = "HS256";
-        return new SignJWT(payload)
+        return new SignJWT({ sub })
             .setProtectedHeader({ alg })
-            .setExpirationTime(options.exp)
+            .setExpirationTime(exp ?? '1d')
             .setIssuedAt()
-            .setSubject(payload.sub)
+            .setSubject(sub)
             .sign(secret);
     } catch (error) {
         throw error;
