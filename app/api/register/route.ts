@@ -1,3 +1,5 @@
+import { baseAPIURL } from "@/lib/fecthAPI";
+import axios from "axios";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
@@ -7,7 +9,14 @@ export async function POST(req: Request) {
             email: string;
             password: string;
         };
-
+        const result = await fetch(`${baseAPIURL}/auth/register`, {
+            method: "POST",
+            body: JSON.stringify({ name, email, password }),
+        });
+        const json = await result.json();
+        if (!result.ok) {
+            throw json;
+        }
         return NextResponse.json({
             user: {
                 name,
@@ -18,9 +27,9 @@ export async function POST(req: Request) {
         return new NextResponse(
             JSON.stringify({
                 status: "error",
-                message: error.message,
+                message: error,
             }),
-            { status: 500 }
+            { status: error.status }
         );
     }
 }

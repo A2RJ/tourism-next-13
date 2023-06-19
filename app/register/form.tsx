@@ -1,11 +1,20 @@
 "use client";
 
+import { baseAPIURL } from "@/lib/fecthAPI";
+import axios from "axios";
 import { signIn } from "next-auth/react";
 import { ChangeEvent, useState } from "react";
 
+type FormValues = {
+  name: string;
+  email: string;
+  password: string;
+};
+
 export const RegisterForm = () => {
-  let [loading, setLoading] = useState(false);
-  let [formValues, setFormValues] = useState({
+  let [loading, setLoading] = useState<boolean>(false);
+  let [error, setError] = useState<object[]>([]);
+  let [formValues, setFormValues] = useState<FormValues>({
     name: "",
     email: "",
     password: "",
@@ -14,30 +23,31 @@ export const RegisterForm = () => {
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-
+    setError([]);
     try {
-      const res = await fetch("/api/register", {
-        method: "POST",
-        body: JSON.stringify(formValues),
-        headers: {
-          "Content-Type": "application/json",
-        },
+      const { name, email, password } = formValues;
+      const { data } = await axios.post(`${baseAPIURL}/auth/register`, {
+        name,
+        email,
+        password,
+        password_confirmation: password,
       });
-
       setLoading(false);
-      if (!res.ok) {
-        alert((await res.json()).message);
-        return;
-      }
-
       signIn(undefined, { callbackUrl: "/" });
     } catch (error: any) {
       setLoading(false);
-      console.error(error);
-      alert(error.message);
+      setError(error?.response?.data?.errors);
     }
   };
-
+  const ErrorList = ({ errors }: any) => {
+    return (
+      <ul>
+        {errors.map((error: any, index: number) => (
+          <li key={index}>{error.message}</li>
+        ))}
+      </ul>
+    );
+  };
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setFormValues({ ...formValues, [name]: value });
@@ -53,6 +63,7 @@ export const RegisterForm = () => {
         rowGap: 10,
       }}
     >
+      <ErrorList errors={error} />
       <label htmlFor="name">Name</label>
       <input
         required
