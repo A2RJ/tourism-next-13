@@ -77,24 +77,24 @@ const SearchBox = ({ ...props }) => (
 const Sidebar = () => {
   const lessons = {
     rustLessons: [
-      { name: "Introduction to Rust", href: "javascript:void(0)" },
-      { name: "Installing and Setting up Rust", href: "javascript:void(0)" },
-      { name: "Basic Syntax and Data Types", href: "javascript:void(0)" },
-      { name: "Control Flow Statements", href: "javascript:void(0)" },
-      { name: "Functions and Modules", href: "javascript:void(0)" },
-      { name: "Ownership and Borrowing", href: "javascript:void(0)" },
-      { name: "Structs and Enums", href: "javascript:void(0)" },
-      { name: "Traits and Generics", href: "javascript:void(0)" },
+      { name: "Introduction to Rust", href: "#" },
+      { name: "Installing and Setting up Rust", href: "#" },
+      { name: "Basic Syntax and Data Types", href: "#" },
+      { name: "Control Flow Statements", href: "#" },
+      { name: "Functions and Modules", href: "#" },
+      { name: "Ownership and Borrowing", href: "#" },
+      { name: "Structs and Enums", href: "#" },
+      { name: "Traits and Generics", href: "#" },
     ],
     cargoLessons: [
-      { name: "Introduction to Cargo", href: "javascript:void(0)" },
-      { name: "Installing and Configuring Cargo", href: "javascript:void(0)" },
-      { name: "Basic Cargo Commands", href: "javascript:void(0)" },
-      { name: "Working with Dependencies", href: "javascript:void(0)" },
-      { name: "Rust Workspaces with Cargo", href: "javascript:void(0)" },
-      { name: "Ownership and Borrowing", href: "javascript:void(0)" },
-      { name: "Structs and Enums", href: "javascript:void(0)" },
-      { name: "Traits and Generics", href: "javascript:void(0)" },
+      { name: "Introduction to Cargo", href: "#" },
+      { name: "Installing and Configuring Cargo", href: "#" },
+      { name: "Basic Cargo Commands", href: "#" },
+      { name: "Working with Dependencies", href: "#" },
+      { name: "Rust Workspaces with Cargo", href: "#" },
+      { name: "Ownership and Borrowing", href: "#" },
+      { name: "Structs and Enums", href: "#" },
+      { name: "Traits and Generics", href: "#" },
     ],
   };
 
@@ -103,7 +103,7 @@ const Sidebar = () => {
       <nav className="fixed z-40 top-0 left-0 w-full h-full border-r bg-white space-y-8 overflow-auto sm:w-80">
         <div className="sticky top-0 space-y-8 bg-white">
           <div className="h-20 flex items-center px-4 border-b md:px-8">
-            <a href="javascript:void(0)" className="flex-none">
+            <a href="#" className="flex-none">
               <Image
                 alt="logo"
                 src="https://floatui.com/logo.svg"

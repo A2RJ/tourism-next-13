@@ -1,6 +1,6 @@
 "use client";
 
-import { ListPariwisata } from "@/components/ui/Home/pariwisata";
+import { ListPariwisata } from "@/components/ui/home/pariwisata";
 import { ChevronRight, Navigation } from "lucide-react";
 import { ChevronLeft } from "lucide-react";
 import { Button } from "../button";
