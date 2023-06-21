@@ -4,14 +4,14 @@ const nextConfig = {
     appDir: true,
     serverActions: true,
   },
-  trailingSlash: true,
-  // env: {
-  //   CLERK_SECRET_KEY: "my-value",
-  //   JWT_SECRET_KEY: "ga-secret",
-  // },
+  // trailingSlash: true,
   pageExtensions: ["tsx", "ts"],
   images: {
-    domains: ["avatars.githubusercontent.com", "images.unsplash.com"],
+    domains: [
+      "avatars.githubusercontent.com",
+      "images.unsplash.com",
+      "images.pexels.com",
+    ],
   },
 };
 

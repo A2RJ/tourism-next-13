@@ -1,7 +1,7 @@
 import { Metadata } from "next";
-import { Sidebar } from "@/components/ui/music/sidebar";
 import { Children } from "@/types/layout";
 import Head from "next/head";
+import { Sidebar } from "@/components/ui/dashboard/sidebar";
 
 export const metadata: Metadata = {
   title: "Travel App",
