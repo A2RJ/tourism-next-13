@@ -33,6 +33,13 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
+### Thirtd party
+- [preline - tailwind css](https://preline.co)
+- [ui.shadcn - tailwind css](https://ui.shadcn.com)
+- [wind-ui - tailwind css](https://wind-ui.com)
+- [floatui - tailwind css](https://floatui.com)
+- [mambaui - tailwind css](https://www.mambaui.com)
+
 ### Experimental
 - coba gunakan conditional untuk mengecek auth, jadikan komponen cek auth jadi child komponen, jika ada auth maka tampilkan halaman jika tidak maka redirect saja
 
