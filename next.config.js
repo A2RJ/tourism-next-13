@@ -4,6 +4,7 @@ const nextConfig = {
     appDir: true,
     serverActions: true,
   },
+  trailingSlash: true,
   // env: {
   //   CLERK_SECRET_KEY: "my-value",
   //   JWT_SECRET_KEY: "ga-secret",

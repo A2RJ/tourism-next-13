@@ -1,100 +1,114 @@
 import {
-    LayoutGrid,
-    Library,
-    ListMusic,
-    Mic2,
-    Music,
-    Music2,
-    PlayCircle,
-    Radio,
-    User,
-} from "lucide-react"
+  BellRing,
+  CreditCard,
+  Home,
+  LayoutGrid,
+  Library,
+  ListChecks,
+  ListMusic,
+  Map,
+  Music2,
+  Package2,
+  Percent,
+  PlayCircle,
+  Radio,
+  Receipt,
+  User,
+} from "lucide-react";
 
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import { ScrollArea } from "@/components/ui/scroll-area"
-import { Playlist } from "@/app/dashboard/data/playlists"
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 
+interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {
-    playlists: Playlist[]
-}
-
-export function Sidebar({ className, playlists }: SidebarProps) {
-    return (
-        <div className={cn("pb-12", className)}>
-            <div className="space-y-4 py-4">
-                <div className="px-4 py-2">
-                    <h2 className="mb-2 px-2 text-lg font-semibold tracking-tight">
-                        Discover
-                    </h2>
-                    <div className="space-y-1">
-                        <Button
-                            variant="secondary"
-                            size="sm"
-                            className="w-full justify-start"
-                        >
-                            <PlayCircle className="mr-2 h-4 w-4" />
-                            Listen Now
-                        </Button>
-                        <Button variant="ghost" size="sm" className="w-full justify-start">
-                            <LayoutGrid className="mr-2 h-4 w-4" />
-                            Browse
-                        </Button>
-                        <Button variant="ghost" size="sm" className="w-full justify-start">
-                            <Radio className="mr-2 h-4 w-4" />
-                            Radio
-                        </Button>
-                    </div>
-                </div>
-                <div className="px-4 py-2">
-                    <h2 className="mb-2 px-2 text-lg font-semibold tracking-tight">
-                        Library
-                    </h2>
-                    <div className="space-y-1">
-                        <Button variant="ghost" size="sm" className="w-full justify-start">
-                            <ListMusic className="mr-2 h-4 w-4" />
-                            Playlists
-                        </Button>
-                        <Button variant="ghost" size="sm" className="w-full justify-start">
-                            <Music2 className="mr-2 h-4 w-4" />
-                            Songs
-                        </Button>
-                        <Button variant="ghost" size="sm" className="w-full justify-start">
-                            <User className="mr-2 h-4 w-4" />
-                            Made for You
-                        </Button>
-                        <Button variant="ghost" size="sm" className="w-full justify-start">
-                            <Mic2 className="mr-2 h-4 w-4" />
-                            Artists
-                        </Button>
-                        <Button variant="ghost" size="sm" className="w-full justify-start">
-                            <Library className="mr-2 h-4 w-4" />
-                            Albums
-                        </Button>
-                    </div>
-                </div>
-                <div className="py-2">
-                    <h2 className="relative px-6 text-lg font-semibold tracking-tight">
-                        Playlists
-                    </h2>
-                    <ScrollArea className="h-[300px] px-2">
-                        <div className="space-y-1 p-2">
-                            {playlists?.map((playlist, i) => (
-                                <Button
-                                    key={`${playlist}-${i}`}
-                                    variant="ghost"
-                                    size="sm"
-                                    className="w-full justify-start font-normal"
-                                >
-                                    <ListMusic className="mr-2 h-4 w-4" />
-                                    {playlist}
-                                </Button>
-                            ))}
-                        </div>
-                    </ScrollArea>
-                </div>
-            </div>
+export function Sidebar({ className }: SidebarProps) {
+  return (
+    <div className={cn("pb-12", className)}>
+      <div className="space-y-4 py-4">
+        <div className="px-4 py-2">
+          <p className="text-2xl font-bold px-2">Travelin</p>
         </div>
-    )
+        <div className="px-4 py-2">
+          <h2 className="mb-2 px-2 text-lg font-semibold tracking-tight">
+            Discover
+          </h2>
+          <div className="space-y-1">
+            <Button
+              variant="secondary"
+              size="sm"
+              className="w-full justify-start"
+            >
+              <Home className="mr-2 h-4 w-4" />
+              Popular
+            </Button>
+            <Button variant="ghost" size="sm" className="w-full justify-start">
+              <LayoutGrid className="mr-2 h-4 w-4" />
+              Browse
+            </Button>
+            <Button variant="ghost" size="sm" className="w-full justify-start">
+              <Radio className="mr-2 h-4 w-4" />
+              Nearest
+            </Button>
+          </div>
+        </div>
+        <div className="px-4 py-2">
+          <h2 className="mb-2 px-2 text-lg font-semibold tracking-tight">
+            User
+          </h2>
+          <div className="space-y-1">
+            <Button variant="ghost" size="sm" className="w-full justify-start">
+              <ListChecks className="mr-2 h-4 w-4" />
+              Wish List
+            </Button>
+            <Button variant="ghost" size="sm" className="w-full justify-start">
+              <Map className="mr-2 h-4 w-4" />
+              My Destination
+            </Button>
+            <Button variant="ghost" size="sm" className="w-full justify-start">
+              <Receipt className="mr-2 h-4 w-4" />
+              Transaction
+            </Button>
+            <Button variant="ghost" size="sm" className="w-full justify-start">
+              <BellRing className="mr-2 h-4 w-4" />
+              Notification
+            </Button>
+            <Button variant="ghost" size="sm" className="w-full justify-start">
+              <User className="mr-2 h-4 w-4" />
+              Profile
+            </Button>
+          </div>
+        </div>
+        <div className="px-4 py-2">
+          <h2 className="mb-2 px-2 text-lg font-semibold tracking-tight">
+            Agent
+          </h2>
+          <div className="space-y-1">
+            <Button variant="ghost" size="sm" className="w-full justify-start">
+              <Package2 className="mr-2 h-4 w-4" />
+              Tour Package
+              {/* (with: tab package and review) */}
+            </Button>
+            <Button variant="ghost" size="sm" className="w-full justify-start">
+              <Receipt className="mr-2 h-4 w-4" />
+              Reservation
+              {/* with payment detail, total, optional with metric */}
+            </Button>
+            <Button variant="ghost" size="sm" className="w-full justify-start">
+              <CreditCard className="mr-2 h-4 w-4" />
+              Withdraw
+              {/* with bank account, withdraw log */}
+            </Button>
+            <Button variant="ghost" size="sm" className="w-full justify-start">
+              <BellRing className="mr-2 h-4 w-4" />
+              Notification
+            </Button>
+            <Button variant="ghost" size="sm" className="w-full justify-start">
+              <User className="mr-2 h-4 w-4" />
+              Bussiness Profile
+            </Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }

@@ -1,4 +1,4 @@
-import { Children } from "@/app/layout";
+import { Children } from "@/types/layout";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
