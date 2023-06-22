@@ -7,6 +7,7 @@ import { NextAuthProvider } from "../components/auth/providers";
 import { Children } from "@/types/layout";
 import Head from "next/head";
 import { Sidebar } from "@/components/ui/dashboard/sidebar";
+import Navbar from "@/components/ui/custom/navbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,7 +31,10 @@ export default function RootLayout({ children }: Children) {
                   <div className="w-64 h-screen border-r fixed lg:block hidden">
                     <Sidebar />
                   </div>
-                  <div className="lg:ml-64 p-4">{children}</div>
+                  <div className="lg:ml-64 p-4">
+                    <Navbar />
+                    {children}
+                  </div>
                 </div>
               </div>
             </div>

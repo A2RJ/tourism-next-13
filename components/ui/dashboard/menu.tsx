@@ -69,11 +69,11 @@ export default function Menu({ option }: { option: Option }) {
         href: "/user/notification",
         icon: <BellRing />,
       },
-      {
-        name: "User",
-        href: "/user/profile",
-        icon: <User />,
-      },
+      // {
+      //   name: "User",
+      //   href: "/user/profile",
+      //   icon: <User />,
+      // },
     ],
     Agent: [
       {
@@ -96,11 +96,11 @@ export default function Menu({ option }: { option: Option }) {
         href: "/agent/notification",
         icon: <BellRing />,
       },
-      {
-        name: "Bussiness Profile",
-        href: "/agent/profile",
-        icon: <User />,
-      },
+      // {
+      //   name: "Bussiness Profile",
+      //   href: "/agent/profile",
+      //   icon: <User />,
+      // },
     ],
     Uts: [],
     Admin: [],
