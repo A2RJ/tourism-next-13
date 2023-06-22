@@ -99,30 +99,30 @@ export const authOptions: NextAuthOptions = {
         },
         jwt: async ({ token, user }: { token: any, user: any }) => {
             try {
-                if (token && !token.access_token) {
-                    const tokenJwt = await signJWT(
-                        JSON.stringify({
-                            name: token.name,
-                            email: token.email,
-                        }),
-                        "1d"
-                    );
-                    const result = await fetch(`${baseAPIURL}/auth/callback`, {
-                        method: "POST",
-                        headers: {
-                            Authorization: `Bearer ${tokenJwt}`,
-                        },
-                    });
-                    const resultJson = await result.json();
-                    if (!result.ok) {
-                        throw resultJson;
-                    }
+                // if (token && !token.access_token) {
+                //     const tokenJwt = await signJWT(
+                //         JSON.stringify({
+                //             name: token.name,
+                //             email: token.email,
+                //         }),
+                //         "1d"
+                //     );
+                //     const result = await fetch(`${baseAPIURL}/auth/callback`, {
+                //         method: "POST",
+                //         headers: {
+                //             Authorization: `Bearer ${tokenJwt}`,
+                //         },
+                //     });
+                //     const resultJson = await result.json();
+                //     if (!result.ok) {
+                //         throw resultJson;
+                //     }
 
-                    token = {
-                        ...token,
-                        access_token: resultJson.access_token,
-                    };
-                }
+                //     token = {
+                //         ...token,
+                //         access_token: resultJson.access_token,
+                //     };
+                // }
                 return token;
             } catch (error) {
                 throw error;

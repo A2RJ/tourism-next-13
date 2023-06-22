@@ -46,3 +46,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ### Tutorial
 - [Next-atuh](https://codevoweb.com/setup-and-use-nextauth-in-nextjs-13-app-directory/?utm_content=bd-true)
+
+### Sprint
+- Auth (22/06/2023)
+- Manage tour package

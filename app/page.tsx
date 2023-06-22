@@ -1,6 +1,4 @@
 import LandingPage from "@/components/ui/custom/LandingPage";
-import { Separator } from "@/components/ui/separator";
-import { UserCircle } from "lucide-react";
 
 export default function Page() {
   return (
@@ -62,6 +60,7 @@ export default function Page() {
           Popular
         </li>
       </ol>
+
       <LandingPage />
     </div>
   );

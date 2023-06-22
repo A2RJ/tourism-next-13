@@ -28,10 +28,8 @@ export default function RootLayout({ children }: Children) {
             <div className="border-t">
               <div className="bg-background">
                 <div className="relative left-0 top-0">
-                  <div className="w-64 h-screen border-r fixed lg:block hidden">
-                    <Sidebar />
-                  </div>
-                  <div className="lg:ml-64 p-4">
+                  <Sidebar />
+                  <div className="lg:ml-64 ml-0 p-4">
                     <Navbar />
                     {children}
                   </div>
