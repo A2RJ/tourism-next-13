@@ -1,6 +1,5 @@
 import { ListPariwisata } from "@/components/ui/home/pariwisata";
 import { ChevronLeft, ChevronRight, MapPin } from "lucide-react";
-import Image from "next/image";
 import CardPariwisata from "./cardPariwisata";
 
 export default function PopularDestinatipon() {
@@ -13,10 +12,13 @@ export default function PopularDestinatipon() {
           <CardPariwisata key={index} name={name} cover={cover} />
         ))}
       </div>
-      <div className="flex justify-between text-xs p-4">
+      <div className="flex justify-end gap-4 items-center text-xs p-4 select-none">
         <div className="flex gap-1 items-center cursor-pointer">
           <ChevronLeft color="#4b4949" className="w-5" />
           <p>Previous</p>
+        </div>
+        <div className="flex items-center">
+          <p>|</p>
         </div>
         <div className="flex gap-1 items-center cursor-pointer">
           <p>Next</p>

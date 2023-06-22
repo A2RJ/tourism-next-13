@@ -39,6 +39,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 - [wind-ui - tailwind css](https://wind-ui.com)
 - [floatui - tailwind css](https://floatui.com)
 - [mambaui - tailwind css](https://www.mambaui.com)
+- [daisyui - tailwind css](https://daisyui.com)
 
 ### Experimental
 - coba gunakan conditional untuk mengecek auth, jadikan komponen cek auth jadi child komponen, jika ada auth maka tampilkan halaman jika tidak maka redirect saja

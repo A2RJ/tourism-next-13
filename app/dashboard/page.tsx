@@ -1,11 +1,12 @@
+import LandingPage from "@/components/ui/home/LandingPage";
 import { Separator } from "@/components/ui/separator";
 import { UserCircle } from "lucide-react";
 
 export default function Page() {
   return (
-    <>
+    <div>
       <ol
-        className="flex items-center whitespace-nowrap min-w-0 mt-5 ml-4"
+        className="flex items-center whitespace-nowrap min-w-0 mt-5"
         aria-label="Breadcrumb"
       >
         <li className="text-sm">
@@ -61,18 +62,7 @@ export default function Page() {
           Popular
         </li>
       </ol>
-      <UserCircle />
-      <Separator className="my-4" />
-      <div className="flex items-center justify-between ml-4">
-        <div className="space-y-1">
-          <h2 className="text-2xl font-semibold tracking-tight">
-            New Episodes
-          </h2>
-          <p className="text-sm text-muted-foreground">
-            Your favorite podcasts. Updated daily.
-          </p>
-        </div>
-      </div>
-    </>
+      <LandingPage />
+    </div>
   );
 }

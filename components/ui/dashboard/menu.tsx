@@ -37,15 +37,15 @@ export default function Menu({ option }: { option: Option }) {
   const pathname = usePathname();
   const menus: Menus = {
     Discover: [
-      {
-        name: "Popular",
-        href: "/dashboard",
-        icon: <Home />,
-      },
+      // {
+      //   name: "Popular",
+      //   href: "/dashboard",
+      //   icon: <Home />,
+      // },
       {
         name: "Browse",
-        href: "/dashboard/browse",
-        icon: <LayoutGrid />,
+        href: "/dashboard",
+        icon: <Home />,
       },
       {
         name: "Nearest",

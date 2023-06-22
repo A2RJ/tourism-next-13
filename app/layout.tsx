@@ -1,4 +1,6 @@
 import "@/styles/globals.css";
+import "swiper/css";
+import "swiper/css/pagination";
 import { Inter } from "next/font/google";
 import type { Metadata } from "next";
 import { NextAuthProvider } from "../components/auth/providers";
