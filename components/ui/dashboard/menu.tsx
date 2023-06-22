@@ -37,73 +37,68 @@ export default function Menu({ option }: { option: Option }) {
   const pathname = usePathname();
   const menus: Menus = {
     Discover: [
-      // {
-      //   name: "Popular",
-      //   href: "/dashboard",
-      //   icon: <Home />,
-      // },
       {
         name: "Browse",
-        href: "/dashboard",
+        href: "/",
         icon: <Home />,
       },
       {
         name: "Nearest",
-        href: "/dashboard/nearest",
+        href: "/nearest",
         icon: <Radio />,
       },
     ],
     User: [
       {
         name: "Wish List",
-        href: "/dashboard/user/wish-list",
+        href: "/user/wish-list",
         icon: <ListChecks />,
       },
       {
         name: "My Destination",
-        href: "/dashboard/user/destination",
+        href: "/user/destination",
         icon: <Map />,
       },
       {
         name: "Transaction",
-        href: "/dashboard/user/transaction",
+        href: "/user/transaction",
         icon: <Receipt />,
       },
       {
         name: "Notification",
-        href: "/dashboard/user/notification",
+        href: "/user/notification",
         icon: <BellRing />,
       },
       {
         name: "User",
-        href: "/dashboard/user/profile",
+        href: "/user/profile",
         icon: <User />,
       },
     ],
     Agent: [
       {
         name: "Tour Package",
-        href: "/dashboard/agent/package",
+        href: "/agent/package",
         icon: <Package2 />,
       },
       {
         name: "Reservation",
-        href: "/dashboard/agent/reservation",
+        href: "/agent/reservation",
         icon: <Receipt />,
       },
       {
         name: "Withdraw",
-        href: "/dashboard/agent/withdraw",
+        href: "/agent/withdraw",
         icon: <CreditCard />,
       },
       {
         name: "Notification",
-        href: "/dashboard/agent/notification",
+        href: "/agent/notification",
         icon: <BellRing />,
       },
       {
         name: "Bussiness Profile",
-        href: "/dashboard/agent/profile",
+        href: "/agent/profile",
         icon: <User />,
       },
     ],
