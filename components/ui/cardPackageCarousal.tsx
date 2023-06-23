@@ -1,6 +1,5 @@
 import {
   createStyles,
-  Image,
   Card,
   Text,
   Group,
@@ -11,6 +10,8 @@ import {
 import { Carousel } from "@mantine/carousel";
 import { cn } from "@/lib/utils";
 import { Star } from "lucide-react";
+import { useEffect, useState } from "react";
+import Image from "next/image";
 
 const useStyles = createStyles((theme) => ({
   price: {
@@ -58,12 +59,26 @@ export function CardPackageCarousal({
   cover: string;
 }) {
   const { classes } = useStyles();
+  const [isCoverLoaded, setIsCoverLoaded] = useState(false);
+  const [slides, setSlides] = useState<JSX.Element[]>([]);
 
-  const slides = images.map((image) => (
-    <Carousel.Slide key={image}>
-      <Image alt="thumbnail" src={image} height={220} />
-    </Carousel.Slide>
-  ));
+  useEffect(() => {
+    if (isCoverLoaded) {
+      const additionalSlides = images.map((image) => (
+        <Carousel.Slide key={image}>
+          <Image
+            alt="thumbnail"
+            src={image}
+            width={0}
+            height={0}
+            className="w-full h-56 object-cover"
+            unoptimized
+          />
+        </Carousel.Slide>
+      ));
+      setSlides(additionalSlides);
+    }
+  }, [isCoverLoaded, cover]);
 
   return (
     <Card
@@ -82,6 +97,17 @@ export function CardPackageCarousal({
             indicator: classes.carouselIndicator,
           }}
         >
+          <Carousel.Slide>
+            <Image
+              alt="thumbnail"
+              src={cover}
+              width={0}
+              height={0}
+              className="w-full h-56 object-cover"
+              unoptimized
+              onLoad={(e) => setIsCoverLoaded(true)}
+            />
+          </Carousel.Slide>
           {slides}
         </Carousel>
       </Card.Section>

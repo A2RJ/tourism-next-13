@@ -13,6 +13,9 @@ const nextConfig = {
       "images.pexels.com",
     ],
   },
+  images: {
+    unoptimized: true,
+  },
 };
 
 module.exports = nextConfig
