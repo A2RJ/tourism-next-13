@@ -1,16 +1,16 @@
 import {
   createStyles,
+  Image,
   Card,
   Text,
   Group,
+  Button,
   getStylesRef,
   rem,
 } from "@mantine/core";
 import { Carousel } from "@mantine/carousel";
-import { Star, User2 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import Image from "next/image";
-import { useState, Suspense, lazy } from "react";
+import { Star } from "lucide-react";
 
 const useStyles = createStyles((theme) => ({
   price: {
@@ -59,19 +59,9 @@ export function CardPackageCarousal({
 }) {
   const { classes } = useStyles();
 
-  const listImages = [cover];
-  // const listImages = [cover].concat(images);
-  const slides = listImages.map((image) => (
+  const slides = images.map((image) => (
     <Carousel.Slide key={image}>
-      <Image
-        alt="thumbnail"
-        src={image}
-        height={220}
-        width={0}
-        className="w-full h-56"
-        onLoad={() => console.log("loaded")}
-        onError={() => console.log("gagal")}
-      />
+      <Image alt="thumbnail" src={image} height={220} />
     </Carousel.Slide>
   ));
 
@@ -119,7 +109,6 @@ export function CardPackageCarousal({
         <p className={cn(classes.price, "font-semibold")}>397$</p>
         <p className="font-light text-xs mt-2">/Person</p>
       </div>
-      <div></div>
     </Card>
   );
 }

@@ -20,9 +20,6 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Children) {
   return (
     <html lang="en">
-      <Head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-      </Head>
       <NextAuthProvider>
         <body className={`scroll-smooth ${inter.className}`}>
           <div className="container">
