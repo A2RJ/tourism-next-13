@@ -1,4 +1,4 @@
-import BasedLocation from "@/components/ui/custom/basedLocation";
+import BasedLocation from "@/components/package/basedLocation";
 
 export default function Page() {
   return (

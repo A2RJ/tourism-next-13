@@ -4,6 +4,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import UserButton from "./userButton";
 import ToggleMenu from "./toggleMenu";
+import SearchBar from "@/components/mantine/searchBar";
 
 const getSession = async () => {
   const json = await fetch("http://localhost:3000/api/session", {
@@ -37,12 +38,12 @@ export default async function Navbar() {
             <UserButton username={session?.user?.name} />
           ) : (
             <div className="flex justify-center gap-4 items-center">
-              <Link href={"/auth/sign-up"}>
+              <Link href={"/auth"}>
                 <p className="font-medium text-blue-500" aria-current="page">
                   Sign up
                 </p>
               </Link>
-              <Link href={"/auth/sign-in"}>
+              <Link href={"/auth"}>
                 <Button className="bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-blue-300">
                   Sign in
                 </Button>

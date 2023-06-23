@@ -8,7 +8,6 @@ import {
   Button,
   useMantineTheme,
   rem,
-  MantineProvider,
 } from "@mantine/core";
 
 const useStyles = createStyles((theme) => ({

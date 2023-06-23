@@ -1,6 +1,6 @@
 import { ChevronLeft, ChevronRight, MapPin } from "lucide-react";
 import { ListPariwisata } from "./pariwisata";
-import { CardPackageCarousal } from "../cardPackageCarousal";
+import { CardPackageCarousal } from "./cardPackageCarousal";
 
 export default function PopularDestinatipon() {
   return (

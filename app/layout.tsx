@@ -1,11 +1,11 @@
 import "@/styles/globals.css";
 import "swiper/css";
 import "swiper/css/pagination";
-import { Inter } from "next/font/google";
+
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import { NextAuthProvider } from "../components/auth/providers";
 import { Children } from "@/types/layout";
-import Head from "next/head";
 import { Sidebar } from "@/components/ui/dashboard/sidebar";
 import Navbar from "@/components/ui/custom/navbar";
 import Footer from "@/components/ui/custom/footer";

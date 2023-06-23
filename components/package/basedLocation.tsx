@@ -2,10 +2,11 @@
 
 import { ChevronRight, Navigation } from "lucide-react";
 import { ChevronLeft } from "lucide-react";
-import { Button } from "../button";
+import { Button } from "../ui/button";
 import { useEffect, useState } from "react";
-import CardPariwisata from "./cardPariwisata";
 import { ListPariwisata } from "./pariwisata";
+import { CardPackageCarousal } from "./cardPackageCarousal";
+import SearchBar from "../mantine/searchBar";
 
 type Coord = {
   latitude: number;
@@ -19,6 +20,7 @@ export default function BasedLocation() {
   return (
     <div className="mb-4 mt-6">
       <div className="pb-6">
+        <SearchBar />
         <h4 className="font-extrabold">Based on your location</h4>
         <small>
           This page is only show 5KM range from your location: 10.5873748,
@@ -42,13 +44,13 @@ export default function BasedLocation() {
         </div>
       ) : (
         <>
-          <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4">
-            {ListPariwisata.slice(10, 18).map(
+          <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
+            {ListPariwisata.slice(10, 19).map(
               (
                 { name, cover }: { name: string; cover: string },
                 index: number
               ) => (
-                <CardPariwisata key={index} name={name} cover={cover} />
+                <CardPackageCarousal key={index} name={name} cover={cover} />
               )
             )}
           </div>

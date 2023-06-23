@@ -3,9 +3,9 @@ import {
   Card,
   Text,
   Group,
-  Button,
   getStylesRef,
   rem,
+  Badge,
 } from "@mantine/core";
 import { Carousel } from "@mantine/carousel";
 import { cn } from "@/lib/utils";
@@ -98,6 +98,9 @@ export function CardPackageCarousal({
           }}
         >
           <Carousel.Slide>
+            <Badge className="fixed top-0 right-0 m-1" variant="light">
+              25% off
+            </Badge>
             <Image
               alt="thumbnail"
               src={cover}
@@ -131,9 +134,11 @@ export function CardPackageCarousal({
         range of Blegja and the Førdefjord.
       </Text>
 
-      <div className="flex flex-row mt-5">
-        <p className={cn(classes.price, "font-semibold")}>397$</p>
-        <p className="font-light text-xs mt-2">/Person</p>
+      <div className="flex justify-between items-center">
+        <div className="flex flex-row mt-5">
+          <p className={cn(classes.price, "font-semibold")}>397$</p>
+          <p className="font-light text-xs mt-2">/Person</p>
+        </div>
       </div>
     </Card>
   );

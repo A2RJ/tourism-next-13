@@ -1,13 +1,13 @@
 "use client";
 
-import { CardsCarousel } from "../cardsCarousel";
-import Hero from "./hero";
-import PopularDestinatipon from "./popularDestination";
+import PopularDestinatipon from "@/components/package/popularDestination";
+import { CardsCarousel } from "@/components/package/cardsCarousel";
+import { HeroText } from "@/components/mantine/hero";
 
 export default function LandingPage() {
   return (
     <>
-      <Hero />
+      <HeroText />
       <PopularDestinatipon />
       <CardsCarousel />
     </>
