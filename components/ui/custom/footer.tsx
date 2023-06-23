@@ -14,6 +14,7 @@ export default function Footer() {
           </li>
         </ul>
         <p className="mt-6 sm:mt-0">© 2023 UTS Tourusm. All rights reserved.</p>
+        <p></p>
       </div>
     </div>
   );

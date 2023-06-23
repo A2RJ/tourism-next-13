@@ -5,6 +5,20 @@ import { authOptions } from "@/lib/auth";
 import UserButton from "./userButton";
 import ToggleMenu from "./toggleMenu";
 
+const getSession = async () => {
+  const json = await fetch("http://localhost:3000/api/session", {
+    method: "GET",
+  });
+  const result = await json.json();
+  if (!result.ok)
+    return {
+      authenticated: false,
+      session: null,
+    };
+
+  return result;
+};
+
 export default async function Navbar() {
   const session = await getServerSession(authOptions);
 

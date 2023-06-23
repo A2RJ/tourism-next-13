@@ -12,7 +12,7 @@ interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {}
 export function Sidebar({ className }: SidebarProps) {
   const pathname = usePathname();
   const { toggle, setToggle } = useToggleMenuStore((state) => state);
-  const mediaQuery = useMediaQuery("(min-width: 1000px)");
+  const mediaQuery = useMediaQuery("(min-width: 1024px)");
   const shouldShowSidebar = mediaQuery ? true : toggle;
 
   useEffect(() => {

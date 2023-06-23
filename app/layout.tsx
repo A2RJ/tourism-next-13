@@ -8,6 +8,7 @@ import { Children } from "@/types/layout";
 import Head from "next/head";
 import { Sidebar } from "@/components/ui/dashboard/sidebar";
 import Navbar from "@/components/ui/custom/navbar";
+import Footer from "@/components/ui/custom/footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,6 +34,7 @@ export default function RootLayout({ children }: Children) {
                     <Navbar />
                     {children}
                   </div>
+                  <Footer />
                 </div>
               </div>
             </div>

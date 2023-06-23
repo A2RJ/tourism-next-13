@@ -1,16 +1,15 @@
 import { ChevronLeft, ChevronRight, MapPin } from "lucide-react";
-import CardPariwisata from "./cardPariwisata";
 import { ListPariwisata } from "./pariwisata";
+import { CardPackageCarousal } from "../cardPackageCarousal";
 
 export default function PopularDestinatipon() {
   return (
     <div className="mb-4 mt-6">
       <h4 className="font-extrabold pb-6">Popular Destination</h4>
-      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4">
-        {/* harga dibawah dan rating kanan atas */}
-        {ListPariwisata.slice(10, 18).map(
+      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
+        {ListPariwisata.slice(10, 19).map(
           ({ name, cover }: { name: string; cover: string }, index: number) => (
-            <CardPariwisata key={index} name={name} cover={cover} />
+            <CardPackageCarousal key={index} name={name} cover={cover} />
           )
         )}
       </div>

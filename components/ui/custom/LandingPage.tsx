@@ -1,4 +1,6 @@
-import BasedLocation from "@/components/ui/custom/basedLocation";
+"use client";
+
+import { CardsCarousel } from "../cardsCarousel";
 import Hero from "./hero";
 import PopularDestinatipon from "./popularDestination";
 
@@ -7,7 +9,7 @@ export default function LandingPage() {
     <>
       <Hero />
       <PopularDestinatipon />
-      <BasedLocation />
+      <CardsCarousel />
     </>
   );
 }
