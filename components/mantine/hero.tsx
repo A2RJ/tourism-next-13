@@ -70,9 +70,9 @@ export function HeroText() {
 
         <Container p={0} size={600}>
           <Text size="lg" color="dimmed" className={classes.description}>
-            Build more reliable software with AI companion. AI is also trained
-            to detect lazy developers who do nothing and just complain on
-            Twitter.
+            Unveil hidden wonders and immerse yourself in breathtaking beauty
+            with our curated travel experiences. Let{"'"}s embark on a journey
+            of enchantment together, starting today.
           </Text>
         </Container>
 

@@ -27,7 +27,7 @@ export default function RootLayout({ children }: Children) {
               <div className="bg-background">
                 <div className="relative left-0 top-0">
                   <Sidebar />
-                  <div className="lg:ml-64 ml-0 p-4">
+                  <div className="lg:ml-64 ml-0 p-4 min-h-[calc(100vh-80px)]">
                     <Navbar />
                     {children}
                   </div>

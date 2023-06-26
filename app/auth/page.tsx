@@ -128,6 +128,7 @@ import GoogleSvg from "@/components/svg/googleSvg";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { X } from "lucide-react";
 
 export default function AuthenticationForm(props: PaperProps) {
   const [opened, setOpened] = useState(true);
@@ -159,6 +160,12 @@ export default function AuthenticationForm(props: PaperProps) {
 
   return (
     <Paper radius="md" p="xl" withBorder {...props} ref={ref}>
+      <div
+        className="flex justify-end mb-2 hover:cursor-pointer"
+        onClick={() => router.back()}
+      >
+        <X />
+      </div>
       <Text size="lg" weight={500}>
         Welcome to Mantine, {type} with
       </Text>

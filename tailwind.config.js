@@ -18,6 +18,7 @@ module.exports = {
     },
     extend: {
       colors: {
+        "mantine-primary": "#228be6",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

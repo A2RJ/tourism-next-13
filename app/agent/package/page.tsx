@@ -1,67 +1,64 @@
+"use client";
+
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { PlusCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PodcastEmptyPlaceholder } from "@/components/ui/dashboard/podcast-empty-placeholder";
+import { useToggle } from "@mantine/hooks";
+import Table from "./table";
 
 export default function Page() {
+  const [type, toggle] = useToggle([
+    "package",
+    "facility",
+    "discount",
+  ] as const);
+
   return (
     <div className="h-full px-4 py-6 lg:px-8">
-      <Tabs defaultValue="music" className="h-full space-y-6">
+      <Tabs defaultValue="package" className="h-full space-y-6">
         <div className="space-between flex items-center">
           <TabsList>
-            <TabsTrigger value="music" className="relative">
-              Music
+            <TabsTrigger
+              value="package"
+              className="relative"
+              onClick={() => toggle("package")}
+            >
+              Package
             </TabsTrigger>
-            <TabsTrigger value="podcasts">Podcasts</TabsTrigger>
-            <TabsTrigger value="live" disabled>
-              Live
+            <TabsTrigger value="facility" onClick={() => toggle("facility")}>
+              Facility
+            </TabsTrigger>
+            <TabsTrigger value="discount" onClick={() => toggle("discount")}>
+              Discount
             </TabsTrigger>
           </TabsList>
           <div className="ml-auto mr-4">
-            <Button>
+            <Button className="bg-mantine-primary hover:bg-blue-600 hover:shadow-lg">
               <PlusCircle className="mr-2 h-4 w-4" />
-              Add music
+              Add {type}
             </Button>
           </div>
         </div>
-        <TabsContent value="music" className="border-none p-0 outline-none">
+        <TabsContent
+          value="package"
+          className="border-none p-0 outline-none min-h-[80%]"
+        >
           <div className="flex items-center justify-between">
             <div className="space-y-1">
-              <h2 className="text-2xl font-semibold tracking-tight">
-                Listen Now
-              </h2>
+              <h2 className="text-2xl font-semibold tracking-tight">Package</h2>
               <p className="text-sm text-muted-foreground">
-                Top picks for you. Updated daily.
+                Manage your tour package list easily.
               </p>
             </div>
           </div>
           <Separator className="my-4" />
-          <div className="relative">
-            <ScrollArea>
-              <div className="flex space-x-4 pb-4"></div>
-              <ScrollBar orientation="horizontal" />
-            </ScrollArea>
-          </div>
-          <div className="mt-6 space-y-1">
-            <h2 className="text-2xl font-semibold tracking-tight">
-              Made for You
-            </h2>
-            <p className="text-sm text-muted-foreground">
-              Your personal playlists. Updated daily.
-            </p>
-          </div>
-          <Separator className="my-4" />
-          <div className="relative">
-            <ScrollArea>
-              <div className="flex space-x-4 pb-4"></div>
-              <ScrollBar orientation="horizontal" />
-            </ScrollArea>
-          </div>
+          <Table />
         </TabsContent>
         <TabsContent
-          value="podcasts"
+          value="discount"
           className="h-full flex-col border-none p-0 data-[state=active]:flex"
         >
           <div className="flex items-center justify-between">
