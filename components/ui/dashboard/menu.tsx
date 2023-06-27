@@ -12,6 +12,8 @@ import {
   ListChecks,
   Radio,
   Home,
+  Percent,
+  ToyBrick,
 } from "lucide-react";
 import { Button } from "../button";
 import Link from "next/link";
@@ -69,17 +71,22 @@ export default function Menu({ option }: { option: Option }) {
         href: "/user/notification",
         icon: <BellRing />,
       },
-      // {
-      //   name: "User",
-      //   href: "/user/profile",
-      //   icon: <User />,
-      // },
     ],
     Agent: [
       {
         name: "Tour Package",
         href: "/agent/package",
         icon: <Package2 />,
+      },
+      {
+        name: "Discount",
+        href: "/agent/discount",
+        icon: <Percent />,
+      },
+      {
+        name: "Facility",
+        href: "/agent/facility",
+        icon: <ToyBrick />,
       },
       {
         name: "Reservation",
@@ -96,11 +103,6 @@ export default function Menu({ option }: { option: Option }) {
         href: "/agent/notification",
         icon: <BellRing />,
       },
-      // {
-      //   name: "Bussiness Profile",
-      //   href: "/agent/profile",
-      //   icon: <User />,
-      // },
     ],
     Uts: [],
     Admin: [],

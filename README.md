@@ -50,3 +50,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### Sprint
 - Auth (22/06/2023)
 - Manage tour package
+
+### Perubahan riset inovasi
+- ketika masih ajuan maka status ajuan kebawah disable
+- tambah link laporan kegiatan setelah link publikasi jurnal

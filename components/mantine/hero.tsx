@@ -7,6 +7,7 @@ import {
   rem,
 } from "@mantine/core";
 import SearchBar from "./searchBar";
+import { ListPariwisata } from "../package/pariwisata";
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -79,6 +80,16 @@ export function HeroText() {
         <div className="flex mt-5">
           <SearchBar className="lg:w-[70%] mx-auto" />
         </div>
+      </div>
+      <div className="flex gap-2 justify-center my-4 overflow-x-scroll scrollbar-none">
+        {ListPariwisata.slice(0, 10).map((pariwisata) => (
+          <p
+            key={pariwisata.name}
+            className="border py-1 px-4 cursor-pointer rounded-full hover:border-blue-300 bg-white"
+          >
+            {pariwisata.name}
+          </p>
+        ))}
       </div>
     </Container>
   );

@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { Input, Pagination } from "@mantine/core";
 import { Search } from "lucide-react";
