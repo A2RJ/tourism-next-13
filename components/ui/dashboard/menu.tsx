@@ -1,38 +1,54 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import Link from "next/link";
+import React from "react";
+import { signOut } from "next-auth/react";
 import {
   Map,
   Receipt,
-  User,
   Package2,
   CreditCard,
   BellRing,
-  LayoutGrid,
   ListChecks,
   Radio,
   Home,
   Percent,
   ToyBrick,
+  LogOut,
+  User2,
 } from "lucide-react";
 import { Button } from "../button";
-import Link from "next/link";
-import React from "react";
 
-type Option = "Discover" | "User" | "Agent" | "Uts" | "Admin";
+type Option =
+  | "Discover"
+  | "User"
+  | "Agent"
+  | "Uts"
+  | "Admin"
+  | "Account"
+  | "Pemda";
+
+type Action = "onClick";
 
 type MenuItem = {
   name: string;
   href: string;
   icon: JSX.Element;
+  action?: {
+    type: Action;
+    handler: () => void;
+  };
 };
 
 type Menus = {
-  Discover: MenuItem[];
-  User: MenuItem[];
-  Agent: MenuItem[];
-  Uts: MenuItem[];
-  Admin: MenuItem[];
+  Discover?: MenuItem[];
+  User?: MenuItem[];
+  Agent?: MenuItem[];
+  Uts?: MenuItem[];
+  Admin?: MenuItem[];
+  Account?: MenuItem[];
+  Pemda?: MenuItem[];
 };
 
 export default function Menu({ option }: { option: Option }) {
@@ -52,14 +68,14 @@ export default function Menu({ option }: { option: Option }) {
     ],
     User: [
       {
-        name: "Wish List",
-        href: "/user/wish-list",
-        icon: <ListChecks />,
-      },
-      {
         name: "My Destination",
         href: "/user/destination",
         icon: <Map />,
+      },
+      {
+        name: "Wish List",
+        href: "/user/wish-list",
+        icon: <ListChecks />,
       },
       {
         name: "Transaction",
@@ -104,8 +120,24 @@ export default function Menu({ option }: { option: Option }) {
         icon: <BellRing />,
       },
     ],
-    Uts: [],
-    Admin: [],
+    Account: [
+      {
+        name: "Profile",
+        href: "/profile",
+        icon: <User2 />,
+      },
+      {
+        name: "Logout",
+        href: "#",
+        icon: <LogOut />,
+        action: {
+          type: "onClick",
+          handler: () => {
+            signOut();
+          },
+        },
+      },
+    ],
   };
 
   return (
@@ -114,23 +146,30 @@ export default function Menu({ option }: { option: Option }) {
         {option}
       </h2>
       <div className="space-y-1">
-        {menus[option].map(({ name, href, icon: Icon }, index) => {
-          const isActive = pathname === href;
-          return (
-            <Link key={index} href={href}>
-              <Button
-                variant={isActive ? "secondary" : "ghost"}
-                size="sm"
-                className="w-full justify-start"
-              >
-                <span className="mr-2">
-                  {React.cloneElement(Icon, { size: 16 })}
-                </span>
-                {name}
-              </Button>
-            </Link>
-          );
-        })}
+        {menus[option] ? (
+          menus[option]?.map(
+            ({ name, href, icon: Icon, action }: MenuItem, index: number) => {
+              const isActive = pathname === href;
+              const url = action ? "#" : href;
+              return (
+                <Link key={index} href={url} onClick={action?.handler}>
+                  <Button
+                    variant={isActive ? "secondary" : "ghost"}
+                    size="sm"
+                    className="w-full justify-start"
+                  >
+                    <span className="mr-2">
+                      {React.cloneElement(Icon, { size: 16 })}
+                    </span>
+                    {name}
+                  </Button>
+                </Link>
+              );
+            }
+          )
+        ) : (
+          <p>No menu items found for {option}</p>
+        )}
       </div>
     </div>
   );

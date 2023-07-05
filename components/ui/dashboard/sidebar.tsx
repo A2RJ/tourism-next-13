@@ -35,6 +35,7 @@ export function Sidebar({ className }: SidebarProps) {
         <Menu option="Discover" />
         <Menu option="User" />
         <Menu option="Agent" />
+        <Menu option="Account" />
       </div>
     </div>
   );
