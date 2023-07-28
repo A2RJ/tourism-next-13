@@ -55,6 +55,7 @@ export default function BasedLocation() {
             )}
           </div>
 
+          {/* Pagination Button */}
           <div className="flex justify-end gap-4 items-center text-xs p-4 select-none">
             <div className="flex gap-1 items-center cursor-pointer">
               <ChevronLeft color="#4b4949" className="w-5" />
@@ -68,6 +69,7 @@ export default function BasedLocation() {
               <ChevronRight color="#4b4949" className="w-5" />
             </div>
           </div>
+          {/* End Pagination Button */}
         </>
       )}
     </div>
