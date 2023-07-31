@@ -3,11 +3,9 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import { NextAuthProvider } from "../components/auth/providers";
 import { Children } from "@/types/layout";
-
-const inter = Inter({ subsets: ["latin"] });
+import LayoutProvider from "./layout-provider";
 
 export const metadata: Metadata = {
   title: "Travelin",
@@ -18,7 +16,9 @@ export default function RootLayout({ children }: Children) {
   return (
     <html lang="en">
       <NextAuthProvider>
-        <body className={`scroll-smooth ${inter.className}`}>{children}</body>
+        <body className={`scroll-smooth`}>
+          <LayoutProvider>{children}</LayoutProvider>
+        </body>
       </NextAuthProvider>
     </html>
   );

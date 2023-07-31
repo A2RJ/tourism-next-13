@@ -17,11 +17,11 @@ export default function Page() {
       <LandingPage />
 
       <div className="h-60 border rounded-lg gap-4 flex flex-col justify-center items-center mt-10 border-blue-300">
-        <h1 className="max-w-lg text-center">
+        <h6 className="max-w-lg text-center">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error
           aspernatur corporis numquam ipsam odio optio placeat. Sed cum commodi
           provident!
-        </h1>
+        </h6>
         <Button className="bg-blue-300 text-black">
           <Navigation className="mr-2 w-4" />
           Turn on your location
