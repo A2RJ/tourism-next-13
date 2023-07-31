@@ -68,7 +68,6 @@ export default function FormPackage() {
       villageId: (value) => (value ? null : "Village is required"),
     },
   });
-  console.log(form.errors);
 
   const handleSubmit = (value: FormData) => {
     console.log(value);

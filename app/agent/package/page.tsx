@@ -1,19 +1,32 @@
 "use client";
 
-import { Separator } from "@/components/ui/separator";
+import { useState, useEffect } from "react";
 import Table from "@/components/ui/table";
-import {
-  Button,
-  Group,
-  Modal,
-  Select,
-  TextInput,
-  Textarea,
-} from "@mantine/core";
+import { Button } from "@mantine/core";
 import { PlusCircle } from "lucide-react";
 import Link from "next/link";
 
+type UserData = {
+  name: string;
+  username: string;
+  email: string;
+  address: {
+    city: string;
+  };
+};
+
 export default function Page() {
+  const tableHeaders = ["Name", "Username", "Email", "City", "Action"];
+  const apiUrl = "https://jsonplaceholder.typicode.com/users";
+
+  const tableBodyColumns: ((dataItem: UserData) => React.ReactNode)[] = [
+    (dataItem) => <>{dataItem.name}</>,
+    (dataItem) => <>{dataItem.username}</>,
+    (dataItem) => <>{dataItem.email}</>,
+    (dataItem) => <>{dataItem.address.city}</>,
+    (dataItem) => <Link href="/agent/package/edit">Edit button</Link>,
+  ];
+
   return (
     <>
       <div className="flex items-center justify-between">
@@ -31,8 +44,7 @@ export default function Page() {
           </Link>
         </div>
       </div>
-      <Separator className="mt-4" />
-      <Table />
+      <Table headers={tableHeaders} body={tableBodyColumns} apiUrl={apiUrl} />
     </>
   );
 }

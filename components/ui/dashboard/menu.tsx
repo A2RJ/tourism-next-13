@@ -19,6 +19,7 @@ import {
   User2,
 } from "lucide-react";
 import { Button } from "../button";
+import { LogIn } from "lucide-react";
 
 type Option =
   | "Discover"
@@ -136,6 +137,11 @@ export default function Menu({ option }: { option: Option }) {
             signOut();
           },
         },
+      },
+      {
+        name: "Login",
+        href: "/auth",
+        icon: <LogIn />,
       },
     ],
   };

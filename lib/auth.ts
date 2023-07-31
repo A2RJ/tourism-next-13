@@ -2,7 +2,6 @@ import type { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import { baseAPIURL } from "./fecthAPI";
-import { signJWT } from "./jwt";
 import axios from "axios";
 
 interface ErrorResponse {
@@ -139,8 +138,8 @@ export const authOptions: NextAuthOptions = {
         },
     },
     pages: {
-        signIn: '/auth/sign-in',
-        error: '/auth/sign-in',
+        signIn: '/auth',
+        error: '/auth',
     },
     debug: false,
     // jwt: {
