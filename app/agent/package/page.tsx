@@ -24,7 +24,16 @@ export default function Page() {
     (dataItem) => <>{dataItem.username}</>,
     (dataItem) => <>{dataItem.email}</>,
     (dataItem) => <>{dataItem.address.city}</>,
-    (dataItem) => <Link href="/agent/package/edit">Edit button</Link>,
+    (dataItem) => (
+      <div className="flex gap-1">
+        <Link href="/agent/package/edit">
+          <Button variant="light">Edit</Button>
+        </Link>
+        <Link href={`/agent/package/add-more-detail/${dataItem.name}`}>
+          <Button variant="outline">Add more detail</Button>
+        </Link>
+      </div>
+    ),
   ];
 
   return (
