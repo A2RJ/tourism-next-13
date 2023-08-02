@@ -9,11 +9,13 @@ import { IconListCheck, IconPhoto } from "@tabler/icons-react";
 export default function Page({ params }: { params: { slug: string } }) {
   return (
     <>
-      <div className="flex justify-between">
+      <div className="grid grid-cols-1 md:grid-cols-2">
         <h2 className="font-bold">
           Add more detail for {decodeURI(params.slug)}
         </h2>
-        <Button className="bg-mantine-primary">Preview package</Button>
+        <div className="flex justify-end">
+          <Button className="bg-mantine-primary">Preview package</Button>
+        </div>
       </div>
       <Tabs defaultValue="package">
         <Tabs.List>

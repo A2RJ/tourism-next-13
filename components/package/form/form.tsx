@@ -3,36 +3,17 @@
 import { useState } from "react";
 import { Button, Group, Select, TextInput, Textarea } from "@mantine/core";
 import { useForm } from "@mantine/form";
-
-interface Administrative {
-  regency: string[];
-  district: string[];
-  village: string[];
-}
-
-interface FormData {
-  packgeName: string;
-  duration: string;
-  description: string;
-  price: string;
-  meetingPointLatitude: string;
-  meetingPointLongitude: string;
-  latitude: string;
-  longitude: string;
-  provinceId: string;
-  regencyId: string;
-  districtId: string;
-  villageId: string;
-  discountId: string;
-}
+import { Packageform } from "@/types/package";
+import { Administrative } from "@/types/administrative";
 
 export default function FormPackage() {
   const [administrative, setAdministrative] = useState<Administrative>({
+    province: [],
     regency: [],
     district: [],
     village: [],
   });
-  const form = useForm<FormData>({
+  const form = useForm<Packageform>({
     initialValues: {
       packgeName: "",
       duration: "",
@@ -67,24 +48,23 @@ export default function FormPackage() {
     },
   });
 
-  const handleSubmit = (value: FormData) => {
-    console.log(value);
+  const handleSubmit = (value: Packageform) => {
+    console.log({ onSubmit: value });
   };
 
-  const selectRegency = () => {
-    setAdministrative({ ...administrative, regency: [form.values.provinceId] });
-    console.log(administrative.regency);
+  const selectRegency = (value: null | string) => {
+    form.setValues({ provinceId: value });
   };
 
-  const selectDistrict = () => {
-    setAdministrative({ ...administrative, district: [form.values.regencyId] });
-    console.log(administrative.district);
+  const selectDistrict = (value: null | string) => {
+    form.setValues({ regencyId: value });
   };
 
-  const selectVillage = () => {
-    setAdministrative({ ...administrative, village: [form.values.districtId] });
-    console.log(administrative.village);
+  const selectVillage = (value: null | string) => {
+    form.setValues({ districtId: value });
   };
+
+  console.log(form.errors);
 
   return (
     <div className="p-2">
@@ -107,6 +87,7 @@ export default function FormPackage() {
           />
           <Select
             searchable
+            clearable
             label="Time unit"
             nothingFound="No options"
             placeholder="Pick one"
@@ -135,7 +116,8 @@ export default function FormPackage() {
           />
           <Select
             searchable
-            label="Select Discount"
+            clearable
+            label="Discount"
             nothingFound="No options"
             placeholder="Pick one"
             {...form.getInputProps("discountId")}
@@ -179,60 +161,61 @@ export default function FormPackage() {
         <Select
           withAsterisk
           searchable
-          label="Select Province"
+          clearable
+          label="Province"
           nothingFound="No options"
           placeholder="Pick one"
-          {...form.getInputProps("provinceId")}
           data={[
-            { value: "react", label: "React" },
-            { value: "ng", label: "Angular" },
-            { value: "svelte", label: "Svelte" },
-            { value: "vue", label: "Vue" },
+            { value: "1", label: "React" },
+            { value: "2", label: "Angular" },
+            { value: "3", label: "Svelte" },
+            { value: "4", label: "Vue" },
           ]}
           onChange={selectRegency}
         />
         <Select
           withAsterisk
           searchable
-          label="Select Regency"
+          clearable
+          label="Regency"
           nothingFound="No options"
           placeholder="Pick one"
-          {...form.getInputProps("regencyId")}
           data={[
-            { value: "react", label: "React" },
-            { value: "ng", label: "Angular" },
-            { value: "svelte", label: "Svelte" },
-            { value: "vue", label: "Vue" },
+            { value: "1", label: "React" },
+            { value: "2", label: "Angular" },
+            { value: "3", label: "Svelte" },
+            { value: "4", label: "Vue" },
           ]}
           onChange={selectDistrict}
         />
         <Select
           withAsterisk
           searchable
-          label="Select District"
+          clearable
+          label="District"
           nothingFound="No options"
           placeholder="Pick one"
-          {...form.getInputProps("districtId")}
           data={[
-            { value: "react", label: "React" },
-            { value: "ng", label: "Angular" },
-            { value: "svelte", label: "Svelte" },
-            { value: "vue", label: "Vue" },
+            { value: "1", label: "React" },
+            { value: "2", label: "Angular" },
+            { value: "3", label: "Svelte" },
+            { value: "4", label: "Vue" },
           ]}
           onChange={selectVillage}
         />
         <Select
           withAsterisk
           searchable
-          label="Select Village"
+          clearable
+          label="Village"
           nothingFound="No options"
           placeholder="Pick one"
           {...form.getInputProps("villageId")}
           data={[
-            { value: "react", label: "React" },
-            { value: "ng", label: "Angular" },
-            { value: "svelte", label: "Svelte" },
-            { value: "vue", label: "Vue" },
+            { value: "1", label: "React" },
+            { value: "2", label: "Angular" },
+            { value: "3", label: "Svelte" },
+            { value: "4", label: "Vue" },
           ]}
         />
         <Group position="right" mt="md">
