@@ -25,7 +25,6 @@ export default function LayoutProvider({ children }: Children) {
               <div className="lg:ml-64 ml-0 p-4 min-h-[calc(100vh-80px)]">
                 {children}
               </div>
-              <Footer />
             </div>
           </div>
         </div>

@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { Button, Group, Select, TextInput, Textarea } from "@mantine/core";
 import { useForm } from "@mantine/form";
-import { useRouter } from "next/navigation";
 
 interface Administrative {
   regency: string[];
@@ -28,7 +27,6 @@ interface FormData {
 }
 
 export default function FormPackage() {
-  const router = useRouter();
   const [administrative, setAdministrative] = useState<Administrative>({
     regency: [],
     district: [],
@@ -90,28 +88,37 @@ export default function FormPackage() {
 
   return (
     <div className="p-2">
-      <Button type="submit" variant="outline" onClick={() => router.back()}>
-        Back
-      </Button>
-      <p className="my-4 text-sm">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptate,
-        mollitia.
-      </p>
-
       <form
         onSubmit={form.onSubmit(handleSubmit)}
         className="flex flex-col gap-y-3"
       >
-        <TextInput
-          withAsterisk
-          label="Package Name"
-          {...form.getInputProps("packgeName")}
-        />
-        <TextInput
-          withAsterisk
-          label="Duration"
-          {...form.getInputProps("duration")}
-        />
+        <div className="flex w-full gap-3">
+          <TextInput
+            withAsterisk
+            label="Package Name"
+            {...form.getInputProps("packgeName")}
+            className="lg:w-[60%]"
+          />
+          <TextInput
+            withAsterisk
+            label="Duration"
+            {...form.getInputProps("duration")}
+            className="lg:w-[30%]"
+          />
+          <Select
+            searchable
+            label="Time unit"
+            nothingFound="No options"
+            placeholder="Pick one"
+            {...form.getInputProps("discountId")}
+            data={[
+              { value: "hour", label: "Hour" },
+              { value: "day", label: "Day" },
+              { value: "week", label: "Week" },
+            ]}
+            className="lg:w-[10%]"
+          />
+        </div>
         <Textarea
           withAsterisk
           autosize
@@ -119,11 +126,28 @@ export default function FormPackage() {
           label="Description"
           {...form.getInputProps("description")}
         />
-        <TextInput
-          withAsterisk
-          label="Price"
-          {...form.getInputProps("price")}
-        />
+        <div className="flex w-full gap-3">
+          <TextInput
+            withAsterisk
+            label="Price"
+            {...form.getInputProps("price")}
+            className="lg:w-[50%]"
+          />
+          <Select
+            searchable
+            label="Select Discount"
+            nothingFound="No options"
+            placeholder="Pick one"
+            {...form.getInputProps("discountId")}
+            data={[
+              { value: "react", label: "React" },
+              { value: "ng", label: "Angular" },
+              { value: "svelte", label: "Svelte" },
+              { value: "vue", label: "Vue" },
+            ]}
+            className="lg:w-[50%]"
+          />
+        </div>
         <div className="flex w-full gap-3">
           <TextInput
             withAsterisk
@@ -204,19 +228,6 @@ export default function FormPackage() {
           nothingFound="No options"
           placeholder="Pick one"
           {...form.getInputProps("villageId")}
-          data={[
-            { value: "react", label: "React" },
-            { value: "ng", label: "Angular" },
-            { value: "svelte", label: "Svelte" },
-            { value: "vue", label: "Vue" },
-          ]}
-        />
-        <Select
-          searchable
-          label="Select Discount"
-          nothingFound="No options"
-          placeholder="Pick one"
-          {...form.getInputProps("discountId")}
           data={[
             { value: "react", label: "React" },
             { value: "ng", label: "Angular" },

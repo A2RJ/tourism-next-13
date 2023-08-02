@@ -1,5 +1,6 @@
 "use client";
 
+import { Center } from "@mantine/core";
 import { Carousel } from "react-carousel-minimal";
 
 export default function Gallery() {
@@ -7,11 +8,7 @@ export default function Gallery() {
     {
       image:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/GoldenGateBridge-001.jpg/1200px-GoldenGateBridge-001.jpg",
-      caption: `<div>
-                  San Francisco
-                  <br/>
-                  Next line
-                </div>`,
+      caption: "San Francisco",
     },
     {
       image:
@@ -53,44 +50,53 @@ export default function Gallery() {
         "https://www.oyorooms.com/travel-guide/wp-content/uploads/2019/02/summer-7.jpg",
       caption: "Darjeeling",
     },
+    {
+      image:
+        "https://www.omm.com/~/media/images/site/locations/san_francisco_780x520px.ashx",
+      caption: "San Francisco",
+    },
+    {
+      image:
+        "https://images.ctfassets.net/bth3mlrehms2/6Ypj2Qd3m3jQk6ygmpsNAM/61d2f8cb9f939beed918971b9bc59bcd/Scotland.jpg?w=750&h=422&fl=progressive&q=50&fm=jpg",
+      caption: "Scotland",
+    },
+    {
+      image:
+        "https://www.oyorooms.com/travel-guide/wp-content/uploads/2019/02/summer-7.jpg",
+      caption: "Darjeeling",
+    },
   ];
 
   const captionStyle = {
-    fontSize: "2em",
+    fontSize: "15px",
     fontWeight: "bold",
   };
 
   const slideNumberStyle = {
-    fontSize: "20px",
-    fontWeight: "bold",
+    fontSize: "15px",
   };
 
   return (
-    <div>
+    <Center className="mb-24">
       <Carousel
         data={data}
         time={3000}
-        width="850px"
+        width="100vw"
         height="500px"
         captionStyle={captionStyle}
         radius="10px"
         slideNumber={true}
         slideNumberStyle={slideNumberStyle}
         captionPosition="bottom"
-        automatic={true}
-        dots={true}
-        pauseIconColor="white"
-        pauseIconSize="40px"
-        slideBackgroundColor="darkgrey"
         slideImageFit="cover"
         thumbnails={true}
         thumbnailWidth="100px"
         style={{
           textAlign: "center",
-          maxWidth: "850px",
+          maxWidth: "100vw",
           maxHeight: "500px",
         }}
       />
-    </div>
+    </Center>
   );
 }

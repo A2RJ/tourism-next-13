@@ -1,6 +1,5 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Table from "@/components/ui/table";
 import { Button } from "@mantine/core";
 import { PlusCircle } from "lucide-react";
@@ -25,14 +24,9 @@ export default function Page() {
     (dataItem) => <>{dataItem.email}</>,
     (dataItem) => <>{dataItem.address.city}</>,
     (dataItem) => (
-      <div className="flex gap-1">
-        <Link href="/agent/package/edit">
-          <Button variant="light">Edit</Button>
-        </Link>
-        <Link href={`/agent/package/add-more-detail/${dataItem.name}`}>
-          <Button variant="outline">Add more detail</Button>
-        </Link>
-      </div>
+      <Link href={`/agent/package/edit/${dataItem.name}`}>
+        <Button variant="light">Edit</Button>
+      </Link>
     ),
   ];
 

@@ -1,6 +1,15 @@
 "use client";
 
-import { FileInput, FileInputProps, Group, Center, rem } from "@mantine/core";
+import {
+  FileInput,
+  FileInputProps,
+  Group,
+  Center,
+  rem,
+  TextInput,
+  SimpleGrid,
+  Button,
+} from "@mantine/core";
 import { IconPhoto } from "@tabler/icons-react";
 
 function Value({ file }: { file: File }) {
@@ -49,11 +58,25 @@ const ValueComponent: FileInputProps["valueComponent"] = ({ value }) => {
 };
 export default function InputFile() {
   return (
-    <FileInput
-      label="Upload file"
-      placeholder="You can upload multiple file"
-      multiple
-      valueComponent={ValueComponent}
-    />
+    <div className="border p-4 pb-12 rounded">
+      <p>Easily and quickly upload your preferred package images</p>
+      <SimpleGrid
+        cols={2}
+        breakpoints={[
+          { maxWidth: "48rem", cols: 2, spacing: "sm" },
+          { maxWidth: "36rem", cols: 1, spacing: "sm" },
+        ]}
+      >
+        <FileInput
+          label="File"
+          placeholder="Select file"
+          valueComponent={ValueComponent}
+        />
+        <TextInput label="Name" placeholder="Input location name" />
+      </SimpleGrid>
+      <div className="my-3">
+        <Button className="bg-mantine-primary float-right">Upload</Button>
+      </div>
+    </div>
   );
 }
