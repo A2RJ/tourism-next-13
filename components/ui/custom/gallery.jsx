@@ -3,7 +3,7 @@
 import { Center } from "@mantine/core";
 import { Carousel } from "react-carousel-minimal";
 
-export default function Gallery() {
+export default function Gallery({ className }) {
   const data = [
     {
       image:
@@ -77,12 +77,12 @@ export default function Gallery() {
   };
 
   return (
-    <Center className="mb-24">
+    <Center className={className}>
       <Carousel
         data={data}
         time={3000}
         width="100vw"
-        height="500px"
+        height="300px"
         captionStyle={captionStyle}
         radius="10px"
         slideNumber={true}
@@ -94,7 +94,7 @@ export default function Gallery() {
         style={{
           textAlign: "center",
           maxWidth: "100vw",
-          maxHeight: "500px",
+          maxHeight: "100%",
         }}
       />
     </Center>

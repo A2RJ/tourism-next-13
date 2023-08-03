@@ -28,7 +28,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "components/ui/custom/previewImage.jsx"
+    "components/ui/custom/gallery.tsx"
   ],
   "exclude": ["node_modules"]
 }
