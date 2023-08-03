@@ -24,9 +24,14 @@ export default function Page() {
     (dataItem) => <>{dataItem.email}</>,
     (dataItem) => <>{dataItem.address.city}</>,
     (dataItem) => (
-      <Link href={`/agent/package/edit/${dataItem.name}`}>
-        <Button variant="light">Edit</Button>
-      </Link>
+      <>
+        <Link href={`/agent/package/edit/${dataItem.name}`}>
+          <Button variant="light">Edit</Button>
+        </Link>
+        <Link href={`/detail/${dataItem.name}`}>
+          <Button className="bg-mantine-primary">Detail</Button>
+        </Link>
+      </>
     ),
   ];
 

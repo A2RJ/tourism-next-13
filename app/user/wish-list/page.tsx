@@ -12,7 +12,6 @@ export default function Page() {
         </div>
       </div>
       <Separator className="mt-4" />
-      <Table />
     </>
   );
 }

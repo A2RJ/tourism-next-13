@@ -69,7 +69,6 @@ export default function Page() {
         </div>
       </div>
       <Separator className="my-4" />
-      <Table />
     </>
   );
 }

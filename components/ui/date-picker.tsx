@@ -4,16 +4,12 @@ import * as React from "react";
 import { format } from "date-fns";
 
 import { cn } from "@/lib/utils";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
+import { Popover, PopoverContent, PopoverTrigger } from "./popover";
 import { CalendarIcon } from "lucide-react";
 import { Button } from "./button";
 import { Calendar } from "./calendar";
 
-export function DatePickerDemo() {
+export function DatePicker() {
   const [date, setDate] = React.useState<Date>();
 
   return (

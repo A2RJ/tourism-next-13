@@ -28,7 +28,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "components/ui/custom/gallery.tsx"
+    "components/ui/custom/gallery.tsx",
+    "components/package/payment.tsx"
   ],
   "exclude": ["node_modules"]
 }

@@ -1,15 +1,37 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Gallery from "@/components/ui/custom/gallery";
 import { Anchor, Button, List, Rating, Tabs } from "@mantine/core";
 import { useCounter } from "@mantine/hooks";
 import { ShoppingBag, ShoppingCart } from "lucide-react";
-import { Calendar } from "@/components/ui/calendar";
+import { DatePicker } from "@/components/ui/date-picker";
+import Head from "next/head";
+// Mendifinisikan interface untuk properti khusus yang ada di window
+interface CustomWindow extends Window {
+  snap: any; // Ganti 'any' dengan tipe yang sesuai berdasarkan library Snap.js
+}
 
 export default function Page({ params }: { params: { slug: string } }) {
+  const [snap, setSnap] = useState<CustomWindow["snap"]>();
+
+  useEffect(() => {
+    const snapSrcUrl = "https://app.sandbox.midtrans.com/snap/snap.js";
+    const myMidtransClientKey = "SB-Mid-client-61XuGAwQ8Bj8LxSS"; //change this according to your client-key
+
+    const script = document.createElement("script");
+    script.src = snapSrcUrl;
+    script.setAttribute("data-client-key", myMidtransClientKey);
+    script.async = true;
+
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
   const [count, handlers] = useCounter(0, { min: 0 });
-  const [date, setDate] = useState<Date | undefined>(new Date());
   const items = [
     { title: "Home", href: "#" },
     { title: "Package", href: "#" },
@@ -22,13 +44,25 @@ export default function Page({ params }: { params: { slug: string } }) {
 
   return (
     <>
+      <Head>
+        <script
+          type="text/javascript"
+          src="https://app.sandbox.midtrans.com/snap/snap.js"
+          data-client-key="SB-Mid-client-61XuGAwQ8Bj8LxSS"
+          defer
+        ></script>
+      </Head>
       <div className="grid grid-cols-2 md:grid-cols-3 space-x-4 mt-4 grid-flow-row-dense">
         <Gallery className="md:col-span-2 mb-4" />
         <div className="">
-          <div className="border rounded-lg p-4">
+          <div className="border rounded-lg p-4 grid gap-3">
             <h2 className="font-bold text-lg">{decodeURI(params.slug)}</h2>
-            <Rating defaultValue={4} />
-            <div className="inline-flex rounded-md shadow-sm">
+            <p>3 Days 2 Night</p>
+            <div className="flex items-center">
+              <Rating defaultValue={4} />
+              <small>/70 Reviews</small>
+            </div>
+            <div className="inline-flex rounded-md">
               <button
                 className="border px-3 py-1 rounded-l-sm"
                 onClick={handlers.decrement}
@@ -43,14 +77,18 @@ export default function Page({ params }: { params: { slug: string } }) {
                 +
               </button>
             </div>
-            <Calendar
-              mode="single"
-              selected={date}
-              onSelect={setDate}
-              className="rounded-md border shadow"
-            />
+            <DatePicker />
+            <p>Total: Rp. 450.000.00-</p>
             <div className="grid gap-3 grid-cols-1 md:grid-cols-2">
-              <Button className="bg-mantine-primary" leftIcon={<ShoppingBag />}>
+              <Button
+                className="bg-mantine-primary"
+                leftIcon={<ShoppingBag />}
+                onClick={() => {
+                   window.open(
+                     "https://app.sandbox.midtrans.com/snap/v3/redirection/06c85ef5-b5e8-4775-b100-a1df43f0bf4d"
+                   , '_blank');
+                }}
+              >
                 Buy Now
               </Button>
               <Button variant="outline" leftIcon={<ShoppingCart />}>
@@ -60,14 +98,13 @@ export default function Page({ params }: { params: { slug: string } }) {
           </div>
         </div>
       </div>
-      <Tabs variant="outline" defaultValue="gallery">
+      <Tabs variant="outline" defaultValue="overview">
         <Tabs.List>
-          <Tabs.Tab value="gallery">Overview</Tabs.Tab>
-          <Tabs.Tab value="messages">{"What's Included"}</Tabs.Tab>
+          <Tabs.Tab value="overview">Overview</Tabs.Tab>
           <Tabs.Tab value="settings">Rating and Reviews</Tabs.Tab>
         </Tabs.List>
 
-        <Tabs.Panel value="gallery" pt="xs">
+        <Tabs.Panel value="overview" pt="xs">
           <div>
             <p className="font-bold">Description</p>
             <p className="text-slate-500">
@@ -89,10 +126,27 @@ export default function Page({ params }: { params: { slug: string } }) {
               <List.Item>Submit a pull request once you are done</List.Item>
             </List>
           </div>
-        </Tabs.Panel>
+          <div>
+            <p className="font-bold">{"What's Included"}</p>
+            <p className="text-slate-500">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id
+              labore, et unde quia necessitatibus provident earum porro nostrum
+              mollitia molestias.
+            </p>
 
-        <Tabs.Panel value="messages" pt="xs">
-          Messages tab content
+            <p className="font-bold">Facility</p>
+            <List withPadding className="text-slate-500">
+              <List.Item>Clone or download repository from GitHub</List.Item>
+              <List.Item>Install dependencies with yarn</List.Item>
+              <List.Item>
+                To start development server run npm start command
+              </List.Item>
+              <List.Item>
+                Run tests to make sure your changes do not break the build
+              </List.Item>
+              <List.Item>Submit a pull request once you are done</List.Item>
+            </List>
+          </div>
         </Tabs.Panel>
 
         <Tabs.Panel value="settings" pt="xs">
