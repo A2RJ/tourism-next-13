@@ -2,35 +2,22 @@
 
 import { useState, useEffect } from "react";
 import Gallery from "@/components/ui/custom/gallery";
-import { Anchor, Button, List, Rating, Tabs } from "@mantine/core";
+import {
+  Anchor,
+  Breadcrumbs,
+  Button,
+  Center,
+  List,
+  Rating,
+  Tabs,
+} from "@mantine/core";
 import { useCounter } from "@mantine/hooks";
 import { ShoppingBag, ShoppingCart } from "lucide-react";
 import { DatePicker } from "@/components/ui/date-picker";
-import Head from "next/head";
-// Mendifinisikan interface untuk properti khusus yang ada di window
-interface CustomWindow extends Window {
-  snap: any; // Ganti 'any' dengan tipe yang sesuai berdasarkan library Snap.js
-}
+import CardImgBackground from "@/components/mantine/card-img-background";
+import Breadcrumb from "@/components/ui/breadcumb";
 
 export default function Page({ params }: { params: { slug: string } }) {
-  const [snap, setSnap] = useState<CustomWindow["snap"]>();
-
-  useEffect(() => {
-    const snapSrcUrl = "https://app.sandbox.midtrans.com/snap/snap.js";
-    const myMidtransClientKey = "SB-Mid-client-61XuGAwQ8Bj8LxSS"; //change this according to your client-key
-
-    const script = document.createElement("script");
-    script.src = snapSrcUrl;
-    script.setAttribute("data-client-key", myMidtransClientKey);
-    script.async = true;
-
-    document.body.appendChild(script);
-
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
-
   const [count, handlers] = useCounter(0, { min: 0 });
   const items = [
     { title: "Home", href: "#" },
@@ -42,16 +29,84 @@ export default function Page({ params }: { params: { slug: string } }) {
     </Anchor>
   ));
 
+  const suggestion = [
+    {
+      image:
+        "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      link: "https://mantine.dev/",
+      title: "Lokasi A",
+      author: "Robert Gluesticker",
+      views: 7847,
+      comments: 5,
+    },
+    {
+      image:
+        "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      link: "https://mantine.dev/",
+      title: "Lokasi B",
+      author: "Robert Gluesticker",
+      views: 7847,
+      comments: 5,
+    },
+    {
+      image:
+        "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      link: "https://mantine.dev/",
+      title: "Lokasi C",
+      author: "Robert Gluesticker",
+      views: 7847,
+      comments: 5,
+    },
+    {
+      image:
+        "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      link: "https://mantine.dev/",
+      title: "Lokasi D",
+      author: "Robert Gluesticker",
+      views: 7847,
+      comments: 5,
+    },
+    {
+      image:
+        "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      link: "https://mantine.dev/",
+      title: "Lokasi E",
+      author: "Robert Gluesticker",
+      views: 7847,
+      comments: 5,
+    },
+    {
+      image:
+        "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      link: "https://mantine.dev/",
+      title: "Lokasi F",
+      author: "Robert Gluesticker",
+      views: 7847,
+      comments: 5,
+    },
+    {
+      image:
+        "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      link: "https://mantine.dev/",
+      title: "Lokasi G",
+      author: "Robert Gluesticker",
+      views: 7847,
+      comments: 5,
+    },
+    {
+      image:
+        "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      link: "https://mantine.dev/",
+      title: "Lokasi H",
+      author: "Robert Gluesticker",
+      views: 7847,
+      comments: 5,
+    },
+  ];
+
   return (
     <>
-      <Head>
-        <script
-          type="text/javascript"
-          src="https://app.sandbox.midtrans.com/snap/snap.js"
-          data-client-key="SB-Mid-client-61XuGAwQ8Bj8LxSS"
-          defer
-        ></script>
-      </Head>
+      <Breadcrumbs>{items}</Breadcrumbs>
       <div className="grid grid-cols-2 md:grid-cols-3 space-x-4 mt-4 grid-flow-row-dense">
         <Gallery className="md:col-span-2 mb-4" />
         <div className="">
@@ -84,9 +139,10 @@ export default function Page({ params }: { params: { slug: string } }) {
                 className="bg-mantine-primary"
                 leftIcon={<ShoppingBag />}
                 onClick={() => {
-                   window.open(
-                     "https://app.sandbox.midtrans.com/snap/v3/redirection/06c85ef5-b5e8-4775-b100-a1df43f0bf4d"
-                   , '_blank');
+                  window.open(
+                    "https://app.sandbox.midtrans.com/snap/v3/redirection/06c85ef5-b5e8-4775-b100-a1df43f0bf4d",
+                    "_blank"
+                  );
                 }}
               >
                 Buy Now
@@ -191,6 +247,27 @@ export default function Page({ params }: { params: { slug: string } }) {
           </div>
         </Tabs.Panel>
       </Tabs>
+      <div className="border-t mt-4 mb-10">
+        <p className="font-bold my-2">Related tour</p>
+        <div className="grid md:grid-cols-4 grid-cols-1 gap-2">
+          {suggestion.map(
+            ({ author, comments, image, link, title, views }, index) => (
+              <CardImgBackground
+                key={index}
+                author={author}
+                comments={comments}
+                image={image}
+                link={link}
+                title={title}
+                views={views}
+              />
+            )
+          )}
+        </div>
+        <Center className="mt-4">
+          <Button className="bg-mantine-primary">Load more</Button>
+        </Center>
+      </div>
     </>
   );
 }

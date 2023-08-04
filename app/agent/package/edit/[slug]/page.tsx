@@ -1,10 +1,12 @@
 "use client";
 
+import DragAndDrop from "@/components/mantine/dragAndDrop";
 import TransferList from "@/components/mantine/transferList";
 import FormPackage from "@/components/package/form/form";
 import InputFile from "@/components/ui/custom/inputFile";
 import { Button, Tabs, Text } from "@mantine/core";
 import { IconListCheck, IconPhoto } from "@tabler/icons-react";
+import Link from "next/link";
 
 export default function Page({ params }: { params: { slug: string } }) {
   return (
@@ -14,7 +16,9 @@ export default function Page({ params }: { params: { slug: string } }) {
           Add more detail for {decodeURI(params.slug)}
         </h2>
         <div className="flex justify-end">
-          <Button className="bg-mantine-primary">Preview package</Button>
+          <Link href={`/detail/${params.slug}`}>
+            <Button className="bg-mantine-primary">Preview package</Button>
+          </Link>
         </div>
       </div>
       <Tabs defaultValue="package">
@@ -35,7 +39,37 @@ export default function Page({ params }: { params: { slug: string } }) {
         </Tabs.Panel>
 
         <Tabs.Panel value="gallery" pt="xs" className="space-y-2">
-          <TransferList title="Conveniently manage and arrange the list of product images" />
+          {/* <TransferList title="Conveniently manage and arrange the list of product images" /> */}
+          <p>Conveniently manage and arrange the list of product images</p>
+          <DragAndDrop
+            data={[
+              {
+                symbol: "A",
+                name: "Lokasi A",
+                link: "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+              },
+              {
+                symbol: "B",
+                name: "Lokasi B",
+                link: "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+              },
+              {
+                symbol: "C",
+                name: "Lokasi C",
+                link: "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+              },
+              {
+                symbol: "D",
+                name: "Lokasi D",
+                link: "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+              },
+              {
+                symbol: "E",
+                name: "Lokasi E",
+                link: "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+              },
+            ]}
+          />
           <InputFile />
         </Tabs.Panel>
 

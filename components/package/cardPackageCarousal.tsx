@@ -12,6 +12,7 @@ import { cn } from "@/lib/utils";
 import { Star } from "lucide-react";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const useStyles = createStyles((theme) => ({
   price: {
@@ -78,7 +79,7 @@ export function CardPackageCarousal({
       ));
       setSlides(additionalSlides);
     }
-  }, [isCoverLoaded, cover]);
+  }, [isCoverLoaded]);
 
   return (
     <Card
@@ -115,31 +116,33 @@ export function CardPackageCarousal({
         </Carousel>
       </Card.Section>
 
-      <Group position="apart" mt="lg">
-        <Text fw={500} fz="lg">
-          Forde, {name}
+      <Link href={`/detail/Forde, ${name}`}>
+        <Group position="apart" mt="lg">
+          <Text fw={500} fz="lg">
+            Forde, {name}
+          </Text>
+
+          <Group spacing={5}>
+            <Star size="1rem" />
+            <Text fz="xs" fw={500}>
+              4.78
+            </Text>
+          </Group>
+        </Group>
+
+        <Text fz="sm" c="dimmed" mt="sm">
+          Relax, rejuvenate and unplug in this unique contemporary Birdbox. Feel
+          close to nature in ultimate comfort. Enjoy the view of the epic
+          mountain range of Blegja and the Førdefjord.
         </Text>
 
-        <Group spacing={5}>
-          <Star size="1rem" />
-          <Text fz="xs" fw={500}>
-            4.78
-          </Text>
-        </Group>
-      </Group>
-
-      <Text fz="sm" c="dimmed" mt="sm">
-        Relax, rejuvenate and unplug in this unique contemporary Birdbox. Feel
-        close to nature in ultimate comfort. Enjoy the view of the epic mountain
-        range of Blegja and the Førdefjord.
-      </Text>
-
-      <div className="flex justify-between items-center">
-        <div className="flex flex-row mt-5">
-          <p className={cn(classes.price, "font-semibold")}>397$</p>
-          <p className="font-light text-xs mt-2">/Person</p>
+        <div className="flex justify-between items-center">
+          <div className="flex flex-row mt-5">
+            <p className={cn(classes.price, "font-semibold")}>397$</p>
+            <p className="font-light text-xs mt-2">/Person</p>
+          </div>
         </div>
-      </div>
+      </Link>
     </Card>
   );
 }

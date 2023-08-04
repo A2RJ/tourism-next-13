@@ -2,6 +2,7 @@
 
 import { Separator } from "@/components/ui/separator";
 import Table from "@/components/ui/table";
+import { Download } from "lucide-react";
 
 export default function Page() {
   return (
@@ -19,7 +20,7 @@ export default function Page() {
       <Separator className="mt-4" />
       <>
         {/* Card Section */}
-        <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+        <div className="mt-4">
           {/* Grid */}
           <div className="grid md:grid-cols-4 border border-gray-200 shadow-sm rounded-xl overflow-hidden dark:border-gray-700">
             {/* Card */}
@@ -234,7 +235,7 @@ export default function Page() {
       </>
 
       <>
-        <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+        <div className="mt-4">
           <div className="flex flex-col">
             <div className="-m-1.5 overflow-x-auto">
               <div className="p-1.5 min-w-full inline-block align-middle">
@@ -242,10 +243,10 @@ export default function Page() {
                   <div className="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200 dark:border-gray-700">
                     <div>
                       <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200">
-                        Users
+                        Reservation list
                       </h2>
                       <p className="text-sm text-gray-600 dark:text-gray-400">
-                        Add users, edit and more.
+                        You can edit and more.
                       </p>
                     </div>
                     <div>
@@ -260,22 +261,8 @@ export default function Page() {
                           className="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
                           href="#"
                         >
-                          <svg
-                            className="w-3 h-3"
-                            xmlns="http://www.w3.org/2000/svg"
-                            width={16}
-                            height={16}
-                            viewBox="0 0 16 16"
-                            fill="none"
-                          >
-                            <path
-                              d="M2.63452 7.50001L13.6345 7.5M8.13452 13V2"
-                              stroke="currentColor"
-                              strokeWidth={2}
-                              strokeLinecap="round"
-                            />
-                          </svg>
-                          Add user
+                          <Download className="h-3" />
+                          Download
                         </a>
                       </div>
                     </div>

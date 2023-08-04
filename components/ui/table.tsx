@@ -5,10 +5,11 @@ import React, { useEffect, useState } from "react";
 type TableProps = {
   headers: string[];
   body: ((dataItem: any) => React.ReactNode)[];
-  apiUrl: any;
+  apiUrl?: any;
+  dataTable?: Array<any>;
 };
 
-const Table: React.FC<TableProps> = ({ headers, body, apiUrl }) => {
+const Table: React.FC<TableProps> = ({ headers, body, apiUrl, dataTable }) => {
   const [data, setData] = useState<any[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -25,8 +26,10 @@ const Table: React.FC<TableProps> = ({ headers, body, apiUrl }) => {
       }
     };
 
-    fetchDataFromApi();
-  }, [apiUrl]);
+    if (!dataTable) {
+      fetchDataFromApi();
+    }
+  }, [apiUrl, dataTable]);
 
   const tableBody = data.map((dataItem, index) => (
     <tr key={index}>
