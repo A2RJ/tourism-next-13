@@ -1,5 +1,7 @@
-import { Input, Pagination } from "@mantine/core";
-import { Search } from "lucide-react";
+"use client";
+
+import { Center, Input, Pagination } from "@mantine/core";
+import { AlertCircle, Ban, Search } from "lucide-react";
 import React, { useEffect, useState } from "react";
 
 type TableProps = {
@@ -9,44 +11,91 @@ type TableProps = {
   dataTable?: Array<any>;
 };
 
-const Table: React.FC<TableProps> = ({ headers, body, apiUrl, dataTable }) => {
-  const [data, setData] = useState<any[]>([]);
+interface ApiResponse<T> {
+  meta: {
+    total: number;
+    per_page: number;
+    current_page: number;
+    last_page: number;
+    first_page: number;
+    first_page_url: string | null;
+    last_page_url: string | null;
+    next_page_url: string | null;
+    previous_page_url: string | null;
+  };
+  data: T[];
+}
+
+const Table: React.FC<TableProps> = ({ headers, body, apiUrl }) => {
+  const [activePage, setPage] = useState(1);
+  const [url, setUrl] = useState(apiUrl);
+  const [data, setData] = useState<ApiResponse<TableProps>>({
+    meta: {
+      total: 0,
+      per_page: 15,
+      current_page: 1,
+      last_page: 1,
+      first_page: 1,
+      first_page_url: null,
+      last_page_url: null,
+      next_page_url: null,
+      previous_page_url: null,
+    },
+    data: [],
+  });
   const [loading, setLoading] = useState<boolean>(false);
+
+  const pageChanged = (e: number) => {
+    setPage(e);
+    setUrl(`${apiUrl}/?page=${e}`);
+  };
 
   useEffect(() => {
     const fetchDataFromApi = async () => {
       try {
         setLoading(true);
-        const response = await fetch(apiUrl);
-        const data = await response.json();
-        setData(data);
-        setLoading(false);
+        const response = await fetch(url);
+        const responseData = await response.json();
+        setTimeout(() => {
+          if (JSON.stringify(responseData.data) !== JSON.stringify(data.data)) {
+            setData(responseData);
+          }
+          setLoading(false);
+        }, 5000);
       } catch (error) {
         setLoading(false);
       }
     };
 
-    if (!dataTable) {
+    if (activePage !== data.meta.current_page) {
       fetchDataFromApi();
     }
-  }, [apiUrl, dataTable]);
+  }, [url, data]);
 
-  const tableBody = data.map((dataItem, index) => (
-    <tr key={index}>
-      {body.map((column, colIndex) => (
-        <td
-          key={colIndex}
-          className="h-12 px-6 text-sm border-slate-200 stroke-slate-500 text-slate-500"
-        >
-          {column(dataItem)}
+  const tableBody =
+    data && data.data ? (
+      data.data.map((dataItem, index) => (
+        <tr key={index}>
+          {body.map((column, colIndex) => (
+            <td
+              key={colIndex}
+              className="h-12 px-6 text-sm border-slate-200 stroke-slate-500 text-slate-500"
+            >
+              {column(dataItem)}
+            </td>
+          ))}
+        </tr>
+      ))
+    ) : (
+      <tr>
+        <td colSpan={headers.length}>
+          <Center className="py-5">
+            <AlertCircle className="w-4 mr-1" />
+            <p>No data</p>
+          </Center>
         </td>
-      ))}
-    </tr>
-  ));
-
-  if (loading) {
-    return <p>Loading</p>;
-  }
+      </tr>
+    );
 
   return (
     <div className="scrollbar-none my-4">
@@ -68,12 +117,26 @@ const Table: React.FC<TableProps> = ({ headers, body, apiUrl, dataTable }) => {
             ))}
           </tr>
         </thead>
-        <tbody>{tableBody}</tbody>
+        <tbody>
+          {loading ? (
+            <tr>
+              <td colSpan={headers.length}>
+                <Center className="py-5">
+                  <p>Loading</p>
+                </Center>
+              </td>
+            </tr>
+          ) : (
+            tableBody
+          )}
+        </tbody>
       </table>
       <Pagination
-        total={10}
+        onChange={pageChanged}
+        total={data.meta.last_page}
         siblings={1}
-        defaultValue={10}
+        value={activePage}
+        disabled={loading}
         className="mt-1 float-right"
       />
     </div>

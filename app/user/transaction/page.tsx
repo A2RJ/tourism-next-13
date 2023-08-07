@@ -197,7 +197,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-2">
@@ -210,7 +210,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-2">
@@ -223,7 +223,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-2">
@@ -246,7 +246,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-2">
@@ -259,7 +259,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-2">
@@ -272,7 +272,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-1.5">
@@ -298,7 +298,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-2">
@@ -311,7 +311,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-2">
@@ -324,7 +324,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-2">
@@ -347,7 +347,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-2">
@@ -360,7 +360,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-2">
@@ -373,7 +373,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-1.5">
@@ -399,7 +399,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-2">
@@ -412,7 +412,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-2">
@@ -425,7 +425,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-2">
@@ -448,7 +448,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-2">
@@ -461,7 +461,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-2">
@@ -474,7 +474,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-1.5">
@@ -500,7 +500,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-2">
@@ -513,7 +513,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-2">
@@ -526,7 +526,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-2">
@@ -549,7 +549,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-2">
@@ -562,7 +562,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-2">
@@ -575,7 +575,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-1.5">
@@ -601,7 +601,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-2">
@@ -614,7 +614,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-2">
@@ -627,7 +627,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-2">
@@ -650,7 +650,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-2">
@@ -663,7 +663,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-2">
@@ -676,7 +676,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-1.5">
@@ -702,7 +702,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-2">
@@ -715,7 +715,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-2">
@@ -728,7 +728,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-2">
@@ -751,7 +751,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-2">
@@ -764,7 +764,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-2">
@@ -777,7 +777,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-1.5">
@@ -803,7 +803,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-2">
@@ -816,7 +816,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-2">
@@ -829,7 +829,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-2">
@@ -852,7 +852,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-2">
@@ -865,7 +865,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-2">
@@ -878,7 +878,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-1.5">
@@ -904,7 +904,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-2">
@@ -917,7 +917,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-2">
@@ -930,7 +930,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-2">
@@ -953,7 +953,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-2">
@@ -966,7 +966,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-2">
@@ -979,7 +979,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-1.5">
@@ -1005,7 +1005,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-2">
@@ -1018,7 +1018,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-2">
@@ -1031,7 +1031,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-2">
@@ -1054,7 +1054,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-2">
@@ -1067,7 +1067,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-2">
@@ -1080,7 +1080,7 @@ export default function Page() {
                       <td className="h-px w-px whitespace-nowrap">
                         <a
                           className="block"
-                          href="javascript:;"
+                          href=""
                           data-hs-overlay="#hs-ai-invoice-modal"
                         >
                           <div className="px-6 py-1.5">

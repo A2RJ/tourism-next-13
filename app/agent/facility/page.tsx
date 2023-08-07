@@ -2,26 +2,28 @@
 
 import { Separator } from "@/components/ui/separator";
 import Table from "@/components/ui/table";
-import { Button, Group, Modal, TextInput } from "@mantine/core";
-import { useForm } from "@mantine/form";
-import { useDisclosure } from "@mantine/hooks";
+import { baseAPIURL } from "@/lib/fecthAPI";
+import { Facility } from "@/types/package";
+import { Button } from "@mantine/core";
 import { PlusCircle } from "lucide-react";
+import Link from "next/link";
 
 export default function Page() {
-  const [opened, { open, close }] = useDisclosure(false);
-  const form = useForm({
-    initialValues: {
-      facility: "",
-    },
-
-    validate: {
-      facility: (value) => (value ? null : "Facility is required"),
-    },
-  });
-
-  const handleSubmit = ({ facility }: { facility: string }) => {
-    console.log(facility);
-  };
+  const tableHeaders = ["Facility Name", "Action"];
+  const apiUrl = `${baseAPIURL}/facility`;
+  const tableBodyColumns: ((item: Facility) => React.ReactNode)[] = [
+    (item) => <>{item.facility_name}</>,
+    (item) => (
+      <>
+        <Link href={`/agent/facility/edit/${item.id}`}>
+          <Button variant="light">Edit</Button>
+        </Link>
+        <Button className="bg-mantine-primary" onClick={() => alert(item.id)}>
+          Delete
+        </Button>
+      </>
+    ),
+  ];
 
   return (
     <>
@@ -33,33 +35,15 @@ export default function Page() {
           </p>
         </div>
         <div className="ml-auto mr-4">
-          <Modal opened={opened} onClose={close} title="Input facility">
-            <form onSubmit={form.onSubmit(handleSubmit)}>
-              <TextInput
-                withAsterisk
-                label="Facility"
-                placeholder="Hotel or accomodation"
-                description="Please enter your facility information"
-                {...form.getInputProps("facility")}
-              />
-              <Group position="right" mt="md">
-                <Button type="submit" className="bg-mantine-primary">
-                  Submit
-                </Button>
-              </Group>
-            </form>
-          </Modal>
-
-          <Button
-            onClick={open}
-            className="bg-mantine-primary"
-            leftIcon={<PlusCircle />}
-          >
-            Add Facility
-          </Button>
+          <Link href={`/agent/facility/create`}>
+            <Button className="bg-mantine-primary" leftIcon={<PlusCircle />}>
+              Add Facility
+            </Button>
+          </Link>
         </div>
       </div>
       <Separator className="my-4" />
+      <Table headers={tableHeaders} body={tableBodyColumns} apiUrl={apiUrl} />
     </>
   );
 }

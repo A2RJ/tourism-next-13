@@ -17,18 +17,17 @@ type UserData = {
 export default function Page() {
   const tableHeaders = ["Name", "Username", "Email", "City", "Action"];
   const apiUrl = "https://jsonplaceholder.typicode.com/users";
-
-  const tableBodyColumns: ((dataItem: UserData) => React.ReactNode)[] = [
-    (dataItem) => <>{dataItem.name}</>,
-    (dataItem) => <>{dataItem.username}</>,
-    (dataItem) => <>{dataItem.email}</>,
-    (dataItem) => <>{dataItem.address.city}</>,
-    (dataItem) => (
+  const tableBodyColumns: ((item: UserData) => React.ReactNode)[] = [
+    (item) => <>{item.name}</>,
+    (item) => <>{item.username}</>,
+    (item) => <>{item.email}</>,
+    (item) => <>{item.address.city}</>,
+    (item) => (
       <>
-        <Link href={`/agent/package/edit/${dataItem.name}`}>
+        <Link href={`/agent/package/edit/${item.name}`}>
           <Button variant="light">Edit</Button>
         </Link>
-        <Link href={`/detail/${dataItem.name}`}>
+        <Link href={`/detail/${item.name}`}>
           <Button className="bg-mantine-primary">Detail</Button>
         </Link>
       </>

@@ -1,4 +1,18 @@
-export interface Packageform {
+export type Discount = {
+  id: string;
+  discount_name: string;
+  discount_percentage: number;
+  start_date: string;
+  end_date: string;
+};
+
+export type Facility = {
+  id: string;
+  facility_name: string;
+};
+
+export interface Package {
+  id: string;
   packgeName: string;
   duration: string;
   description: string;

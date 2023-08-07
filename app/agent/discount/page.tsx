@@ -2,38 +2,37 @@
 
 import { Separator } from "@/components/ui/separator";
 import Table from "@/components/ui/table";
-import { Button, Group, Modal, TextInput } from "@mantine/core";
-import { useForm } from "@mantine/form";
-import { useDisclosure } from "@mantine/hooks";
+import { baseAPIURL } from "@/lib/fecthAPI";
+import { Button } from "@mantine/core";
 import { PlusCircle } from "lucide-react";
 import Link from "next/link";
-import { number } from "zod";
+import { Discount } from "@/types/package";
 
 export default function Page() {
-  const [opened, { open, close }] = useDisclosure(false);
-  const form = useForm({
-    initialValues: {
-      discount: "",
-    },
-
-    validate: {
-      discount: (value) => {
-        const regex = /^[0-9]+$/;
-        if (!regex.test(value)) {
-          return "Invalid discount";
-        }
-        const numericValue = Number(value);
-        if (numericValue < 1 || numericValue > 100) {
-          return "Discount must be between 1 and 100";
-        }
-        return null;
-      },
-    },
-  });
-
-  const handleSubmit = ({ discount }: { discount: string }) => {
-    console.log(discount);
-  };
+  const tableHeaders = [
+    "Discount Name",
+    "Percentage",
+    "Start",
+    "End",
+    "Action",
+  ];
+  const apiUrl = `${baseAPIURL}/discount`;
+  const tableBodyColumns: ((item: Discount) => React.ReactNode)[] = [
+    (item) => <>{item.discount_name}</>,
+    (item) => <>{item.discount_percentage}%</>,
+    (item) => <>{item.start_date}</>,
+    (item) => <>{item.end_date}</>,
+    (item) => (
+      <>
+        <Link href={`/agent/discount/edit/${item.id}`}>
+          <Button variant="light">Edit</Button>
+        </Link>
+        <Button className="bg-mantine-primary" onClick={() => alert(item.id)}>
+          Delete
+        </Button>
+      </>
+    ),
+  ];
 
   return (
     <>
@@ -43,32 +42,15 @@ export default function Page() {
           <p className="text-sm text-muted-foreground">Manage your discount.</p>
         </div>
         <div className="ml-auto mr-4">
-          <Modal opened={opened} onClose={close} title="Input Discount">
-            <form onSubmit={form.onSubmit(handleSubmit)}>
-              <TextInput
-                withAsterisk
-                label="Discount"
-                placeholder="50%"
-                {...form.getInputProps("discount")}
-              />
-              <Group position="right" mt="md">
-                <Button type="submit" className="bg-mantine-primary">
-                  Submit
-                </Button>
-              </Group>
-            </form>
-          </Modal>
-
-          <Button
-            onClick={open}
-            className="bg-mantine-primary"
-            leftIcon={<PlusCircle />}
-          >
-            Add Discount
-          </Button>
+          <Link href="/agent/discount/create">
+            <Button className="bg-mantine-primary" leftIcon={<PlusCircle />}>
+              Add Discount
+            </Button>
+          </Link>
         </div>
       </div>
       <Separator className="my-4" />
+      <Table headers={tableHeaders} body={tableBodyColumns} apiUrl={apiUrl} />
     </>
   );
 }

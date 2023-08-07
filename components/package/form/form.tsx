@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Button, Group, Select, TextInput, Textarea } from "@mantine/core";
 import { useForm } from "@mantine/form";
-import { Packageform } from "@/types/package";
+import { Package } from "@/types/package";
 import { Administrative } from "@/types/administrative";
 
 export default function FormPackage() {
@@ -13,7 +13,7 @@ export default function FormPackage() {
     district: [],
     village: [],
   });
-  const form = useForm<Packageform>({
+  const form = useForm<Partial<Package>>({
     initialValues: {
       packgeName: "",
       duration: "",
@@ -48,7 +48,7 @@ export default function FormPackage() {
     },
   });
 
-  const handleSubmit = (value: Packageform) => {
+  const handleSubmit = (value: Partial<Package>) => {
     console.log({ onSubmit: value });
   };
 

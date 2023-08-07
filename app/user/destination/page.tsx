@@ -21,11 +21,11 @@ type UserData = {
 
 export default function Page() {
   const tableHeaders = [
-    "Name",
-    "Agent",
+    "Package Name",
+    "Tour Guide",
     "Email",
     "Phone",
-    "City",
+    "Location",
     "Departure on",
     "Action",
   ];
@@ -68,6 +68,9 @@ export default function Page() {
         </Link>
         <Link href={`/maps`}>
           <Button className="bg-mantine-primary">Open map</Button>
+        </Link>
+        <Link href={`/maps`}>
+          <Button className="bg-mantine-primary">Cancel Trip</Button>
         </Link>
       </div>
     ),
