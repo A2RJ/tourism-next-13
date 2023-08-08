@@ -65,9 +65,7 @@ const Password = React.forwardRef<HTMLInputElement, InputProps>(
             )}
           </button>
         </div>
-        <label className="font-medium" htmlFor="password">
-          {text}
-        </label>
+        <label className="font-medium">{text}</label>
         <input
           type={isVisible ? "text" : "password"}
           className={cn(

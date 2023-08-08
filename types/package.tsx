@@ -2,8 +2,8 @@ export type Discount = {
   id: string;
   discount_name: string;
   discount_percentage: number;
-  start_date: string;
-  end_date: string;
+  start_date: Date;
+  end_date: Date;
 };
 
 export type Facility = {

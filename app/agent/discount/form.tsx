@@ -1,10 +1,10 @@
 "use client";
 
+import { useEffect } from "react";
 import { useForm } from "@mantine/form";
 import { Button, Center, Group, NumberInput, TextInput } from "@mantine/core";
-import { DateTimePicker } from "@mantine/dates";
+import { DateInput, DatePicker, DateTimePicker } from "@mantine/dates";
 import { Discount } from "@/types/package";
-import { Separator } from "@/components/ui/separator";
 
 export default function DiscountForm({
   initialValues,
@@ -14,7 +14,13 @@ export default function DiscountForm({
   onSubmit: (data: Partial<Discount>) => void;
 }) {
   const form = useForm<Partial<Discount>>({
-    initialValues: initialValues,
+    initialValues: {
+      discount_name: "",
+      discount_percentage: 0,
+      start_date: new Date(),
+      end_date: new Date(),
+      ...initialValues,
+    },
 
     validate: {
       discount_name: (value) => (!value ? "Discount name is required" : null),
@@ -36,6 +42,19 @@ export default function DiscountForm({
     },
   });
 
+  useEffect(() => {
+    form.setValues({
+      discount_name: initialValues.discount_name,
+      discount_percentage: initialValues.discount_percentage,
+      start_date:
+        initialValues.start_date &&
+        new Date(`${initialValues.start_date} GMT+0800`),
+      end_date:
+        initialValues.end_date &&
+        new Date(`${initialValues.end_date} GMT+0800`),
+    });
+  }, [initialValues]);
+
   return (
     <form onSubmit={form.onSubmit(onSubmit)}>
       <TextInput
@@ -54,28 +73,29 @@ export default function DiscountForm({
             ? `$ ${value}`.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")
             : "$ "
         }
+        mx="auto"
         max={100}
         min={0}
         maw={400}
-        mx="auto"
         {...form.getInputProps("discount_percentage")}
       />
       <DateTimePicker
-        valueFormat="DD MMM YYYY hh:mm A"
-        label="Pick Start Date"
+        label="Start"
         placeholder="Pick date and time"
         maw={400}
         mx="auto"
+        defaultValue={new Date(`${form.values.start_date} GMT+0800`)}
         {...form.getInputProps("start_date")}
       />
       <DateTimePicker
-        valueFormat="DD MMM YYYY hh:mm A"
-        label="Pick End Date"
+        label="End"
         placeholder="Pick date and time"
         maw={400}
         mx="auto"
+        defaultValue={new Date(`${form.values.end_date} GMT+0800`)}
         {...form.getInputProps("end_date")}
       />
+
       <Center>
         <Group position="right" mt="md">
           <Button type="submit" className="bg-mantine-primary">
