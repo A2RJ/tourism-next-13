@@ -19,7 +19,6 @@ export default function DiscountForm({
       discount_percentage: 0,
       start_date: new Date(),
       end_date: new Date(),
-      ...initialValues,
     },
 
     validate: {
@@ -43,16 +42,18 @@ export default function DiscountForm({
   });
 
   useEffect(() => {
-    form.setValues({
-      discount_name: initialValues.discount_name,
-      discount_percentage: initialValues.discount_percentage,
-      start_date:
-        initialValues.start_date &&
-        new Date(`${initialValues.start_date} GMT+0800`),
-      end_date:
-        initialValues.end_date &&
-        new Date(`${initialValues.end_date} GMT+0800`),
-    });
+    if (initialValues) {
+      form.setValues({
+        discount_name: initialValues.discount_name,
+        discount_percentage: initialValues.discount_percentage,
+        start_date:
+          initialValues.start_date &&
+          new Date(`${initialValues.start_date} GMT+0800`),
+        end_date:
+          initialValues.end_date &&
+          new Date(`${initialValues.end_date} GMT+0800`),
+      });
+    }
   }, [initialValues]);
 
   return (
