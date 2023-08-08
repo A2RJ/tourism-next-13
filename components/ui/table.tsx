@@ -1,14 +1,20 @@
 "use client";
 
-import { Center, Input, Pagination } from "@mantine/core";
-import { AlertCircle, Ban, Search } from "lucide-react";
+import {
+  Button,
+  Center,
+  Group,
+  Input,
+  Pagination,
+  Skeleton,
+} from "@mantine/core";
+import { AlertCircle, Search } from "lucide-react";
 import React, { useEffect, useState } from "react";
 
 type TableProps = {
   headers: string[];
   body: ((dataItem: any) => React.ReactNode)[];
-  apiUrl?: any;
-  dataTable?: Array<any>;
+  apiUrl: any;
 };
 
 interface ApiResponse<T> {
@@ -44,6 +50,7 @@ const Table: React.FC<TableProps> = ({ headers, body, apiUrl }) => {
     data: [],
   });
   const [loading, setLoading] = useState<boolean>(false);
+  const skeleton = Array.from({ length: 5 }, (_, index) => index + 1);
 
   const pageChanged = (e: number) => {
     setPage(e);
@@ -56,26 +63,23 @@ const Table: React.FC<TableProps> = ({ headers, body, apiUrl }) => {
         setLoading(true);
         const response = await fetch(url);
         const responseData = await response.json();
-        setTimeout(() => {
-          if (JSON.stringify(responseData.data) !== JSON.stringify(data.data)) {
-            setData(responseData);
-          }
-          setLoading(false);
-        }, 5000);
+        setData(responseData);
+        setLoading(false);
       } catch (error) {
         setLoading(false);
       }
     };
 
-    if (activePage !== data.meta.current_page) {
-      fetchDataFromApi();
-    }
-  }, [url, data]);
+    fetchDataFromApi();
+  }, [url]);
 
   const tableBody =
     data && data.data ? (
       data.data.map((dataItem, index) => (
         <tr key={index}>
+          <td className="h-12 px-6 text-sm border-slate-200 stroke-slate-500 text-slate-500">
+            {data.meta.per_page * (data.meta.current_page - 1) + index + 1}
+          </td>
           {body.map((column, colIndex) => (
             <td
               key={colIndex}
@@ -107,6 +111,9 @@ const Table: React.FC<TableProps> = ({ headers, body, apiUrl }) => {
       >
         <thead>
           <tr>
+            <th className="h-12 px-6 text-sm font-medium border-l stroke-slate-700 text-slate-700 bg-slate-100">
+              No
+            </th>
             {headers.map((header, index) => (
               <th
                 key={index}
@@ -118,27 +125,35 @@ const Table: React.FC<TableProps> = ({ headers, body, apiUrl }) => {
           </tr>
         </thead>
         <tbody>
-          {loading ? (
-            <tr>
-              <td colSpan={headers.length}>
-                <Center className="py-5">
-                  <p>Loading</p>
-                </Center>
-              </td>
-            </tr>
-          ) : (
-            tableBody
-          )}
+          {loading
+            ? skeleton.map((item, index) => (
+                <tr key={index}>
+                  <td colSpan={headers.length + 1} className="p-1">
+                    <Skeleton height={40} />
+                  </td>
+                </tr>
+              ))
+            : tableBody}
         </tbody>
       </table>
-      <Pagination
-        onChange={pageChanged}
-        total={data.meta.last_page}
-        siblings={1}
-        value={activePage}
-        disabled={loading}
-        className="mt-1 float-right"
-      />
+      {loading ? (
+        <Group position="right" className="gap-2 mt-1">
+          <Skeleton width={32} height={32} />
+          <Skeleton width={32} height={32} />
+          <Skeleton width={32} height={32} />
+          <Skeleton width={32} height={32} />
+          <Skeleton width={32} height={32} />
+        </Group>
+      ) : (
+        <Pagination
+          onChange={pageChanged}
+          total={data.meta.last_page}
+          siblings={1}
+          value={activePage}
+          disabled={loading}
+          className="mt-1 float-right"
+        />
+      )}
     </div>
   );
 };

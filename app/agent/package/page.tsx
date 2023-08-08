@@ -1,33 +1,25 @@
 "use client";
 
 import Table from "@/components/ui/table";
+import { baseAPIURL } from "@/lib/fecthAPI";
+import { Package } from "@/types/package";
 import { Button } from "@mantine/core";
 import { PlusCircle } from "lucide-react";
 import Link from "next/link";
 
-type UserData = {
-  name: string;
-  username: string;
-  email: string;
-  address: {
-    city: string;
-  };
-};
-
 export default function Page() {
-  const tableHeaders = ["Name", "Username", "Email", "City", "Action"];
-  const apiUrl = "https://jsonplaceholder.typicode.com/users";
-  const tableBodyColumns: ((item: UserData) => React.ReactNode)[] = [
-    (item) => <>{item.name}</>,
-    (item) => <>{item.username}</>,
-    (item) => <>{item.email}</>,
-    (item) => <>{item.address.city}</>,
+  const tableHeaders = ["Package Name", "Price", "Duration", "Action"];
+  const apiUrl = `${baseAPIURL}/tour-package`;
+  const tableBodyColumns: ((item: Package) => React.ReactNode)[] = [
+    (item) => <>{item.package_name}</>,
+    (item) => <>{item.price}</>,
+    (item) => <>{item.duration}</>,
     (item) => (
       <>
-        <Link href={`/agent/package/edit/${item.name}`}>
+        <Link href={`/agent/package/edit/${item.id}`}>
           <Button variant="light">Edit</Button>
         </Link>
-        <Link href={`/detail/${item.name}`}>
+        <Link href={`/detail/${item.id}`}>
           <Button className="bg-mantine-primary">Detail</Button>
         </Link>
       </>

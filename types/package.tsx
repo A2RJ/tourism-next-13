@@ -13,17 +13,17 @@ export type Facility = {
 
 export interface Package {
   id: string;
-  packgeName: string;
+  package_name: string;
   duration: string;
   description: string;
   price: string;
-  meetingPointLatitude: string;
-  meetingPointLongitude: string;
+  meeting_point_latitude: string;
+  meeting_point_longitude: string;
   latitude: string;
   longitude: string;
-  provinceId: string | null;
-  regencyId: string | null;
-  districtId: string | null;
-  villageId: string | null;
-  discountId: string;
+  province_id: string | null;
+  regency_id: string | null;
+  district_id: string | null;
+  village_id: string | null;
+  discount_id: string;
 }
