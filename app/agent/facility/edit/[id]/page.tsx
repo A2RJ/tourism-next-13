@@ -1,7 +1,7 @@
 "use client";
 
 import { Separator } from "@/components/ui/separator";
-import FacilityForm from "../../form";
+import FacilityForm from "@/app/agent/facility/form";
 import { Facility } from "@/types/package";
 import { useEffect, useState } from "react";
 import { baseAPIURL } from "@/lib/fecthAPI";

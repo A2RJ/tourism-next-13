@@ -16,6 +16,7 @@ import { ShoppingBag, ShoppingCart } from "lucide-react";
 import { DatePicker } from "@/components/ui/date-picker";
 import CardImgBackground from "@/components/mantine/card-img-background";
 import Breadcrumb from "@/components/ui/breadcumb";
+import Image from "next/image";
 
 export default function Page({ params }: { params: { slug: string } }) {
   const [count, handlers] = useCounter(0, { min: 0 });
@@ -210,8 +211,10 @@ export default function Page({ params }: { params: { slug: string } }) {
             <div className="flex justify-between p-4">
               <div className="flex space-x-4">
                 <div>
-                  <img
+                  <Image
                     src="https://source.unsplash.com/100x100/?portrait"
+                    height={0}
+                    width={0}
                     alt=""
                     className="object-cover w-12 h-12 rounded-full dark:bg-gray-500"
                   />
@@ -248,7 +251,10 @@ export default function Page({ params }: { params: { slug: string } }) {
         </Tabs.Panel>
       </Tabs>
       <div className="border-t mt-4 mb-10">
-        <p className="font-bold my-2">Related tour</p>
+        <div className="flex justify-between my-2">
+          <p className="font-bold">Related tour</p>
+          <p className="text-blue-500">Load more</p>
+        </div>
         <div className="grid md:grid-cols-4 grid-cols-1 gap-2">
           {suggestion.map(
             ({ author, comments, image, link, title, views }, index) => (
@@ -264,9 +270,6 @@ export default function Page({ params }: { params: { slug: string } }) {
             )
           )}
         </div>
-        <Center className="mt-4">
-          <Button className="bg-mantine-primary">Load more</Button>
-        </Center>
       </div>
     </>
   );

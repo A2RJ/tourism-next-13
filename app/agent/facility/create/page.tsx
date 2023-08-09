@@ -2,7 +2,7 @@
 
 import { Facility } from "@/types/package";
 import { Separator } from "@/components/ui/separator";
-import FacilityForm from "../form";
+import FacilityForm from "@/app/agent/facility/form";
 
 export default function Page() {
   const handleSubmit = ({ facility_name }: Partial<Facility>) => {

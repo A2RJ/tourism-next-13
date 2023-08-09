@@ -2,7 +2,7 @@
 
 import { Discount } from "@/types/package";
 import { Separator } from "@/components/ui/separator";
-import DiscountForm from "../form";
+import DiscountForm from "@/app/agent/discount/form";
 
 export default function Page() {
   const handleSubmit = ({

@@ -1,6 +1,7 @@
 "use client";
 
-import FormPackage from "@/components/package/form/form";
+import FormPackage from "@/app/agent/package/form";
+
 
 export default function Page() {
   return (

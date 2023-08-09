@@ -1,9 +1,9 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { Discount } from "@/types/package";
 import { Separator } from "@/components/ui/separator";
-import DiscountForm from "../../form";
-import { useEffect, useState } from "react";
+import DiscountForm from "@/app/agent/discount/form";
 import { baseAPIURL } from "@/lib/fecthAPI";
 
 export default function Page({ params }: { params: { id: string } }) {

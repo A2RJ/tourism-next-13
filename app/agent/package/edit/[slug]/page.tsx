@@ -1,14 +1,20 @@
 "use client";
 
-import DragAndDrop from "@/components/mantine/dragAndDrop";
-import TransferList from "@/components/mantine/transferList";
-import FormPackage from "@/components/package/form/form";
-import InputFile from "@/components/ui/custom/inputFile";
+import Link from "next/link";
 import { Button, Tabs, Text } from "@mantine/core";
 import { IconListCheck, IconPhoto } from "@tabler/icons-react";
-import Link from "next/link";
+import DragAndDrop from "@/components/mantine/dragAndDrop";
+import TransferList from "@/components/mantine/transferList";
+import FormPackage from "@/app/agent/package/form";
+import InputFile from "@/components/ui/custom/inputFile";
+import { useEffect, useState } from "react";
+import { Package } from "@/types/package";
 
 export default function Page({ params }: { params: { slug: string } }) {
+  const [edit, setEdit] = useState<Partial<Package>>({});
+
+  useEffect(() => {}, [params.slug]);
+
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-2">

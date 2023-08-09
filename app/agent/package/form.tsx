@@ -15,36 +15,38 @@ export default function FormPackage() {
   });
   const form = useForm<Partial<Package>>({
     initialValues: {
-      packgeName: "",
+      package_name: "",
       duration: "",
+      unit: "",
       description: "",
       price: "",
-      meetingPointLatitude: "",
-      meetingPointLongitude: "",
+      meeting_point_latitude: "",
+      meeting_point_longitude: "",
       latitude: "",
       longitude: "",
-      provinceId: "",
-      regencyId: "",
-      districtId: "",
-      villageId: "",
-      discountId: "",
+      province_id: "",
+      regency_id: "",
+      district_id: "",
+      village_id: "",
+      discount_id: "",
     },
 
     validate: {
-      packgeName: (value) => (value ? null : "Package Name is required"),
+      package_name: (value) => (value ? null : "Package Name is required"),
       duration: (value) => (value ? null : "Duration is required"),
+      unit: (value) => (value ? null : "Unit is required"),
       description: (value) => (value ? null : "Description is required"),
       price: (value) => (value ? null : "Price is required"),
-      meetingPointLatitude: (value) =>
+      meeting_point_latitude: (value) =>
         value ? null : "Meeting Point Latitude is required",
-      meetingPointLongitude: (value) =>
+      meeting_point_longitude: (value) =>
         value ? null : "Meeting Point Longitude is required",
       latitude: (value) => (value ? null : "Latitude is required"),
       longitude: (value) => (value ? null : "Longitude is required"),
-      provinceId: (value) => (value ? null : "Province is required"),
-      regencyId: (value) => (value ? null : "Regency is required"),
-      districtId: (value) => (value ? null : "District is required"),
-      villageId: (value) => (value ? null : "Village is required"),
+      province_id: (value) => (value ? null : "Province is required"),
+      regency_id: (value) => (value ? null : "Regency is required"),
+      district_id: (value) => (value ? null : "District is required"),
+      village_id: (value) => (value ? null : "Village is required"),
     },
   });
 
@@ -53,18 +55,19 @@ export default function FormPackage() {
   };
 
   const selectRegency = (value: null | string) => {
-    form.setValues({ provinceId: value });
+    if (!value) return;
+    form.setValues({ province_id: value });
   };
 
   const selectDistrict = (value: null | string) => {
-    form.setValues({ regencyId: value });
+    if (!value) return;
+    form.setValues({ regency_id: value });
   };
 
   const selectVillage = (value: null | string) => {
-    form.setValues({ districtId: value });
+    if (!value) return;
+    form.setValues({ district_id: value });
   };
-
-  console.log(form.errors);
 
   return (
     <div className="p-2">
@@ -76,7 +79,7 @@ export default function FormPackage() {
           <TextInput
             withAsterisk
             label="Package Name"
-            {...form.getInputProps("packgeName")}
+            {...form.getInputProps("package_name")}
             className="lg:w-[60%]"
           />
           <TextInput
@@ -91,7 +94,7 @@ export default function FormPackage() {
             label="Time unit"
             nothingFound="No options"
             placeholder="Pick one"
-            {...form.getInputProps("discountId")}
+            {...form.getInputProps("unit")}
             data={[
               { value: "hour", label: "Hour" },
               { value: "day", label: "Day" },
@@ -113,6 +116,7 @@ export default function FormPackage() {
             label="Price"
             {...form.getInputProps("price")}
             className="lg:w-[50%]"
+            type="number"
           />
           <Select
             searchable
@@ -120,7 +124,7 @@ export default function FormPackage() {
             label="Discount"
             nothingFound="No options"
             placeholder="Pick one"
-            {...form.getInputProps("discountId")}
+            {...form.getInputProps("discount_id")}
             data={[
               { value: "react", label: "React" },
               { value: "ng", label: "Angular" },
@@ -134,13 +138,13 @@ export default function FormPackage() {
           <TextInput
             withAsterisk
             label="Meeting Point Lalitude"
-            {...form.getInputProps("meetingPointLatitude")}
+            {...form.getInputProps("meeting_point_latitude")}
             className="lg:w-[50%]"
           />
           <TextInput
             withAsterisk
             label="Meeting Point Longitude"
-            {...form.getInputProps("meetingPointLongitude")}
+            {...form.getInputProps("meeting_point_longitude")}
             className="lg:w-[50%]"
           />
         </div>
@@ -172,6 +176,7 @@ export default function FormPackage() {
             { value: "4", label: "Vue" },
           ]}
           onChange={selectRegency}
+          error={form.errors?.province_id && "Pick at least one item"}
         />
         <Select
           withAsterisk
@@ -187,6 +192,7 @@ export default function FormPackage() {
             { value: "4", label: "Vue" },
           ]}
           onChange={selectDistrict}
+          error={form.errors?.regency_id && "Pick at least one item"}
         />
         <Select
           withAsterisk
@@ -202,6 +208,7 @@ export default function FormPackage() {
             { value: "4", label: "Vue" },
           ]}
           onChange={selectVillage}
+          error={form.errors?.district_id && "Pick at least one item"}
         />
         <Select
           withAsterisk
@@ -210,7 +217,7 @@ export default function FormPackage() {
           label="Village"
           nothingFound="No options"
           placeholder="Pick one"
-          {...form.getInputProps("villageId")}
+          {...form.getInputProps("village_id")}
           data={[
             { value: "1", label: "React" },
             { value: "2", label: "Angular" },
