@@ -9,7 +9,7 @@ export default function FacilityForm({
   initialValues,
   onSubmit,
 }: {
-  initialValues: Partial<Facility>;
+  initialValues?: Partial<Facility>;
   onSubmit: (data: Partial<Facility>) => void;
 }) {
   const form = useForm<Partial<Facility>>({

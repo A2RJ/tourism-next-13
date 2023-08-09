@@ -1,12 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Group, Select, TextInput, Textarea } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { Package } from "@/types/package";
 import { Administrative } from "@/types/administrative";
 
-export default function FormPackage() {
+export default function FormPackage({
+  initialValues,
+  onSubmit,
+}: {
+  initialValues?: Partial<Package>;
+  onSubmit: (data: Partial<Package>) => void;
+}) {
   const [administrative, setAdministrative] = useState<Administrative>({
     province: [],
     regency: [],
@@ -50,10 +56,6 @@ export default function FormPackage() {
     },
   });
 
-  const handleSubmit = (value: Partial<Package>) => {
-    console.log({ onSubmit: value });
-  };
-
   const selectRegency = (value: null | string) => {
     if (!value) return;
     form.setValues({ province_id: value });
@@ -69,10 +71,16 @@ export default function FormPackage() {
     form.setValues({ district_id: value });
   };
 
+  useEffect(() => {
+    if (initialValues) {
+      form.setValues({ ...initialValues });
+    }
+  }, [initialValues]);
+
   return (
     <div className="p-2">
       <form
-        onSubmit={form.onSubmit(handleSubmit)}
+        onSubmit={form.onSubmit(onSubmit)}
         className="flex flex-col gap-y-3"
       >
         <div className="flex w-full gap-3">

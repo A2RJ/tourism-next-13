@@ -41,40 +41,40 @@ export default function Page({ params }: { params: { slug: string } }) {
         </Tabs.List>
 
         <Tabs.Panel value="package" pt="xs">
-          <FormPackage />
+          <FormPackage onSubmit={() => {}} />
         </Tabs.Panel>
 
         <Tabs.Panel value="gallery" pt="xs" className="space-y-2">
           {/* <TransferList title="Conveniently manage and arrange the list of product images" /> */}
           <p>Conveniently manage and arrange the list of product images</p>
           <DragAndDrop
-            data={[
-              {
-                symbol: "A",
-                name: "Lokasi A",
-                link: "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-              },
-              {
-                symbol: "B",
-                name: "Lokasi B",
-                link: "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-              },
-              {
-                symbol: "C",
-                name: "Lokasi C",
-                link: "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-              },
-              {
-                symbol: "D",
-                name: "Lokasi D",
-                link: "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-              },
-              {
-                symbol: "E",
-                name: "Lokasi E",
-                link: "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-              },
-            ]}
+          // data={[
+          //   {
+          //     symbol: "A",
+          //     name: "Lokasi A",
+          //     link: "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+          //   },
+          //   {
+          //     symbol: "B",
+          //     name: "Lokasi B",
+          //     link: "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+          //   },
+          //   {
+          //     symbol: "C",
+          //     name: "Lokasi C",
+          //     link: "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+          //   },
+          //   {
+          //     symbol: "D",
+          //     name: "Lokasi D",
+          //     link: "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+          //   },
+          //   {
+          //     symbol: "E",
+          //     name: "Lokasi E",
+          //     link: "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+          //   },
+          // ]}
           />
           <InputFile />
         </Tabs.Panel>

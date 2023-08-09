@@ -13,12 +13,7 @@ export default function Page() {
     <div className="border p-4 rounded">
       <h3 className="font-bold">Add Facility</h3>
       <Separator className="my-2" />
-      <FacilityForm
-        initialValues={{
-          facility_name: "",
-        }}
-        onSubmit={handleSubmit}
-      />
+      <FacilityForm onSubmit={handleSubmit} />
     </div>
   );
 }

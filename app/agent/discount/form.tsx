@@ -3,14 +3,14 @@
 import { useEffect } from "react";
 import { useForm } from "@mantine/form";
 import { Button, Center, Group, NumberInput, TextInput } from "@mantine/core";
-import { DateInput, DatePicker, DateTimePicker } from "@mantine/dates";
+import { DateTimePicker } from "@mantine/dates";
 import { Discount } from "@/types/package";
 
 export default function DiscountForm({
   initialValues,
   onSubmit,
 }: {
-  initialValues: Partial<Discount>;
+  initialValues?: Partial<Discount>;
   onSubmit: (data: Partial<Discount>) => void;
 }) {
   const form = useForm<Partial<Discount>>({
