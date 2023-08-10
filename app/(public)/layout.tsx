@@ -3,7 +3,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 import type { Metadata } from "next";
-import { NextAuthProvider } from "../components/auth/providers";
+import { NextAuthProvider } from "@/components/auth/providers";
 import { Children } from "@/types/layout";
 import LayoutProvider from "./layout-provider";
 
