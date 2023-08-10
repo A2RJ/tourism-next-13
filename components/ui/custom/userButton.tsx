@@ -1,14 +1,19 @@
 "use client";
-
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+ 
 import { signOut } from "next-auth/react";
+import { Menu, Text } from "@mantine/core";
+import {
+  IconSettings,
+  IconSearch,
+  IconPhoto,
+  IconMessageCircle,
+  IconTrash,
+  IconArrowsLeftRight,
+  IconUserCircle,
+  IconHome,
+  IconLogout,
+} from "@tabler/icons-react";
+import Link from "next/link";
 
 export default function UserButton({
   username,
@@ -28,19 +33,33 @@ export default function UserButton({
     return initial;
   }
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger className="border w-10 border-blue-400 h-10 ring-0 rounded-full">
-        {getInitials(username)}
-      </DropdownMenuTrigger>
-      <DropdownMenuContent>
-        <DropdownMenuLabel>My Account</DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem className="cursor-pointer">Profile</DropdownMenuItem>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem className="cursor-pointer" onClick={() => signOut()}>
-          Sign Out
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <Menu shadow="md" width={200}>
+      <Menu.Target>
+        <div className="border w-10 border-blue-400 h-10 ring-0 flex items-center justify-center rounded-full cursor-pointer">
+          {getInitials(username)}
+        </div>
+      </Menu.Target>
+
+      <Menu.Dropdown>
+        <Menu.Label>{username}</Menu.Label>
+        <Link href="/app">
+          <Menu.Item icon={<IconHome size={14} />}>Dashboard</Menu.Item>
+        </Link>
+        <Link href="/app/profile">
+          <Menu.Item icon={<IconUserCircle size={14} />}>Profile</Menu.Item>
+        </Link>
+
+        <Menu.Divider />
+
+        <Menu.Label></Menu.Label>
+        <Menu.Item
+          color="red"
+          icon={<IconLogout size={14} />}
+          onClick={() => signOut()}
+        >
+          Log out
+        </Menu.Item>
+      </Menu.Dropdown>
+    </Menu>
   );
 }

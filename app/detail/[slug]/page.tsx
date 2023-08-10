@@ -17,6 +17,7 @@ import { DatePicker } from "@/components/ui/date-picker";
 import CardImgBackground from "@/components/mantine/card-img-background";
 import Breadcrumb from "@/components/ui/breadcumb";
 import Image from "next/image";
+import Navbar from "@/components/ui/custom/navbar";
 
 export default function Page({ params }: { params: { slug: string } }) {
   const [count, handlers] = useCounter(0, { min: 0 });
@@ -106,7 +107,8 @@ export default function Page({ params }: { params: { slug: string } }) {
   ];
 
   return (
-    <>
+    <div className="container">
+      <Navbar />
       <Breadcrumbs>{items}</Breadcrumbs>
       <div className="grid grid-cols-2 md:grid-cols-3 space-x-4 mt-4 grid-flow-row-dense">
         <Gallery className="md:col-span-2 mb-4" />
@@ -271,6 +273,6 @@ export default function Page({ params }: { params: { slug: string } }) {
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 }

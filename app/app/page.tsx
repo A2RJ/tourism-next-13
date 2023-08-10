@@ -1,5 +1,8 @@
 "use client";
 
+import { HeroText } from "@/components/mantine/hero";
+import { CardsCarousel } from "@/components/package/cardsCarousel";
+import PopularDestinatipon from "@/components/package/popularDestination";
 import Breadcrumb, { BreadcrumbItem } from "@/components/ui/breadcumb";
 import { Button } from "@/components/ui/button";
 import LandingPage from "@/components/ui/custom/LandingPage";
@@ -16,7 +19,9 @@ export default function Page() {
     <div className="mb-10">
       <Breadcrumb items={breadcrumbItems} />
 
-      <LandingPage />
+      <HeroText />
+      <PopularDestinatipon />
+      <CardsCarousel />
 
       <div className="h-60 border rounded-lg gap-4 flex flex-col justify-center items-center mt-10 border-blue-300">
         <h6 className="max-w-lg text-center">

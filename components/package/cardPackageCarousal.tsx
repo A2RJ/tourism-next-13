@@ -1,3 +1,5 @@
+"use client";
+
 import {
   createStyles,
   Card,
@@ -73,7 +75,7 @@ export function CardPackageCarousal({
             width={0}
             height={0}
             className="w-full h-56 object-cover"
-            unoptimized
+            // unoptimized
           />
         </Carousel.Slide>
       ));
@@ -108,7 +110,8 @@ export function CardPackageCarousal({
               width={0}
               height={0}
               className="w-full h-56 object-cover"
-              unoptimized
+              // unoptimized
+              priority
               onLoad={(e) => setIsCoverLoaded(true)}
             />
           </Carousel.Slide>
