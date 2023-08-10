@@ -21,6 +21,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { X } from "lucide-react";
 import { baseAPIURL } from "@/lib/fecthAPI";
 import axios from "axios";
+import { IconBrandGoogle } from "@tabler/icons-react";
 
 type Credential = {
   name: string;
@@ -82,26 +83,20 @@ export default function Page() {
   };
 
   return (
-    <div className="w-full h-screen flex flex-col items-center justify-center px-4 fixed top-0 left-0 z-50 border-b bg-white">
-      <Paper radius="md" p="xl" withBorder>
-        <div
-          className="flex justify-end mb-2 hover:cursor-pointer"
-          onClick={() => router.back()}
-        >
-          <X />
-        </div>
+    <div className="container min-h-screen grid justify-items-center">
+      <div className="my-auto w-72">
         <Text size="lg" weight={500}>
           Welcome to Mantine, {type} with
         </Text>
 
         <Group grow mb="md" mt="md">
-          <button
+          <Button
+            className="bg-mantine-primary"
+            leftIcon={<GoogleSvg className="w-5 h-5" />}
             onClick={() => signIn("google")}
-            className="w-full flex items-center justify-center gap-x-3 py-2.5 border rounded-lg text-sm font-medium hover:bg-gray-50 duration-150 active:bg-gray-100"
           >
-            <GoogleSvg />
             Continue with Google
-          </button>
+          </Button>
         </Group>
 
         <Divider
@@ -190,7 +185,7 @@ export default function Page() {
             </Button>
           </Group>
         </form>
-      </Paper>
+      </div>
     </div>
   );
 }
