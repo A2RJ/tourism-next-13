@@ -16,7 +16,7 @@ export default function DragAndDrop() {
   const [items, setItems] = useState(getMockItems);
 
   return (
-    <div style={{ maxWidth: 400, margin: "30px auto" }}>
+    <div>
       <SortableList
         items={items}
         onChange={setItems}

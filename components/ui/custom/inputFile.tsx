@@ -60,20 +60,12 @@ export default function InputFile() {
   return (
     <div className="border p-4 pb-12 rounded">
       <p>Easily and quickly upload your preferred package images</p>
-      <SimpleGrid
-        cols={2}
-        breakpoints={[
-          { maxWidth: "48rem", cols: 2, spacing: "sm" },
-          { maxWidth: "36rem", cols: 1, spacing: "sm" },
-        ]}
-      >
-        <FileInput
-          label="File"
-          placeholder="Select file"
-          valueComponent={ValueComponent}
-        />
-        <TextInput label="Name" placeholder="Input location name" />
-      </SimpleGrid>
+      <FileInput
+        label="File"
+        placeholder="Select file"
+        valueComponent={ValueComponent}
+      />
+      <TextInput label="Name" placeholder="Input location name" />
       <div className="my-3">
         <Button className="bg-mantine-primary float-right">Upload</Button>
       </div>

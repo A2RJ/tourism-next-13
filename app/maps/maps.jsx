@@ -3,8 +3,11 @@
 import "mapbox-gl/dist/mapbox-gl.css";
 import mapboxgl from "mapbox-gl";
 import { useEffect, useRef, useState } from "react";
+import Head from "next/head";
+import { Envs } from "@/config/config";
 
 mapboxgl.accessToken =
+  Envs.MAPBOX_TOKEN ||
   "pk.eyJ1IjoidXRzIiwiYSI6ImNsa3cwd2ZybDBndjYzcm4xYTdkN2oxdDkifQ.6zM6x2aivpKiQlDXSU5OSw";
 
 export default function Maps() {
@@ -17,7 +20,7 @@ export default function Maps() {
   const mapBoxInit = () => {
     const init = new mapboxgl.Map({
       container: mapContainer.current,
-      style: "mapbox://styles/mapbox/streets-v11",
+      style: "mapbox://styles/mapbox/streets-v12",
       center: [lng, lat],
       zoom: zoom,
       renderWorldCopies: false,
@@ -28,7 +31,6 @@ export default function Maps() {
 
   useEffect(() => {
     if (!map.current) {
-      // Get user's current location
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
@@ -38,7 +40,6 @@ export default function Maps() {
         },
         (error) => {
           console.error("Error getting current location:", error);
-          // If there's an error, fallback to default location
           map.current = mapBoxInit();
         }
       );
@@ -47,7 +48,6 @@ export default function Maps() {
 
   useEffect(() => {
     if (map.current) {
-      // Update map center when the state changes
       map.current.setCenter([lng, lat]);
 
       const el = document.createElement("div");
@@ -58,16 +58,28 @@ export default function Maps() {
       el.style.backgroundSize = "100%";
       el.style.borderRadius = "100%";
 
-      // make a marker for each feature and add it to the map
       new mapboxgl.Marker(el)
         .setLngLat([lng, lat])
         .setPopup(
-          new mapboxgl.Popup({ offset: 25 }) // add popups
-            .setHTML(`<h3>Test aja si</h3>`)
+          new mapboxgl.Popup({ offset: 25 }).setHTML(`<h3>Test aja si</h3>`)
         )
         .addTo(map.current);
     }
   }, [lng, lat]);
 
-  return <div ref={mapContainer} className="absolute top-0 w-full h-screen" />;
+  return (
+    <>
+      <Head>
+        <script
+          defer
+          src="https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js"
+        ></script>
+        <link
+          href="https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css"
+          rel="stylesheet"
+        />
+      </Head>
+      <div ref={mapContainer} className="max-w-max h-screen" />;
+    </>
+  );
 }

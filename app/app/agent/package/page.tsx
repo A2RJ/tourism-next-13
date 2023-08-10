@@ -2,7 +2,6 @@
 
 import Table from "@/components/ui/table";
 import { baseAPIURL } from "@/lib/fecthAPI";
-import usePackageStore from "@/state/usePackageStore";
 import { Package } from "@/types/package";
 import { Button } from "@mantine/core";
 import { PlusCircle } from "lucide-react";
@@ -17,7 +16,7 @@ export default function Page() {
     (item) => <>{item.duration}</>,
     (item) => (
       <>
-        <Link href={`/agent/package/edit/${item.id}`}>
+        <Link href={`/app/agent/package/edit/${item.id}`}>
           <Button variant="light">Edit</Button>
         </Link>
         <Link href={`/detail/${item.id}`}>
