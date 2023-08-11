@@ -1,6 +1,3 @@
-import "swiper/css";
-import "swiper/css/pagination";
-
 import { Children } from "@/types/layout";
 import { Sidebar } from "@/components/ui/dashboard/sidebar";
 

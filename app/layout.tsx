@@ -1,4 +1,7 @@
+import "swiper/css";
+import "swiper/css/pagination";
 import "@/styles/globals.css";
+
 import { NextAuthProvider } from "@/components/auth/providers";
 import { Children } from "@/types/layout";
 import type { Metadata } from "next";

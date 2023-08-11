@@ -8,6 +8,7 @@ import {
   Pagination,
   Skeleton,
 } from "@mantine/core";
+import axios from "axios";
 import { AlertCircle, Search } from "lucide-react";
 import React, { useEffect, useState } from "react";
 
@@ -33,7 +34,8 @@ interface ApiResponse<T> {
 }
 
 const Table: React.FC<TableProps> = ({ headers, body, apiUrl }) => {
-  const [activePage, setPage] = useState(1);
+  const [activePage, setPage] = useState<number>(1);
+  const [error, setError] = useState<any>(false);
   const [url, setUrl] = useState(apiUrl);
   const [data, setData] = useState<ApiResponse<TableProps>>({
     meta: {
@@ -50,7 +52,7 @@ const Table: React.FC<TableProps> = ({ headers, body, apiUrl }) => {
     data: [],
   });
   const [loading, setLoading] = useState<boolean>(false);
-  const skeleton = Array.from({ length: 5 }, (_, index) => index + 1);
+  const skeleton = Array.from({ length: 15 }, (_, index) => index + 1);
 
   const pageChanged = (e: number) => {
     setPage(e);
@@ -61,20 +63,21 @@ const Table: React.FC<TableProps> = ({ headers, body, apiUrl }) => {
     const fetchDataFromApi = async () => {
       try {
         setLoading(true);
-        const response = await fetch(url);
-        const responseData = await response.json();
-        setData(responseData);
+        const { data } = await axios.get(url);
+        setData(data);
+        setError(false);
         setLoading(false);
       } catch (error) {
         setLoading(false);
+        setError(true);
       }
     };
 
     fetchDataFromApi();
-  }, [url]);
+  }, [url, activePage]);
 
   const tableBody =
-    data && data.data ? (
+    data && data.data.length > 0 ? (
       data.data.map((dataItem, index) => (
         <tr key={index}>
           <td className="h-12 px-6 text-sm border-slate-200 stroke-slate-500 text-slate-500">
@@ -125,35 +128,49 @@ const Table: React.FC<TableProps> = ({ headers, body, apiUrl }) => {
           </tr>
         </thead>
         <tbody>
-          {loading
-            ? skeleton.map((item, index) => (
-                <tr key={index}>
-                  <td colSpan={headers.length + 1} className="p-1">
-                    <Skeleton height={40} />
-                  </td>
-                </tr>
-              ))
-            : tableBody}
+          {loading &&
+            skeleton.map((item, index) => (
+              <tr key={index}>
+                <td colSpan={headers.length + 1} className="p-1">
+                  <Skeleton height={40} />
+                </td>
+              </tr>
+            ))}
+          {data.data && tableBody}
+          {error && (
+            <tr>
+              <td colSpan={headers.length}>
+                <Center className="py-5">
+                  <AlertCircle className="w-4 mr-1" />
+                  <p>Ups! something error</p>
+                </Center>
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
-      {loading ? (
-        <Group position="right" className="gap-2 mt-1">
-          <Skeleton width={32} height={32} />
-          <Skeleton width={32} height={32} />
-          <Skeleton width={32} height={32} />
-          <Skeleton width={32} height={32} />
-          <Skeleton width={32} height={32} />
-        </Group>
-      ) : (
-        <Pagination
-          onChange={pageChanged}
-          total={data.meta.last_page}
-          siblings={1}
-          value={activePage}
-          disabled={loading}
-          className="mt-1 float-right"
-        />
-      )}
+      <div className="flex justify-between items-center">
+        <p className="text-xs pl-2">{data.meta.total} Results</p>
+        {loading && (
+          <Group position="right" className="gap-2 mt-1">
+            <Skeleton width={32} height={32} />
+            <Skeleton width={32} height={32} />
+            <Skeleton width={32} height={32} />
+            <Skeleton width={32} height={32} />
+            <Skeleton width={32} height={32} />
+          </Group>
+        )}
+        {data.data && (
+          <Pagination
+            onChange={pageChanged}
+            total={data.meta.last_page}
+            siblings={1}
+            value={activePage}
+            disabled={loading}
+            className="mt-1 float-right"
+          />
+        )}
+      </div>
     </div>
   );
 };

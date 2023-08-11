@@ -5,7 +5,6 @@ import { CardsCarousel } from "@/components/package/cardsCarousel";
 import PopularDestinatipon from "@/components/package/popularDestination";
 import Breadcrumb, { BreadcrumbItem } from "@/components/ui/breadcumb";
 import { Button } from "@/components/ui/button";
-import LandingPage from "@/components/ui/custom/LandingPage";
 import { Navigation } from "lucide-react";
 
 export default function Page() {
@@ -19,7 +18,6 @@ export default function Page() {
     <div className="mb-10">
       <Breadcrumb items={breadcrumbItems} />
 
-      <HeroText />
       <PopularDestinatipon />
       <CardsCarousel />
 
