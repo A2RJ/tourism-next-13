@@ -1,41 +1,26 @@
+"use client";
+
 import Link from "next/link";
 import { Button } from "../button";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth";
 import UserButton from "./userButton";
 import ToggleMenu from "./toggleMenu";
-import SearchBar from "@/components/mantine/searchBar";
+import { useSession } from "next-auth/react";
 
-const getSession = async () => {
-  const json = await fetch("http://localhost:3000/api/session", {
-    method: "GET",
-  });
-  const result = await json.json();
-  if (!result.ok)
-    return {
-      authenticated: false,
-      session: null,
-    };
-
-  return result;
-};
-
-export default async function Navbar() {
-  const session = await getServerSession(authOptions);
-
+export default function Navbar() {
+  const session = useSession();
   return (
     <div
       className="h-16 sticky top-0 z-40 backdrop-blur-sm border-b bg-white/30 text-sm py-3"
       id="navbar"
     >
-      <nav className="flex lg:justify-end items-center justify-between w-full min-h-11">
-        <Link href={"/"} className="block lg:hidden text-xl font-semibold">
+      <nav className="flex lg:justify-between items-center justify-between w-full min-h-11">
+        <Link href={"/"} className="text-xl font-semibold">
           Travelin
         </Link>
         <ToggleMenu className="block lg:hidden" />
         <div className="hidden lg:block">
-          {session ? (
-            <UserButton username={session?.user?.name} />
+          {session.data?.user ? (
+            <UserButton username={session?.data?.user?.name} />
           ) : (
             <div className="flex justify-center gap-4 items-center">
               <Link href={"/auth"}>

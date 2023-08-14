@@ -77,7 +77,7 @@ export default function Register() {
       }}
     >
       <ErrorList errors={error} />
-      <label htmlFor="name">Name</label>
+      <label id="name">Name</label>
       <input
         required
         type="text"
@@ -86,7 +86,7 @@ export default function Register() {
         onChange={handleChange}
         style={{ padding: "1rem" }}
       />
-      <label htmlFor="email">Email</label>
+      <label id="email">Email</label>
       <input
         required
         type="email"
@@ -95,7 +95,7 @@ export default function Register() {
         onChange={handleChange}
         style={{ padding: "1rem" }}
       />
-      <label htmlFor="password">Password</label>
+      <label id="password">Password</label>
       <input
         required
         type="password"
@@ -104,7 +104,7 @@ export default function Register() {
         onChange={handleChange}
         style={{ padding: "1rem" }}
       />
-      <label htmlFor="password_confirmation">Konfirmasi Password</label>
+      <label id="password_confirmation">Konfirmasi Password</label>
       <input
         required
         type="password"

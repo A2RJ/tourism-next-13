@@ -1,14 +1,19 @@
-import { ClassValue, clsx } from "clsx"
+import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
-
+ 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export function toUpperCaseEachWord(string: string) {
-  const arr = string.split(" ");
-  for (var i = 0; i < arr.length; i++) {
-    arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
+export function snakeToCamel(obj: Record<string, any>): Record<string, any> {
+  const result: Record<string, any> = {};
+
+  for (const key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      const newKey = key.replace(/_(\w)/g, (_, letter) => letter.toUpperCase());
+      result[newKey] = obj[key];
+    }
   }
-  return arr.join(" ");
+
+  return result;
 }

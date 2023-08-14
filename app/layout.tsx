@@ -1,13 +1,11 @@
-import "@/styles/globals.css";
 import "swiper/css";
 import "swiper/css/pagination";
+import "@/styles/globals.css";
 
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import { NextAuthProvider } from "../components/auth/providers";
+import { NextAuthProvider } from "@/components/auth/providers";
 import { Children } from "@/types/layout";
-
-const inter = Inter({ subsets: ["latin"] });
+import type { Metadata } from "next";
+import MantineLayout from "./mantine-layout";
 
 export const metadata: Metadata = {
   title: "Travelin",
@@ -17,9 +15,13 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Children) {
   return (
     <html lang="en">
-      <NextAuthProvider>
-        <body className={`scroll-smooth ${inter.className}`}>{children}</body>
-      </NextAuthProvider>
+      <body suppressHydrationWarning={true}>
+        <NextAuthProvider>
+          <MantineLayout>
+            <div className="container scroll-smooth">{children}</div>
+          </MantineLayout>
+        </NextAuthProvider>
+      </body>
     </html>
   );
 }

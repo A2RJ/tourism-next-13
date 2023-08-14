@@ -3,9 +3,9 @@
 import { cn } from "@/lib/utils";
 import Menu from "./menu";
 import useToggleMenuStore from "@/state/useToogleMenu";
-import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
+import { useMediaQuery } from "usehooks-ts";
 
 interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {}
 

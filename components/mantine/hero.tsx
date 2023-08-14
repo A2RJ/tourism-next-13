@@ -1,3 +1,5 @@
+"use client";
+
 import {
   createStyles,
   Title,
@@ -13,11 +15,9 @@ const useStyles = createStyles((theme) => ({
   wrapper: {
     position: "relative",
     paddingTop: rem(120),
-    paddingBottom: rem(80),
 
     [theme.fn.smallerThan("sm")]: {
       paddingTop: rem(80),
-      paddingBottom: rem(60),
     },
   },
 
@@ -82,7 +82,7 @@ export function HeroText() {
         </div>
       </div>
       <div className="flex gap-2 justify-center my-4 overflow-x-scroll scrollbar-none">
-        {ListPariwisata.slice(0, 10).map((pariwisata) => (
+        {ListPariwisata.slice(0, 9).map((pariwisata) => (
           <p
             key={pariwisata.name}
             className="border py-1 px-4 cursor-pointer rounded-full hover:border-blue-300 bg-white"

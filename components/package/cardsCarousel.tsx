@@ -1,3 +1,5 @@
+"use client";
+
 import { Carousel } from "@mantine/carousel";
 import { useMediaQuery } from "@mantine/hooks";
 import {

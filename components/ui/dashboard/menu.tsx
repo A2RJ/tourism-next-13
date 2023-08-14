@@ -19,6 +19,7 @@ import {
   User2,
 } from "lucide-react";
 import { Button } from "../button";
+import { LogIn } from "lucide-react";
 
 type Option =
   | "Discover"
@@ -69,61 +70,61 @@ export default function Menu({ option }: { option: Option }) {
     User: [
       {
         name: "My Destination",
-        href: "/user/destination",
+        href: "/app/user/destination",
         icon: <Map />,
       },
       {
         name: "Wish List",
-        href: "/user/wish-list",
+        href: "/app/user/wish-list",
         icon: <ListChecks />,
       },
       {
         name: "Transaction",
-        href: "/user/transaction",
+        href: "/app/user/transaction",
         icon: <Receipt />,
       },
       {
         name: "Notification",
-        href: "/user/notification",
+        href: "/app/user/notification",
         icon: <BellRing />,
       },
     ],
     Agent: [
       {
         name: "Tour Package",
-        href: "/agent/package",
+        href: "/app/agent/package",
         icon: <Package2 />,
       },
       {
         name: "Discount",
-        href: "/agent/discount",
+        href: "/app/agent/discount",
         icon: <Percent />,
       },
       {
         name: "Facility",
-        href: "/agent/facility",
+        href: "/app/agent/facility",
         icon: <ToyBrick />,
       },
       {
         name: "Reservation",
-        href: "/agent/reservation",
+        href: "/app/agent/reservation",
         icon: <Receipt />,
       },
       {
         name: "Withdraw",
-        href: "/agent/withdraw",
+        href: "/app/agent/withdraw",
         icon: <CreditCard />,
       },
       {
         name: "Notification",
-        href: "/agent/notification",
+        href: "/app/agent/notification",
         icon: <BellRing />,
       },
     ],
     Account: [
       {
         name: "Profile",
-        href: "/profile",
+        href: "/app/profile",
         icon: <User2 />,
       },
       {
@@ -136,6 +137,11 @@ export default function Menu({ option }: { option: Option }) {
             signOut();
           },
         },
+      },
+      {
+        name: "Login",
+        href: "/auth",
+        icon: <LogIn />,
       },
     ],
   };
