@@ -1,8 +1,8 @@
-"use client";
+"use server";
 
 import CustomError from "@/components/ui/custom/error";
 
-export default function GlobalError({
+export default async function GlobalError({
   error,
   reset,
 }: {

@@ -1,3 +1,5 @@
+import 'server-only'
+
 const get = () => { }
 
 const create = () => { }
@@ -10,6 +12,6 @@ const update = () => { }
 
 const destroy = () => { }
 
-const regencyAction = { get, create, store, show, update, destroy }
+const districtAction = { get, create, store, show, update, destroy }
 
-export default regencyAction
+export default districtAction

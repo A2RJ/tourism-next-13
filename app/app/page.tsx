@@ -1,11 +1,10 @@
-import { HeroText } from "@/components/mantine/hero";
 import { CardsCarousel } from "@/components/package/cardsCarousel";
 import PopularDestinatipon from "@/components/package/popularDestination";
 import Breadcrumb, { BreadcrumbItem } from "@/components/ui/breadcumb";
 import { Button } from "@/components/ui/button";
 import { Navigation } from "lucide-react";
 
-export default function Page() {
+export default async function Page() {
   const breadcrumbItems: BreadcrumbItem[] = [
     { label: "Home", url: "#" },
     { label: "Discover", url: "#" },
@@ -15,7 +14,6 @@ export default function Page() {
   return (
     <div className="mb-10">
       <Breadcrumb items={breadcrumbItems} />
-
       <PopularDestinatipon />
       <CardsCarousel />
 

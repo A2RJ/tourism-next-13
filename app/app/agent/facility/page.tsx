@@ -1,17 +1,16 @@
 "use client";
 
+import { FACILITY_URL } from "@/action/api_url";
 import { Separator } from "@/components/ui/separator";
 import Table from "@/components/ui/table";
-import { baseAPIURL } from "@/lib/fecthAPI";
-import { Facility } from "@/types/package";
+import { FacilityType } from "@/types/package";
 import { Button } from "@mantine/core";
 import { PlusCircle } from "lucide-react";
 import Link from "next/link";
 
 export default function Page() {
   const tableHeaders = ["Facility Name", "Action"];
-  const apiUrl = `${baseAPIURL}/facility`;
-  const tableBodyColumns: ((item: Facility) => React.ReactNode)[] = [
+  const tableBodyColumns: ((item: FacilityType) => React.ReactNode)[] = [
     (item) => <>{item.facility_name}</>,
     (item) => (
       <>
@@ -43,7 +42,11 @@ export default function Page() {
         </div>
       </div>
       <Separator className="my-4" />
-      <Table headers={tableHeaders} body={tableBodyColumns} apiUrl={apiUrl} />
+      <Table
+        headers={tableHeaders}
+        body={tableBodyColumns}
+        apiUrl={FACILITY_URL}
+      />
     </>
   );
 }

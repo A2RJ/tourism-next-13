@@ -1,56 +1,28 @@
 "use client";
 
+import { RESERVATION_URL } from "@/action/api_url";
 import { Separator } from "@/components/ui/separator";
+import { ApiResponse, ReservationType } from "@/types/package";
+import axios from "axios";
 import { Download } from "lucide-react";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 export default function Page() {
-  const data = [
-    {
-      name: "Anne Richard",
-      email: "anne@site.com",
-      position: "Designer",
-      department: "IT department",
-      status: "Active",
-      progress: "5/5",
-      image: "1",
-      created: "18 Dec, 15:20",
-    },
-    {
-      name: "Samia Kartoon",
-      email: "samia@site.com",
-      position: "Executive director",
-      department: "Marketing",
-      status: "Active",
-      progress: "3/5",
-      image: "1",
-      created: "15 Dec, 14:41",
-    },
-    {
-      name: "David Harrison",
-      email: "david@site.com",
-      position: "Developer",
-      department: "Mobile app",
-      status: "Danger",
-      progress: "3/5",
-      image: "1",
-      created: "15 Dec, 14:41",
-    },
-    {
-      name: "Brian Halligan",
-      email: "brian@site.com",
-      position: "Accountant",
-      department: "Finance",
-      status: "Active",
-      progress: "2/5",
-      image: "1",
-      created: "11 Dec, 18:51",
-    },
-  ];
+  const [reservation, setReservation] =
+    useState<ApiResponse<ReservationType[]>>();
 
-  const Table = ({ item, index }: { item: any; index: any }) => {
+  useEffect(() => {
+    const fecth = async () => {
+      const { data } = await axios.get(`${RESERVATION_URL}/admin`);
+      setReservation(data);
+    };
+    fecth();
+  }, [reservation?.meta.current_page]);
+
+  const Table = ({ item }: { item: ReservationType }) => {
     return (
-      <tr key={index}>
+      <tr>
         <td className="h-px w-px whitespace-nowrap">
           <div className="pl-6 py-3">
             <label className="flex">
@@ -65,10 +37,10 @@ export default function Page() {
         <td className="h-px w-px whitespace-nowrap">
           <div className="pl-6 lg:pl-3 xl:pl-0 pr-6 py-3">
             <div className="flex items-center gap-x-3">
-              {item.status === "Active" ? (
+              {item.payment_status === "Active" ? (
                 <span className="inline-flex items-center justify-center h-[2.375rem] w-[2.375rem] rounded-full bg-gray-300 dark:bg-gray-700">
                   <span className="font-medium text-gray-800 leading-none dark:text-gray-200">
-                    {item.name.charAt(0)}
+                    {item.user.name.charAt(0)}
                   </span>
                 </span>
               ) : (
@@ -76,16 +48,16 @@ export default function Page() {
                   width={0}
                   height={0}
                   className="inline-block h-[2.375rem] w-[2.375rem] rounded-full"
-                  src={item.image}
+                  src={item.user.name}
                   alt="Image Description"
                 />
               )}
               <div className="grow">
                 <span className="block text-sm font-semibold text-gray-800 dark:text-gray-200">
-                  {item.name}
+                  {item.user.name}
                 </span>
                 <span className="block text-sm text-gray-500">
-                  {item.email}
+                  {item.user.email}
                 </span>
               </div>
             </div>
@@ -94,10 +66,7 @@ export default function Page() {
         <td className="h-px w-72 whitespace-nowrap">
           <div className="px-6 py-3">
             <span className="block text-sm font-semibold text-gray-800 dark:text-gray-200">
-              {item.position}
-            </span>
-            <span className="block text-sm text-gray-500">
-              {item.department}
+              {item.package.package_name}
             </span>
           </div>
         </td>
@@ -105,7 +74,7 @@ export default function Page() {
           <div className="px-6 py-3">
             <span
               className={`inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium ${
-                item.status === "Active"
+                item.payment_status === "Active"
                   ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
                   : "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200"
               }`}
@@ -120,30 +89,20 @@ export default function Page() {
               >
                 <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
               </svg>
-              {item.status}
+              {item.payment_status}
             </span>
           </div>
         </td>
         <td className="h-px w-px whitespace-nowrap">
           <div className="px-6 py-3">
             <div className="flex items-center gap-x-3">
-              <span className="text-xs text-gray-500">{item.progress}</span>
-              <div className="flex w-full h-1.5 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-700">
-                <div
-                  className="flex flex-col justify-center overflow-hidden bg-gray-800 dark:bg-gray-200"
-                  role="progressbar"
-                  style={{ width: `${item.progressPercent}%` }}
-                  aria-valuenow={item.progressPercent}
-                  aria-valuemin={0}
-                  aria-valuemax={100}
-                />
-              </div>
+              <span className="text-xs text-gray-500">{item.revenue}</span>
             </div>
           </div>
         </td>
         <td className="h-px w-px whitespace-nowrap">
           <div className="px-6 py-3">
-            <span className="text-sm text-gray-500">{item.created}</span>
+            <span className="text-sm text-gray-500">{item.created_at}</span>
           </div>
         </td>
         <td className="h-px w-px whitespace-nowrap">
@@ -447,7 +406,7 @@ export default function Page() {
                         <th scope="col" className="px-6 py-3 text-left">
                           <div className="flex items-center gap-x-2">
                             <span className="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
-                              Position
+                              Package Name
                             </span>
                           </div>
                         </th>
@@ -461,7 +420,7 @@ export default function Page() {
                         <th scope="col" className="px-6 py-3 text-left">
                           <div className="flex items-center gap-x-2">
                             <span className="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-gray-200">
-                              Portfolio
+                              Revenue
                             </span>
                           </div>
                         </th>
@@ -476,8 +435,8 @@ export default function Page() {
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
-                      {data.map((item: any, index: any) => (
-                        <Table key={index} item={item} index={index} />
+                      {reservation?.data.map((item: any) => (
+                        <Table key={item.id} item={item} />
                       ))}
                     </tbody>
                   </table>

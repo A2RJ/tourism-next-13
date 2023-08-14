@@ -1,9 +1,9 @@
 import type { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
-import { baseAPIURL } from "./fecthAPI";
-import axios from "axios";
 import { signJWT } from "./jwt";
+import { axiosServerOnly } from "@/action";
+import { API_URL } from "@/action/api_url";
 
 interface ErrorResponse {
     errors: ErrorDetail[];
@@ -62,10 +62,7 @@ export const authOptions: NextAuthOptions = {
                         return null;
                     }
                     const { email, password } = credentials
-                    const { data } = await axios.post(`${baseAPIURL}/auth/login`, {
-                        email,
-                        password,
-                    });
+                    const { data } = await axiosServerOnly(`${API_URL}/auth/login`, "POST", { email, password });
                     return {
                         id: data.user.id,
                         name: data.user.name,
@@ -107,7 +104,7 @@ export const authOptions: NextAuthOptions = {
                         }),
                         "1d"
                     );
-                    const result = await fetch(`${baseAPIURL}/auth/callback`, {
+                    const result = await fetch(`${API_URL}/auth/callback`, {
                         method: "POST",
                         headers: {
                             Authorization: `Bearer ${tokenJwt}`,
@@ -142,13 +139,5 @@ export const authOptions: NextAuthOptions = {
         signIn: '/auth',
         error: '/auth',
     },
-    debug: false,
-    // jwt: {
-    //     async encode({ secret, token }) {
-    //         return jwt.sign(token, secret)
-    //     },
-    //     async decode({ secret, token }) {
-    //         return jwt.verify(token, secret)
-    //     },
-    // },
+    debug: false
 };

@@ -1,12 +1,12 @@
 "use client";
 
+import { DISCOUNT_URL } from "@/action/api_url";
 import { Separator } from "@/components/ui/separator";
 import Table from "@/components/ui/table";
-import { baseAPIURL } from "@/lib/fecthAPI";
+import { DiscountType } from "@/types/package";
 import { Button } from "@mantine/core";
 import { PlusCircle } from "lucide-react";
 import Link from "next/link";
-import { Discount } from "@/types/package";
 
 export default function Page() {
   const tableHeaders = [
@@ -16,8 +16,7 @@ export default function Page() {
     "End",
     "Action",
   ];
-  const apiUrl = `${baseAPIURL}/discount`;
-  const tableBodyColumns: ((item: Discount) => React.ReactNode)[] = [
+  const tableBodyColumns: ((item: DiscountType) => React.ReactNode)[] = [
     (item) => <>{item.discount_name}</>,
     (item) => <>{item.discount_percentage}%</>,
     (item) => <>{item.start_date}</>,
@@ -50,7 +49,11 @@ export default function Page() {
         </div>
       </div>
       <Separator className="my-4" />
-      <Table headers={tableHeaders} body={tableBodyColumns} apiUrl={apiUrl} />
+      <Table
+        headers={tableHeaders}
+        body={tableBodyColumns}
+        apiUrl={DISCOUNT_URL}
+      />
     </>
   );
 }
