@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathname } from "next/navigation";
+import { redirect, usePathname } from "next/navigation";
 import Link from "next/link";
 import React from "react";
 import { signOut } from "next-auth/react";
@@ -135,14 +135,15 @@ export default function Menu({ option }: { option: Option }) {
           type: "onClick",
           handler: () => {
             signOut();
+            redirect("/");
           },
         },
       },
-      {
-        name: "Login",
-        href: "/auth",
-        icon: <LogIn />,
-      },
+      // {
+      //   name: "Login",
+      //   href: "/auth",
+      //   icon: <LogIn />,
+      // },
     ],
   };
 

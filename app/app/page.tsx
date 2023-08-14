@@ -1,5 +1,3 @@
-"use client";
-
 import { HeroText } from "@/components/mantine/hero";
 import { CardsCarousel } from "@/components/package/cardsCarousel";
 import PopularDestinatipon from "@/components/package/popularDestination";
