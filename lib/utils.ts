@@ -1,5 +1,6 @@
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
+import moment from 'moment'
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -42,3 +43,21 @@ export function objectToQueryParamString(obj: queryParamsType): string {
 
   return `?${queryParams.join('&')}`;
 }
+
+export function formatDateTime(input: string) {
+  return moment(input).format('MMMM Do YYYY, h:mm:ss A')
+}
+
+export function formatDateTimeFromNow(input: string) {
+  return moment(input, 'YYYYMMDD').fromNow()
+}
+
+export const debounce = <T extends (...args: any[]) => any>(func: T, wait: number) => {
+  let timerId: ReturnType<typeof setTimeout>;
+  return (...args: Parameters<T>) => {
+    if (timerId) clearTimeout(timerId);
+    timerId = setTimeout(() => {
+      func(...args);
+    }, wait);
+  };
+};

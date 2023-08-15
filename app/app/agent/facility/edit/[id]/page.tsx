@@ -4,7 +4,7 @@ import { Separator } from "@/components/ui/separator";
 import FacilityForm from "../../form";
 import { useEffect, useState } from "react";
 import { FacilityType } from "@/types/package";
-import { API_URL } from "@/state/action";
+import { API_URL } from "@/action/api_url";
 
 export default function Page({ params }: { params: { id: string } }) {
   const [edit, setEdit] = useState<Partial<FacilityType>>({

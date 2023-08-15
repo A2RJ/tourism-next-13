@@ -52,7 +52,7 @@ export default function Page() {
       <Table
         headers={tableHeaders}
         body={tableBodyColumns}
-        apiUrl={DISCOUNT_URL}
+        apiUrl={`${DISCOUNT_URL}/admin`}
       />
     </>
   );

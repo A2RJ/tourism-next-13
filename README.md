@@ -1,53 +1,86 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Tourism App
 
-## Getting Started
+## Where are we going today?
 
-First, run the development server:
+### Sprint
+- 
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+### Landing page
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- [-] search
+- [-] pagination
+- [-] detail
+- - [-] share
+- - [-] add to wish list
+- - [-] order now
+- - [-] related tour
+- [-] dynamic table
+- - [-] show data
+- - [-] pagination
+- - [-] searchable
+- - [-] per page
+- [-] export to xslx
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### User
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- [-] Register
+- [-] Login
+- [-] Login with google
+- [-] Dashboard
+- - [-] search
+- - [-] tour package pagination
+- [-] nearest
+- [-] my destination
+- - [-] open maps
+- - [-] detail
+- [-] wish list
+- - [-] detail
+- - [-] delete
+- [-] transaction
+- - [-] detail
 
-## Learn More
+### Tour Agent
 
-To learn more about Next.js, take a look at the following resources:
+- [-] tour package
+- - [-] read
+- - [-] create
+- - [-] update
+- - [-] delete
+- [-] discount
+- - [-] read
+- - [-] create
+- - [-] update
+- - [-] delete
+- [-] facility
+- - [-] read
+- - [-] create
+- - [-] update
+- - [-] delete
+- [-] reservation
+- - [-] read
+- - [-] detail (package, payment, user, status)
+- [-] transaction
+- - [-] journal transaction from transaction and withdraw
+- [-] withdraw
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Admin
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [-] tour package
+- - [-] read
+- [-] transaction
+- - [-] journal transaction from all reservation
 
 ### Thirtd party
+
 - [preline - tailwind css](https://preline.co)
 - [ui.shadcn - tailwind css](https://ui.shadcn.com)
 - [wind-ui - tailwind css](https://wind-ui.com)
 - [floatui - tailwind css](https://floatui.com)
 - [mambaui - tailwind css](https://www.mambaui.com)
 - [daisyui - tailwind css](https://daisyui.com)
-
-### Experimental
-- coba gunakan conditional untuk mengecek auth, jadikan komponen cek auth jadi child komponen, jika ada auth maka tampilkan halaman jika tidak maka redirect saja
-
+ 
 ### Tutorial
+
 - [Next-atuh](https://codevoweb.com/setup-and-use-nextauth-in-nextjs-13-app-directory/?utm_content=bd-true)
 - https://nextjs.org/docs/pages/api-reference/components/image#priority
 - [server action and error hanlding](https://makerkit.dev/blog/tutorials/nextjs-server-actions)
-### Sprint
-- Auth (22/06/2023)
-- Manage tour package 

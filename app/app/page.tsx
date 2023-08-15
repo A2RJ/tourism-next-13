@@ -1,3 +1,4 @@
+import SearchBar from "@/components/mantine/searchBar";
 import { CardsCarousel } from "@/components/package/cardsCarousel";
 import PopularDestinatipon from "@/components/package/popularDestination";
 import Breadcrumb, { BreadcrumbItem } from "@/components/ui/breadcumb";
@@ -14,9 +15,9 @@ export default async function Page() {
   return (
     <div className="mb-10">
       <Breadcrumb items={breadcrumbItems} />
+      <SearchBar className="lg:w-full" />
       <PopularDestinatipon />
       <CardsCarousel />
-
       <div className="h-60 border rounded-lg gap-4 flex flex-col justify-center items-center mt-10 border-blue-300">
         <h6 className="max-w-lg text-center">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error

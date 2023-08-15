@@ -2,7 +2,7 @@
 
 import FormPackage from "../form";
 import { snakeToCamel } from "@/lib/utils";
-import { API_URL } from "@/state/action";
+import { API_URL } from "@/action/api_url";
 import { PackageType } from "@/types/package";
 import axios from "axios";
 

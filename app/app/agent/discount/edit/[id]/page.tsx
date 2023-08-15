@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Separator } from "@/components/ui/separator";
 import DiscountForm from "../../form";
 import { DiscountType } from "@/types/package";
-import { API_URL } from "@/state/action";
+import { API_URL } from "@/action/api_url";
 
 export default function Page({ params }: { params: { id: string } }) {
   const [data, setData] = useState<Partial<DiscountType>>({

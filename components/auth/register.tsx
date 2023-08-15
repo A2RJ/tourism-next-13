@@ -1,6 +1,6 @@
 "use client";
 
-import { API_URL } from "@/state/action";
+import { API_URL } from "@/action/api_url";
 import axios from "axios";
 import { signIn } from "next-auth/react";
 import { ChangeEvent, useState } from "react";

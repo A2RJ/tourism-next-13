@@ -1,7 +1,7 @@
 "use client";
 
+import { API_URL } from "@/action/api_url";
 import Table from "@/components/ui/table";
-import { API_URL } from "@/state/action";
 import { PackageType } from "@/types/package";
 import { Button } from "@mantine/core";
 import { PlusCircle } from "lucide-react";
@@ -16,9 +16,6 @@ export default function Page() {
     (item) => <>{item.duration}</>,
     (item) => (
       <div className="space-x-1">
-        <Link href={`/app/agent/package/edit/${item.id}`}>
-          <Button variant="light">Edit</Button>
-        </Link>
         <Link href={`/maps/${item.id}`}>
           <Button variant="outline">Open Maps</Button>
         </Link>

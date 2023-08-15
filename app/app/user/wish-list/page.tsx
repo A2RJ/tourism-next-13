@@ -1,7 +1,7 @@
 "use client";
 
 import Table from "@/components/ui/table";
-import { API_URL } from "@/state/action";
+import { API_URL } from "@/action/api_url";
 import { PackageType } from "@/types/package";
 import { Button } from "@mantine/core";
 import Link from "next/link";
@@ -15,6 +15,9 @@ export default function Page() {
     (item) => <>{item.duration}</>,
     (item) => (
       <>
+        <Link href={`/detail/${item.id}`}>
+          <Button className="bg-mantine-primary">Detail</Button>
+        </Link>
         <Button variant="light">Delete</Button>
       </>
     ),
