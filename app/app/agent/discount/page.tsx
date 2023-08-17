@@ -3,6 +3,7 @@
 import { DISCOUNT_URL } from "@/action/api_url";
 import { Separator } from "@/components/ui/separator";
 import Table from "@/components/ui/table";
+import { formatDateRange } from "@/lib/utils";
 import { DiscountType } from "@/types/package";
 import { Button } from "@mantine/core";
 import { PlusCircle } from "lucide-react";
@@ -14,6 +15,7 @@ export default function Page() {
     "Percentage",
     "Start",
     "End",
+    "Countdown",
     "Action",
   ];
   const tableBodyColumns: ((item: DiscountType) => React.ReactNode)[] = [
@@ -21,9 +23,10 @@ export default function Page() {
     (item) => <>{item.discount_percentage}%</>,
     (item) => <>{item.start_date}</>,
     (item) => <>{item.end_date}</>,
+    (item) => <>{formatDateRange(item.start_date, item.end_date)}</>,
     (item) => (
       <>
-        <Link href={`/agent/discount/edit/${item.id}`}>
+        <Link href={`/app/agent/discount/edit/${item.id}`}>
           <Button variant="light">Edit</Button>
         </Link>
         <Button className="bg-mantine-primary" onClick={() => alert(item.id)}>
@@ -41,7 +44,7 @@ export default function Page() {
           <p className="text-sm text-muted-foreground">Manage your discount.</p>
         </div>
         <div className="ml-auto mr-4">
-          <Link href="/agent/discount/create">
+          <Link href="/app/agent/discount/create">
             <Button className="bg-mantine-primary" leftIcon={<PlusCircle />}>
               Add Discount
             </Button>

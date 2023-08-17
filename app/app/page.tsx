@@ -1,11 +1,14 @@
-import SearchBar from "@/components/mantine/searchBar";
-import { CardsCarousel } from "@/components/package/cardsCarousel";
+"use client";
+
 import PopularDestinatipon from "@/components/package/popularDestination";
 import Breadcrumb, { BreadcrumbItem } from "@/components/ui/breadcumb";
-import { Button } from "@/components/ui/button";
-import { Navigation } from "lucide-react";
+import { debounce } from "@/lib/utils";
+import { useSearchStore } from "@/state/useSearchStore";
+import { Select, TextInput } from "@mantine/core";
+import { Search } from "lucide-react";
 
 export default async function Page() {
+  const { setKeyword } = useSearchStore((state) => state);
   const breadcrumbItems: BreadcrumbItem[] = [
     { label: "Home", url: "#" },
     { label: "Discover", url: "#" },
@@ -15,20 +18,29 @@ export default async function Page() {
   return (
     <div className="mb-10">
       <Breadcrumb items={breadcrumbItems} />
-      <SearchBar className="lg:w-full" />
-      <PopularDestinatipon />
-      <CardsCarousel />
-      <div className="h-60 border rounded-lg gap-4 flex flex-col justify-center items-center mt-10 border-blue-300">
-        <h6 className="max-w-lg text-center">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error
-          aspernatur corporis numquam ipsam odio optio placeat. Sed cum commodi
-          provident!
-        </h6>
-        <Button className="bg-blue-300 text-black">
-          <Navigation className="mr-2 w-4" />
-          Turn on your location
-        </Button>
+      <div className="grid grid-cols-12 mb-2 gap-2">
+        <Select
+          className="col-span-3"
+          placeholder="Category"
+          searchable
+          clearable
+          data={[
+            { value: "15", label: "Category 1" },
+            { value: "50", label: "Category 2" },
+            { value: "100", label: "Category 3" },
+          ]}
+          onChange={(e) => {}}
+        />
+        <TextInput
+          className="col-span-9"
+          placeholder="Search"
+          rightSection={<Search className="w-5 text-slate-400" />}
+          onChange={debounce((e) => {
+            setKeyword(e.target.value);
+          }, 500)}
+        />
       </div>
+      <PopularDestinatipon />
     </div>
   );
 }

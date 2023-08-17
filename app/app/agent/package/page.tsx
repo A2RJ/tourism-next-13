@@ -8,10 +8,17 @@ import { PlusCircle } from "lucide-react";
 import Link from "next/link";
 
 export default function Page() {
-  const tableHeaders = ["Package Name", "Price", "Duration", "Action"];
+  const tableHeaders = [
+    "Package Name",
+    "Price",
+    "Total Reservation",
+    "Duration",
+    "Action",
+  ];
   const tableBodyColumns: ((item: PackageType) => React.ReactNode)[] = [
     (item) => <>{item.package_name}</>,
-    (item) => <>{item.price}</>,
+    (item) => <>RP. {item.price}</>,
+    (item) => <>RP. {(item.price as any) * 10} (x10)</>,
     (item) => <>{item.duration}</>,
     (item) => (
       <>

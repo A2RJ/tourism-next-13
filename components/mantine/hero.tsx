@@ -7,9 +7,13 @@ import {
   Button,
   Container,
   rem,
+  TextInput,
+  ActionIcon,
 } from "@mantine/core";
-import SearchBar from "./searchBar";
 import { ListPariwisata } from "../package/pariwisata";
+import { IconArrowRight, IconSearch } from "@tabler/icons-react";
+import { useSearchStore } from "@/state/useSearchStore";
+import { debounce } from "@/lib/utils";
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -58,6 +62,7 @@ const useStyles = createStyles((theme) => ({
 
 export function HeroText() {
   const { classes } = useStyles();
+  const { setKeyword } = useSearchStore((state) => state);
 
   return (
     <Container className={classes.wrapper} size={1400}>
@@ -65,7 +70,7 @@ export function HeroText() {
         <Title className={classes.title}>
           <Text component="span" className={classes.highlight} inherit>
             Uncovering
-          </Text>{" "}
+          </Text>
           beautiful places
         </Title>
 
@@ -78,7 +83,27 @@ export function HeroText() {
         </Container>
 
         <div className="flex mt-5">
-          <SearchBar className="lg:w-[70%] mx-auto" />
+          <TextInput
+            className="lg:w-[70%] mx-auto"
+            icon={<IconSearch size="1.1rem" stroke={1.5} />}
+            radius="xl"
+            size="md"
+            rightSection={
+              <ActionIcon
+                size={32}
+                radius="xl"
+                className="bg-blue-500"
+                variant="filled"
+              >
+                <IconArrowRight size="1.1rem" stroke={1.5} />
+              </ActionIcon>
+            }
+            placeholder="Where are we going today?"
+            rightSectionWidth={42}
+            onChange={debounce((e) => {
+              setKeyword(e.target.value);
+            }, 500)}
+          />
         </div>
       </div>
       <div className="flex gap-2 justify-center my-4 overflow-x-scroll scrollbar-none">

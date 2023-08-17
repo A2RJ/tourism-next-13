@@ -3,18 +3,10 @@
 import { RESERVATION_URL } from "@/action/api_url";
 import Table from "@/components/ui/table";
 import { formatDateTime, formatDateTimeFromNow } from "@/lib/utils";
-import { ApiResponse, ReservationType } from "@/types/package";
+import { ReservationType } from "@/types/package";
 import { Button, Loader, Menu, Select, TextInput } from "@mantine/core";
 import { IconPhoto, IconSearch } from "@tabler/icons-react";
-import {
-  IconCheck,
-  IconMessageCircle,
-  IconSettings,
-} from "@tabler/icons-react";
-import axios from "axios";
-import { Download, Search, X } from "lucide-react";
-import Link from "next/link";
-import { useEffect, useState } from "react";
+import { Download } from "lucide-react";
 
 export default function Page() {
   const headers = [
@@ -34,7 +26,12 @@ export default function Page() {
     (item) => <>{item.package.package_name}</>,
     (item) => <>{item.payment_status}</>,
     (item) => <>RP. {item.revenue}</>,
-    (item) => <>{formatDateTime(item.created_at)}</>,
+    (item) => (
+      <>
+        {formatDateTime(item.created_at)},{" "}
+        {formatDateTimeFromNow(item.created_at)}
+      </>
+    ),
     (item) => (
       <>
         <Menu shadow="md" width={200}>

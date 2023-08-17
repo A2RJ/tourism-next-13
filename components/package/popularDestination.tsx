@@ -6,18 +6,25 @@ import tourPackage from "@/action/package";
 import { Pagination } from "@mantine/core";
 import { IconChevronRight, IconChevronLeft } from "@tabler/icons-react";
 import { CardPackageCarousal } from "./cardPackageCarousal";
+import { useSearchStore } from "@/state/useSearchStore";
 
 export default function PopularDestinatipon() {
-  const [destination, setDestination] = useState<ApiResponse<PackageType>>();
   const [activePage, setPage] = useState(1);
+  const { keyword } = useSearchStore((state) => state);
+  const [destination, setDestination] = useState<ApiResponse<PackageType>>();
 
   useEffect(() => {
     const fecth = async () => {
-      const data = await tourPackage.get({ page: activePage, per_page: 16 });
+      const data = await tourPackage.get({
+        page: activePage,
+        per_page: 16,
+        keyword,
+      });
       setDestination(data);
     };
     fecth();
-  }, [activePage]);
+  }, [activePage, keyword]);
+
   return (
     <div className="mb-4 mt-6">
       <h4 className="font-extrabold pb-6">Popular Destination</h4>

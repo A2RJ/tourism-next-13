@@ -92,7 +92,7 @@ const Table: React.FC<TableProps> = ({ headers, body, apiUrl }) => {
     };
 
     fetchDataFromApi();
-  }, [url, activePage]);
+  }, [url]);
 
   const tableBody = data?.data?.map((dataItem, index) => (
     <tr key={index}>
