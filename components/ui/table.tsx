@@ -1,6 +1,7 @@
 "use client";
 
-import { debounce } from "@/lib/utils";
+import { bearerToken, debounce } from "@/lib/utils";
+import useAuth from "@/state/useAuthStore";
 import {
   Center,
   Group,
@@ -36,6 +37,7 @@ interface ApiResponse<T> {
 }
 
 const Table: React.FC<TableProps> = ({ headers, body, apiUrl }) => {
+  const { token } = useAuth();
   const [loading, setLoading] = useState<boolean>(false);
   const [activePage, setPage] = useState<number>(1);
   const [error, setError] = useState<any>(false);
@@ -81,7 +83,11 @@ const Table: React.FC<TableProps> = ({ headers, body, apiUrl }) => {
     const fetchDataFromApi = async () => {
       try {
         setLoading(true);
-        const { data } = await axios.get(url);
+        const { data } = await axios.get(url, {
+          headers: {
+            Authorization: bearerToken(token),
+          },
+        });
         setData(data);
         setError(false);
         setLoading(false);
@@ -92,7 +98,7 @@ const Table: React.FC<TableProps> = ({ headers, body, apiUrl }) => {
     };
 
     fetchDataFromApi();
-  }, [url]);
+  }, [url, token]);
 
   const tableBody = data?.data?.map((dataItem, index) => (
     <tr key={index}>

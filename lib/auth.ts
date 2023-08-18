@@ -4,6 +4,10 @@ import GoogleProvider from "next-auth/providers/google";
 import { signJWT } from "./jwt";
 import { axiosServerOnly } from "@/action";
 import { API_URL } from "@/action/api_url";
+import axios from "axios";
+import { UserSession } from "@/state/useAuthStore";
+import { JWT } from "next-auth/jwt";
+import { AdapterUser } from "next-auth/adapters";
 
 interface ErrorResponse {
     errors: ErrorDetail[];
@@ -38,7 +42,6 @@ function convertToQueryParams(response: ErrorResponse | MessageResponse): string
 
     return queryParams
 }
-
 
 export const authOptions: NextAuthOptions = {
     session: {
@@ -104,28 +107,24 @@ export const authOptions: NextAuthOptions = {
                         }),
                         "1d"
                     );
-                    const result = await fetch(`${API_URL}/auth/callback`, {
-                        method: "POST",
+                    const { data } = await axios.post(`${API_URL}/auth/callback`, {}, {
                         headers: {
                             Authorization: `Bearer ${tokenJwt}`,
                         },
                     });
-                    const resultJson = await result.json();
-                    if (!result.ok) {
-                        throw resultJson;
-                    }
-
                     token = {
                         ...token,
-                        access_token: resultJson.access_token,
+                        access_token: data.access_token,
                     };
                 }
                 return token;
             } catch (error) {
+                console.log((error));
+
                 throw error;
             }
         },
-        session: ({ session, token }) => {
+        session: ({ session, token }: { session: any, token: JWT, user: AdapterUser }) => {
             return {
                 ...session,
                 user: {

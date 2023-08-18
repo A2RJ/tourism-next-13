@@ -97,7 +97,7 @@ export function CardPackageCarousal({ item }: { item: PackageType }) {
         >
           <Carousel.Slide>
             <Badge className="fixed top-0 right-0 m-1" variant="light">
-              25% off
+              {item.discount.discount_percentage}% off
             </Badge>
             <Image
               alt="thumbnail"

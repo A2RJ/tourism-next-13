@@ -2,6 +2,8 @@
 
 import { PACKAGE_URL } from "@/action/api_url";
 import Table from "@/components/ui/table";
+import { bearerToken } from "@/lib/utils";
+import useAuth from "@/state/useAuthStore";
 import { PackageType } from "@/types/package";
 import { Button } from "@mantine/core";
 import { PlusCircle } from "lucide-react";
@@ -42,7 +44,7 @@ export default function Page() {
           </p>
         </div>
         <div className="ml-auto">
-          <Link href={"/agent/package/create"}>
+          <Link href={"/app/agent/package/create"}>
             <Button className="bg-mantine-primary" leftIcon={<PlusCircle />}>
               Add Package
             </Button>

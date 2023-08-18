@@ -102,3 +102,7 @@ export function formatDateRange(start: Date, end: Date): string {
 
   return parts.join(', ');
 }
+
+export const bearerToken = (token: string | boolean) => {
+  return `Bearer ${token}`
+}

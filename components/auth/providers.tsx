@@ -1,11 +1,19 @@
 "use client";
 
+import { ReactNode } from "react";
 import { SessionProvider } from "next-auth/react";
+import CheckAuth from "./check-auth";
 
-type Props = {
-  children?: React.ReactNode;
+interface NextAuthProviderProps {
+  children: ReactNode;
+}
+
+const NextAuthProvider = ({ children }: NextAuthProviderProps) => {
+  return (
+    <SessionProvider>
+      <CheckAuth>{children}</CheckAuth>
+    </SessionProvider>
+  );
 };
 
-export const NextAuthProvider = ({ children }: Props) => {
-  return <SessionProvider>{children}</SessionProvider>;
-};
+export default NextAuthProvider;

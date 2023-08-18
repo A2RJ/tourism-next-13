@@ -35,6 +35,7 @@ export type PackageType = {
   village_id: string
   discount_id: string
   user: User
+  discount: DiscountType
   images: ImageType[]
 }
 

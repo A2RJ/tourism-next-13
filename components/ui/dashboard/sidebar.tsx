@@ -21,7 +21,7 @@ export function Sidebar({ className }: SidebarProps) {
   return (
     <div
       className={cn(
-        "pb-12 w-64 h-screen border-r fixed transition-transform ",
+        "pb-12 w-64 h-screen border-r fixed transition-transform overflow-scroll scrollbar-none ",
         shouldShowSidebar
           ? "block z-50 bg-white translate-x-0 duration-700 "
           : "hidden -translate-x-full ",
