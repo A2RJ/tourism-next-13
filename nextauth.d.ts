@@ -1,18 +1,10 @@
 import { DefaultSession, DefaultUser } from "next-auth";
-
-type AccessToken = {
-    type: string;
-    token: string;
-    expires_at: string;
-};
+import { AccessToken, UserType } from "./types/user";
 
 declare module "next-auth" {
     interface User extends DefaultUser { }
     interface Session {
-        user: {
-            id: string
-            name: string
-            email: string
+        user: UserType & {
             access_token: AccessToken;
         },
         expires: Date

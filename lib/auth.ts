@@ -2,10 +2,8 @@ import type { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import { signJWT } from "./jwt";
-import { axiosServerOnly } from "@/action";
 import { API_URL } from "@/action/api_url";
 import axios from "axios";
-import { UserSession } from "@/state/useAuthStore";
 import { JWT } from "next-auth/jwt";
 import { AdapterUser } from "next-auth/adapters";
 
@@ -65,7 +63,7 @@ export const authOptions: NextAuthOptions = {
                         return null;
                     }
                     const { email, password } = credentials
-                    const { data } = await axiosServerOnly(`${API_URL}/auth/login`, "POST", { email, password });
+                    const { data } = await axios.post(`${API_URL}/auth/login`, { email, password });
                     return {
                         id: data.user.id,
                         name: data.user.name,
@@ -114,7 +112,8 @@ export const authOptions: NextAuthOptions = {
                     });
                     token = {
                         ...token,
-                        access_token: data.access_token,
+                        ...data,
+                        // access_token: data.access_token,
                     };
                 }
                 return token;
@@ -129,7 +128,8 @@ export const authOptions: NextAuthOptions = {
                 ...session,
                 user: {
                     ...session.user,
-                    access_token: token.access_token,
+                    ...token
+                    // access_token: token.access_token,
                 },
             };
         },

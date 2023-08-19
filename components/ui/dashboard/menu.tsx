@@ -4,6 +4,7 @@ import { redirect, usePathname } from "next/navigation";
 import Link from "next/link";
 import React from "react";
 import { signOut } from "next-auth/react";
+import { Button } from "../button";
 import {
   Map,
   Receipt,
@@ -18,17 +19,15 @@ import {
   LogOut,
   User2,
 } from "lucide-react";
-import { Button } from "../button";
-import { LogIn } from "lucide-react";
 
 type Option =
-  | "Discover"
-  | "User"
-  | "Agent"
-  | "Uts"
-  | "Admin"
-  | "Account"
-  | "Pemda";
+  | "discover"
+  | "tourist"
+  | "agent"
+  | "uts"
+  | "admin"
+  | "account"
+  | "pemda";
 
 type Action = "onClick";
 
@@ -43,19 +42,19 @@ type MenuItem = {
 };
 
 type Menus = {
-  Discover?: MenuItem[];
-  User?: MenuItem[];
-  Agent?: MenuItem[];
-  Uts?: MenuItem[];
-  Admin?: MenuItem[];
-  Account?: MenuItem[];
-  Pemda?: MenuItem[];
+  discover?: MenuItem[];
+  tourist?: MenuItem[];
+  agent?: MenuItem[];
+  uts?: MenuItem[];
+  admin?: MenuItem[];
+  account?: MenuItem[];
+  pemda?: MenuItem[];
 };
 
-export default function Menu({ option }: { option: Option }) {
+export default function Menu({ option }: { option: Option | undefined }) {
   const pathname = usePathname();
   const menus: Menus = {
-    Discover: [
+    discover: [
       {
         name: "Browse",
         href: "/",
@@ -67,7 +66,7 @@ export default function Menu({ option }: { option: Option }) {
         icon: <Radio />,
       },
     ],
-    User: [
+    tourist: [
       {
         name: "My Destination",
         href: "/app/user/destination",
@@ -89,7 +88,7 @@ export default function Menu({ option }: { option: Option }) {
         icon: <BellRing />,
       },
     ],
-    Agent: [
+    agent: [
       {
         name: "Tour Package",
         href: "/app/agent/package",
@@ -121,7 +120,7 @@ export default function Menu({ option }: { option: Option }) {
         icon: <BellRing />,
       },
     ],
-    Account: [
+    account: [
       {
         name: "Profile",
         href: "/app/profile",
@@ -139,22 +138,18 @@ export default function Menu({ option }: { option: Option }) {
           },
         },
       },
-      // {
-      //   name: "Login",
-      //   href: "/auth",
-      //   icon: <LogIn />,
-      // },
     ],
   };
 
   return (
-    <div className="px-4 py-2">
-      <h2 className="mb-2 px-2 text-lg font-semibold tracking-tight">
-        {option}
-      </h2>
-      <div className="space-y-1">
-        {menus[option] ? (
-          menus[option]?.map(
+    option && (
+      <div className="px-4 py-2">
+        <h2 className="mb-2 px-2 text-lg font-semibold tracking-tight">
+          {option?.charAt(0).toUpperCase()}
+          {option?.slice(1)}
+        </h2>
+        <div className="space-y-1">
+          {menus[option]?.map(
             ({ name, href, icon: Icon, action }: MenuItem, index: number) => {
               const isActive = pathname === href;
               const url = action ? "#" : href;
@@ -173,11 +168,9 @@ export default function Menu({ option }: { option: Option }) {
                 </Link>
               );
             }
-          )
-        ) : (
-          <p>No menu items found for {option}</p>
-        )}
+          )}
+        </div>
       </div>
-    </div>
+    )
   );
 }
