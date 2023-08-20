@@ -1,20 +1,23 @@
 "use client";
 
 import Table from "@/components/ui/table";
-import { baseAPIURL } from "@/lib/fecthAPI";
-import { Package } from "@/types/package";
+import { API_URL } from "@/action/api_url";
+import { PackageType } from "@/types/package";
 import { Button } from "@mantine/core";
 import Link from "next/link";
 
 export default function Page() {
   const tableHeaders = ["Package Name", "Price", "Duration", "Action"];
-  const apiUrl = `${baseAPIURL}/tour-package`;
-  const tableBodyColumns: ((item: Package) => React.ReactNode)[] = [
+  const apiUrl = `${API_URL}/tour-package`;
+  const tableBodyColumns: ((item: PackageType) => React.ReactNode)[] = [
     (item) => <>{item.package_name}</>,
     (item) => <>{item.price}</>,
     (item) => <>{item.duration}</>,
     (item) => (
       <>
+        <Link href={`/detail/${item.id}`}>
+          <Button className="bg-mantine-primary">Detail</Button>
+        </Link>
         <Button variant="light">Delete</Button>
       </>
     ),

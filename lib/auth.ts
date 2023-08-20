@@ -1,9 +1,11 @@
 import type { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
-import { baseAPIURL } from "./fecthAPI";
-import axios from "axios";
 import { signJWT } from "./jwt";
+import { API_URL } from "@/action/api_url";
+import axios from "axios";
+import { JWT } from "next-auth/jwt";
+import { AdapterUser } from "next-auth/adapters";
 
 interface ErrorResponse {
     errors: ErrorDetail[];
@@ -39,7 +41,6 @@ function convertToQueryParams(response: ErrorResponse | MessageResponse): string
     return queryParams
 }
 
-
 export const authOptions: NextAuthOptions = {
     session: {
         strategy: "jwt",
@@ -62,10 +63,7 @@ export const authOptions: NextAuthOptions = {
                         return null;
                     }
                     const { email, password } = credentials
-                    const { data } = await axios.post(`${baseAPIURL}/auth/login`, {
-                        email,
-                        password,
-                    });
+                    const { data } = await axios.post(`${API_URL}/auth/login`, { email, password });
                     return {
                         id: data.user.id,
                         name: data.user.name,
@@ -107,33 +105,31 @@ export const authOptions: NextAuthOptions = {
                         }),
                         "1d"
                     );
-                    const result = await fetch(`${baseAPIURL}/auth/callback`, {
-                        method: "POST",
+                    const { data } = await axios.post(`${API_URL}/auth/callback`, {}, {
                         headers: {
                             Authorization: `Bearer ${tokenJwt}`,
                         },
                     });
-                    const resultJson = await result.json();
-                    if (!result.ok) {
-                        throw resultJson;
-                    }
-
                     token = {
                         ...token,
-                        access_token: resultJson.access_token,
+                        ...data,
+                        // access_token: data.access_token,
                     };
                 }
                 return token;
             } catch (error) {
+                console.log((error));
+
                 throw error;
             }
         },
-        session: ({ session, token }) => {
+        session: ({ session, token }: { session: any, token: JWT, user: AdapterUser }) => {
             return {
                 ...session,
                 user: {
                     ...session.user,
-                    access_token: token.access_token,
+                    ...token
+                    // access_token: token.access_token,
                 },
             };
         },
@@ -142,13 +138,5 @@ export const authOptions: NextAuthOptions = {
         signIn: '/auth',
         error: '/auth',
     },
-    debug: false,
-    // jwt: {
-    //     async encode({ secret, token }) {
-    //         return jwt.sign(token, secret)
-    //     },
-    //     async decode({ secret, token }) {
-    //         return jwt.verify(token, secret)
-    //     },
-    // },
+    debug: false
 };

@@ -1,14 +1,14 @@
 import { create, StateCreator } from 'zustand';
-import { Package } from '@/types/package';
 import { createErrorSlice, ErrorSlice } from './useErrorStore';
-import provinceAction from './action/administrative/province';
+import { PackageType } from '@/types/package';
+import provinceAction from '@/action/administrative/province';
 
 export interface PackageSlice {
-    package: Partial<Package>;
-    packages: Package[];
-    addPackage: (pkg: Package) => void;
+    package: Partial<PackageType>;
+    packages: PackageType[];
+    addPackage: (pkg: PackageType) => void;
     getPackage: (id: string) => void;
-    updatePackage: (id: string, pkg: Package) => void;
+    updatePackage: (id: string, pkg: PackageType) => void;
     deletePackage: (id: string) => void;
 };
 export const createPackageSlice: StateCreator<

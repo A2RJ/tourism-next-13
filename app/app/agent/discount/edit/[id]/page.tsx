@@ -1,13 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Discount } from "@/types/package";
 import { Separator } from "@/components/ui/separator";
 import DiscountForm from "../../form";
-import { baseAPIURL } from "@/lib/fecthAPI";
+import { DiscountType } from "@/types/package";
+import { API_URL } from "@/action/api_url";
 
 export default function Page({ params }: { params: { id: string } }) {
-  const [data, setData] = useState<Partial<Discount>>({
+  const [data, setData] = useState<Partial<DiscountType>>({
     discount_name: "",
     discount_percentage: 0,
   });
@@ -17,7 +17,7 @@ export default function Page({ params }: { params: { id: string } }) {
     discount_percentage,
     start_date,
     end_date,
-  }: Partial<Discount>) => {
+  }: Partial<DiscountType>) => {
     console.log({
       onSubmitEdit: {
         discount_name,
@@ -31,7 +31,7 @@ export default function Page({ params }: { params: { id: string } }) {
   useEffect(() => {
     const getDiscount = async () => {
       try {
-        const response = await fetch(`${baseAPIURL}/discount/${params.id}`);
+        const response = await fetch(`${API_URL}/discount/${params.id}`);
         const responseData = await response.json();
         setData({
           discount_name: responseData.discount_name,

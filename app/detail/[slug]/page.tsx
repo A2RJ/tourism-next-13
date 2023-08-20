@@ -148,7 +148,7 @@ export default function Page({ params }: { params: { slug: string } }) {
                   );
                 }}
               >
-                Buy Now
+                Order Now
               </Button>
               <Button variant="outline" leftIcon={<ShoppingCart />}>
                 Add to cart

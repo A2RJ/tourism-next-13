@@ -1,18 +1,26 @@
 "use client";
 
+import { PACKAGE_URL } from "@/action/api_url";
 import Table from "@/components/ui/table";
-import { baseAPIURL } from "@/lib/fecthAPI";
-import { Package } from "@/types/package";
+import { bearerToken } from "@/lib/utils";
+import useAuth from "@/state/useAuthStore";
+import { PackageType } from "@/types/package";
 import { Button } from "@mantine/core";
 import { PlusCircle } from "lucide-react";
 import Link from "next/link";
 
 export default function Page() {
-  const tableHeaders = ["Package Name", "Price", "Duration", "Action"];
-  const apiUrl = `${baseAPIURL}/tour-package`;
-  const tableBodyColumns: ((item: Package) => React.ReactNode)[] = [
+  const tableHeaders = [
+    "Package Name",
+    "Price",
+    "Total Reservation",
+    "Duration",
+    "Action",
+  ];
+  const tableBodyColumns: ((item: PackageType) => React.ReactNode)[] = [
     (item) => <>{item.package_name}</>,
-    (item) => <>{item.price}</>,
+    (item) => <>RP. {item.price}</>,
+    (item) => <>RP. {(item.price as any) * 10} (x10)</>,
     (item) => <>{item.duration}</>,
     (item) => (
       <>
@@ -36,14 +44,18 @@ export default function Page() {
           </p>
         </div>
         <div className="ml-auto">
-          <Link href={"/agent/package/create"}>
+          <Link href={"/app/agent/package/create"}>
             <Button className="bg-mantine-primary" leftIcon={<PlusCircle />}>
               Add Package
             </Button>
           </Link>
         </div>
       </div>
-      <Table headers={tableHeaders} body={tableBodyColumns} apiUrl={apiUrl} />
+      <Table
+        headers={tableHeaders}
+        body={tableBodyColumns}
+        apiUrl={PACKAGE_URL}
+      />
     </>
   );
 }

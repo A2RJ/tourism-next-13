@@ -1,6 +1,6 @@
 "use client";
 
-import { baseAPIURL } from "@/lib/fecthAPI";
+import { API_URL } from "@/action/api_url";
 import axios from "axios";
 import { signIn } from "next-auth/react";
 import { ChangeEvent, useState } from "react";
@@ -28,7 +28,7 @@ export default function Register() {
     setError([]);
     try {
       const { name, email, password, password_confirmation } = formValues;
-      await axios.post(`${baseAPIURL}/auth/register`, {
+      await axios.post(`${API_URL}/auth/register`, {
         name,
         email,
         password,

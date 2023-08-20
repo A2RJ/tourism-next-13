@@ -1,19 +1,32 @@
 import { create } from "zustand"
 
-interface Auth {
-    name: string
-    email: string
-    token: string
-}
+type AccessToken = {
+    type: string;
+    token: string;
+    expires_at: string;
+};
 
+export type UserSession = {
+    user: {
+        id: string
+        name: string
+        email: string
+        access_token: AccessToken;
+    },
+    expires: Date
+}
 export interface AuthSlice {
-    user: Auth | boolean
-    setUser: (user: Auth | boolean) => void
+    user: UserSession | boolean
+    token: string | boolean
+    setToken: (token: string | boolean) => void
+    setUser: (user: UserSession | boolean) => void
     deleteEverything: () => void
 }
 const useAuth = create<AuthSlice>((set) => ({
     user: false,
-    setUser: (user: Auth | boolean) => set({ user: user }),
+    token: false,
+    setToken: (token: string | boolean) => set({ token }),
+    setUser: (user) => set({ user }),
     deleteEverything: () => set({}, true)
 }))
 

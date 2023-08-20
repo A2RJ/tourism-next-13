@@ -1,24 +1,21 @@
 "use client";
 
+import { API_URL } from "@/action/api_url";
 import Table from "@/components/ui/table";
-import { baseAPIURL } from "@/lib/fecthAPI";
-import { Package } from "@/types/package";
+import { PackageType } from "@/types/package";
 import { Button } from "@mantine/core";
 import { PlusCircle } from "lucide-react";
 import Link from "next/link";
 
 export default function Page() {
   const tableHeaders = ["Package Name", "Price", "Duration", "Action"];
-  const apiUrl = `${baseAPIURL}/tour-package`;
-  const tableBodyColumns: ((item: Package) => React.ReactNode)[] = [
+  const apiUrl = `${API_URL}/tour-package`;
+  const tableBodyColumns: ((item: PackageType) => React.ReactNode)[] = [
     (item) => <>{item.package_name}</>,
     (item) => <>{item.price}</>,
     (item) => <>{item.duration}</>,
     (item) => (
       <div className="space-x-1">
-        <Link href={`/app/agent/package/edit/${item.id}`}>
-          <Button variant="light">Edit</Button>
-        </Link>
         <Link href={`/maps/${item.id}`}>
           <Button variant="outline">Open Maps</Button>
         </Link>

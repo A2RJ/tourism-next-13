@@ -2,20 +2,22 @@
 
 import { Separator } from "@/components/ui/separator";
 import FacilityForm from "../../form";
-import { Facility } from "@/types/package";
 import { useEffect, useState } from "react";
-import { baseAPIURL } from "@/lib/fecthAPI";
+import { FacilityType } from "@/types/package";
+import { API_URL } from "@/action/api_url";
 
 export default function Page({ params }: { params: { id: string } }) {
-  const [edit, setEdit] = useState<Partial<Facility>>({ facility_name: "" });
-  const handleSubmit = ({ facility_name }: Partial<Facility>) => {
+  const [edit, setEdit] = useState<Partial<FacilityType>>({
+    facility_name: "",
+  });
+  const handleSubmit = ({ facility_name }: Partial<FacilityType>) => {
     console.log({ facility_name });
   };
 
   useEffect(() => {
     const getFacility = async () => {
       try {
-        const response = await fetch(`${baseAPIURL}/facility/${params.id}`);
+        const response = await fetch(`${API_URL}/facility/${params.id}`);
         const responseData = await response.json();
         setEdit({
           facility_name: responseData.facility_name,

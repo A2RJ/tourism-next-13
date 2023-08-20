@@ -1,16 +1,16 @@
 "use client";
 
 import FormPackage from "../form";
-import { baseAPIURL } from "@/lib/fecthAPI";
 import { snakeToCamel } from "@/lib/utils";
-import { Package } from "@/types/package";
+import { API_URL } from "@/action/api_url";
+import { PackageType } from "@/types/package";
 import axios from "axios";
 
 export default function Page() {
-  const handleSubmit = async (value: Partial<Package>) => {
+  const handleSubmit = async (value: Partial<PackageType>) => {
     try {
       const { data } = await axios.post(
-        `${baseAPIURL}/tour-package`,
+        `${API_URL}/tour-package`,
         snakeToCamel(value)
       );
       console.log(data);
